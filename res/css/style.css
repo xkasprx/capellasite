@@ -1,3 +1,6 @@
+/* To add to html later */
+/* <link rel="stylesheet" href="./res/css/style.css"> */
+
 /* Default colors, fonts, and sizes */
 :root{
 	--body-font: 'Poppins', sans-serif;
@@ -163,12 +166,11 @@
 	width: 100%;
 }
 
-/* Split content area into 3 even sections */
+/* Split content area into 2 even sections */
 .left,
-.middle,
 .right{
 	color: var(--text-color-2);
-	flex: 33.33%;
+	flex: 50%;
 	height: 75vh;
 	margin-top: 1vh;
 	padding: 1vw;
@@ -191,21 +193,19 @@
 }
 
 /* Link in middle section */
-.middle a{
+.right a{
 	background-color: var(--contrast-color-3);
 	border-radius: 1.5vw;
 	color: var(--text-color-2);
 	font-family: var(--header-font);
 	font-weight: 900;
 	justify-content: center;
-	margin-top: 60vh;
-	padding: 1.5vh;
-	position: absolute;
-	width: 30%;
+	margin: 3vh;
+	width: 50%;
 }
 
 /* Change the background of button on hover */
-.middle a:hover{
+.right a:hover{
 	background-color: var(--contrast-color-1);
 	color: var(--text-color-1);
 }
