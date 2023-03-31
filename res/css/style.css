@@ -193,15 +193,16 @@
 }
 
 /* Link in middle section */
-.right a{
+.footer .navButton{
 	background-color: var(--contrast-color-3);
 	border-radius: 1.5vw;
 	color: var(--text-color-2);
 	font-family: var(--header-font);
 	font-weight: 900;
 	justify-content: center;
-	margin: 3vh;
-	width: 50%;
+	position: fixed;
+	left: 35%;
+	width: 25%;
 }
 
 /* Change the background of button on hover */
@@ -264,7 +265,7 @@
 	margin-top: 3vh;
 	position: fixed;
 	visibility: hidden;
-	width: 60%;
+	width: 33%;
 	z-index: 2;
 }
 
@@ -303,5 +304,5 @@
 
 /* Set image width */
 #mechanics img{
-	width: 25vw;
+	width: 75%;
 }

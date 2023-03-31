@@ -1,7 +1,8 @@
 <!-- 
 	Daniel Stevens
 	3/31/2023
-	Home page for mechanic shop. Will greet visitors, with navigation links to schedule an appointment, read reviews, and view shop information.
+	template.html
+	Template for future pages.
 -->
 
 <!DOCTYPE html>
@@ -16,7 +17,6 @@
 	<meta name="revisit-after" content="30 days">
 	<meta name="author" content="Kaspr">
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="./res/css/style.css">
 	<link rel="shortcut icon" type="image/png" href="./res/img/icon.png">
 	<meta itemprop="name" content="Fix'r Up">
 	<meta itemprop="description" content="Your local redneck mechanic!">
@@ -40,10 +40,10 @@
 		<nav class="navigation" id="topNav">
 			<section class="navButtons">
 				<a class="navButton" href="/">Home</a>
-				<a class="navButton" href="/about">About</a>
-				<a class="navButton" href="/schedule">Appointments</a>
-				<a class="navButton" href="/contact">Contact</a>
-				<a class="navButton" href="/reviews">Reviews</a>
+				<a class="navButton" href="/about">About Us</a>
+				<a class="navButton" href="/services">Services</a>
+				<a class="navButton" href="/gallery">Gallery</a>
+				<a class="navButton" href="/contact">Contact Us</a>
 			</section>
 		</nav>
 		<img class="logo" src="./res/img/icon.png" alt="Company Logo">
@@ -60,14 +60,13 @@
 		</section>
 		<!-- Main content area -->
 		<section class="content">
-			<section class="left">
+			<section class="blur">
+				<section class="left">
 
-			</section>
-			<section class="middle">
+				</section>
+				<section class="right">
 
-			</section>
-			<section class="right">
-
+				</section>
 			</section>
 		</section>
 	</article>
@@ -80,10 +79,10 @@
 				<button class="dropbtn">Navigation</button>
 				<div class="dropdown-content">
 					<a href="/">Home</a>
-					<a href="/about">About</a>
-					<a href="/schedule">Appointments</a>
-					<a href="/contact">Contact</a>
-					<a href="/reviews">Reviews</a>
+					<a href="/about">About Us</a>
+					<a href="/services">Services</a>
+					<a href="/gallery">Gallery</a>
+					<a href="/contact">Contact Us</a>
 				</div>
 			</section>
 			<!-- Bottom navigation is floated and therefore needs to be reversed -->
