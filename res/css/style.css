@@ -17,7 +17,7 @@
 	--contrast-color-1: #D6CACA;
 	--contrast-color-2: rgba(0, 0, 0, 0.65);
 	--contrast-color-3: #000FFF;
-	--contrast-color-4: rgba(0, 0, 0, 0.575);
+	--contrast-color-4: rgba(0, 0, 0, 0.555);
 	
 	--font-xxs: .75vh;
 	--font-xs: 1.25vh;
@@ -38,9 +38,15 @@
 
 /* Backgroudn image */
 .background img{
-	opacity: .55;
 	position: fixed;
 	width: 100%;
+	z-index: -1;
+}
+
+/* shading to content section */
+.blur{
+	background-color: var(--contrast-color-4);
+	height: 100%;
 	z-index: -1;
 }
 
@@ -56,10 +62,11 @@
 }
 
 /* Content area */
-.content{
+.content .blur{
 	display: flex;
 	font-family: var(--body-font);
 	font-size: var(--font-l);
+	position: absolute;
 }
 
 /* Important words in content area */
@@ -160,12 +167,11 @@
 .left,
 .middle,
 .right{
-	background-color: var(--contrast-color-4);
 	color: var(--text-color-2);
 	flex: 33.33%;
 	height: 75vh;
 	margin-top: 1vh;
-	padding: 10px;
+	padding: 1vw;
 }
 
 /* Logo size adjustments */
