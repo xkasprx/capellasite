@@ -160,6 +160,7 @@
 .left,
 .middle,
 .right{
+	background-color: var(--contrast-color-4);
 	color: var(--text-color-2);
 	flex: 33.33%;
 	height: 75vh;
