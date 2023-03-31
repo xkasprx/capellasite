@@ -1,7 +1,7 @@
 <!-- 
 	Daniel Stevens
-	3/30/2023
-	HOme page for mechanic shop. Will greet visitors, with navigation links to schedule an appointment, read reviews, and view shop information.
+	3/31/2023
+	Home page for mechanic shop. Will greet visitors, with navigation links to schedule an appointment, read reviews, and view shop information.
 -->
 
 <!DOCTYPE html>
@@ -15,9 +15,9 @@
 	<meta name="language" content="English">
 	<meta name="revisit-after" content="30 days">
 	<meta name="author" content="Kaspr">
+	<meta charset="utf-8">
 	<link rel="stylesheet" href="./res/css/style.css">
 	<link rel="shortcut icon" type="image/png" href="./res/img/icon.png">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta itemprop="name" content="Fix'r Up">
 	<meta itemprop="description" content="Your local redneck mechanic!">
 	<meta itemprop="image" content="https://capella.dmskaspr.com/res/img/icon.png">
@@ -31,21 +31,24 @@
 	<meta property="twitter:title" content="Fix'r Up">
 	<meta property="twitter:description" content="Your local redneck mechanic!">
 	<meta property="twitter:image" content="https://capella.dmskaspr.com/res/img/icon.png">
-	<!-- header includes important information that tells search engines to recrawl every 30 days and includes properties to allow the site to be shared via social media -->
+	<!-- header includes important information that tells search engines to recrawl every 30 days-->
+	<!-- includes properties to allow the site to be shared via social media -->
 </head>
 
 <body class="body">
 	<header class="header">
 		<nav class="navigation" id="topNav">
-			<button class="navButton"><a href="/">Home</a></button>
-			<button class="navButton"><a href="/about">About</a></button>
-			<button class="navButton"><a href="/schedule">Appointments</a></button>
-			<button class="navButton"><a href="/contact">Contact</a></button>
-			<button class="navButton"><a href="/reviews">Reviews</a></button>
+			<section class="navButtons">
+				<a class="navButton" href="/">Home</a>
+				<a class="navButton" href="/about">About</a>
+				<a class="navButton" href="/schedule">Appointments</a>
+				<a class="navButton" href="/contact">Contact</a>
+				<a class="navButton" href="/reviews">Reviews</a>
+			</section>
 		</nav>
-		<!-- Navigation buttons for the top of the screen -->
-		<img class="logo" href="#" src="./res/img/icon.png" alt="Company Logo">
+		<img class="logo" src="./res/img/icon.png" alt="Company Logo">
 		<!-- Logo to be centered on screen -->
+		<!-- Navigation buttons for the top of the screen -->
 		<h1 class="title">Fix'r Up</h1>
 		<h2 class="slogan">Your local redneck mechanic!</h2>
 		<!-- Title and slogan for top right corner -->
@@ -55,6 +58,7 @@
 		<section class="background">
 			<img src="./res/img/redneck-repairs.png" alt="Redneck Repairs">
 		</section>
+		<!-- Main content area -->
 		<section class="content">
 			<section class="left">
 
@@ -69,22 +73,26 @@
 	</article>
 	<footer class="footer">
 		<nav class="navigation" id="bottomNav">
-			<!-- Navigation bar for bottom of screen, because the header and footer will be fixed, this will either get removed or modified later as the site progresses -->
 			<h2 class="promise">Repair work guaranteed or its free!*</h2>
-			<p class="promiseClause">*All work is accepted as is at time of payment and no warranty shall be extented once the vehicle has left the premises.</p>
-
-			<li><a href="/reviews">Reviews</a></li>
-			<li><a href="/contact">Contact</a></li>
-			<li><a href="/schedule">Appointments</a></li>
-			<li><a href="/about">About</a></li>
-			<li><a href="/">Home</a></li>
+			<p class="promiseClause">*All work is accepted as is at time of payment and no warranty shall be extented
+				once the vehicle has left the premises.</p>
+			<section class="dropdown">
+				<button class="dropbtn">Navigation</button>
+				<div class="dropdown-content">
+					<a href="/">Home</a>
+					<a href="/about">About</a>
+					<a href="/schedule">Appointments</a>
+					<a href="/contact">Contact</a>
+					<a href="/reviews">Reviews</a>
+				</div>
+			</section>
 			<!-- Bottom navigation is floated and therefore needs to be reversed -->
 		</nav>
 		<section class="copyright">
 			<!-- copyright section that leads to my actual privacy policy and terms and conditions -->
 			<p>2023 DMS Services ~ All Rights Reserved<br><a href="https://dmskaspr.com/#privacy">Privacy Policy</a> |
 				<a href="https://dmskaspr.com/#agreement">Terms & Conditions</a></p>
-				<p>This copyright section is the only part of this website that isn't satire.</p>
+			<p>This copyright section is the only part of this website that isn't satire.</p>
 		</section>
 	</footer>
 </body>
