@@ -11,7 +11,8 @@
 	--background-color-3: #00FF00;
 	--contrast-color-1: #D6CACA;
 	--contrast-color-2: rgba(0, 0, 0, 0.65);
-	--contrast-color-3: #00FF;
+	--contrast-color-3: #000FFF;
+	--contrast-color-4: rgba(0, 0, 0, 0.45);
 	--font-xxs: .75vh;
 	--font-xs: 1.25vh;
 	--font-s: 1.5vh;
@@ -106,25 +107,27 @@
 	margin-bottom: 13vh;
 }
 
-.middle button{
+.middle a{
 	position: absolute;
 	background-color: var(--contrast-color-3);
 	width: 30% ;
 	padding: 1.5vh;
 	margin-top: 60vh;
+	justify-content: center;
 	border-radius: 1.5vw;
 	font-weight: 900;
 	font-family: var(--header-font);
+	color: var(--text-color-2);
 }
 
-.middle a{
-	color: var(--text-color-2);
+.middle a:hover{
+	background-color: var(--contrast-color-1);
+	color: var(--text-color-1);
 }
 
 .navigation{
 	background-color: var(--background-color-2);
 	height: 10vh;
-	padding-bottom: 1vh;
 }
 
 .navigation h2:hover + .promiseClause{
@@ -132,19 +135,21 @@
 }
 
 .navButton{
+	display: inline-flex;
 	background-color: var(--contrast-color-1);
 	padding: 1.5vh;
-	margin-top: 1vh;
+	margin-top: 2vh;
 	margin-left: .5vw;
 	border-radius: 1.5vw;
 	font-weight: 900;
 	font-family: var(--header-font);
-}
-
-.navButton a,
-.navButton a:visited{
 	text-decoration: none;
 	color: var(--text-color-1);
+}
+
+.navButton:hover{
+	background-color: var(--contrast-color-4);
+	color: var(--text-color-2);
 }
 
 .promise{
@@ -205,8 +210,4 @@
 #mechanics img{
 	width: 25vw;
 	float: right;
-}
-
-#topNav button{
-	margin-top: 2vh;
 }
