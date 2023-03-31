@@ -38,7 +38,7 @@
 
 /* Backgroudn image */
 .background img{
-	opacity: .5;
+	opacity: .35;
 	position: fixed;
 	width: 100%;
 	z-index: -1;
