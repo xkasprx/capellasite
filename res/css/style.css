@@ -38,7 +38,7 @@
 
 /* Backgroudn image */
 .background img{
-	opacity: .35;
+	opacity: .55;
 	position: fixed;
 	width: 100%;
 	z-index: -1;
@@ -47,7 +47,6 @@
 /* Body background color */
 .body{
 	background-color: var(--contrast-color-4);
-	opacity: .9;
 }
 
 /* Main topic header */
