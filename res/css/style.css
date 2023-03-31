@@ -66,7 +66,7 @@
 	display: flex;
 	font-family: var(--body-font);
 	font-size: var(--font-l);
-	position: absolute;
+	position: fixed;
 }
 
 /* Important words in content area */
@@ -252,7 +252,7 @@
 .promise{
 	color: var(--text-color-2);
 	left: 3vw;
-	margin-top: 1vh;
+	margin-top: .5vh;
 	position: fixed;
 }
 
@@ -261,9 +261,10 @@
 	color: var(--text-color-2);
 	font-size: var(--font-xxs);
 	left: 3vw;
-	margin-top: 4.5vh;
+	margin-top: 3vh;
 	position: fixed;
 	visibility: hidden;
+	width: 60%;
 	z-index: 2;
 }
 
