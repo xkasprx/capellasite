@@ -1,0 +1,212 @@
+:root{
+	--header-font: 'Roboto', sans-serif;
+	--body-font: 'Poppins', sans-serif;
+	--link-color: #FF6600;
+	--text-color-1: #000000;
+	--text-color-2: #FFFFFF;
+	--text-color-3: #00FF00;
+	--text-color-4: #f53f3f;
+	--background-color-1: #000000;
+	--background-color-2: #0051ff;
+	--background-color-3: #00FF00;
+	--contrast-color-1: #D6CACA;
+	--contrast-color-2: rgba(0, 0, 0, 0.65);
+	--contrast-color-3: #00FF;
+	--font-xxs: .75vh;
+	--font-xs: 1.25vh;
+	--font-s: 1.5vh;
+	--font-r: 1.75vh;
+	--font-l: 2vh;
+	--font-xl: 3vh;
+	--font-xxl: 4vh;
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	cursor: default;
+}
+
+.background img{
+	position: fixed;
+	z-index: -1;
+	width: 100%;
+	opacity: .5;
+}
+
+.body{
+	background-color: var(--background-color-1);
+}
+
+.bulletin{
+	text-align: center;
+	margin-top: 27vh;
+}
+
+.content{
+	font-family: var(--body-font);
+	display: flex;
+	font-size: var(--font-l);
+}
+
+.content span{
+	font-size: var(--font-l);
+	color: var(--text-color-4);
+	font-weight: 900;
+}
+
+.copyright{
+	position: fixed;
+	bottom: 0vh;
+	height: 6vh;
+	width: 100%;
+	padding-top: 1vh;
+	text-align: center;
+	font-size: var(--font-xs);
+	color: var(--text-color-3);
+	background-color: var(--background-color-1);
+}
+
+.copyright a{
+	color: var(--link-color);
+	font-size: var(--font-xs);;
+}
+
+.footer{
+	position: fixed;
+	width: 100%;
+}
+
+.header{
+	position: fixed;
+	width: 100%;
+}
+
+.left,
+.middle,
+.right{
+	margin-top: 1vh;
+	flex: 33.33%;
+	height: 75vh;
+	padding: 10px;
+	color: var(--text-color-2);
+}
+
+.logo{
+	display: block;
+	top: .1vh;
+	margin: -9vh auto;
+	opacity: .85;
+	z-index: 2;
+}
+
+.main{
+	padding-top: 10vh;
+	margin-bottom: 13vh;
+}
+
+.middle button{
+	position: absolute;
+	background-color: var(--contrast-color-3);
+	width: 30% ;
+	padding: 1.5vh;
+	margin-top: 60vh;
+	border-radius: 1.5vw;
+	font-weight: 900;
+	font-family: var(--header-font);
+}
+
+.middle a{
+	color: var(--text-color-2);
+}
+
+.navigation{
+	background-color: var(--background-color-2);
+	height: 10vh;
+	padding-bottom: 1vh;
+}
+
+.navigation h2:hover + .promiseClause{
+	visibility: visible;
+}
+
+.navButton{
+	background-color: var(--contrast-color-1);
+	padding: 1.5vh;
+	margin-top: 1vh;
+	margin-left: .5vw;
+	border-radius: 1.5vw;
+	font-weight: 900;
+	font-family: var(--header-font);
+}
+
+.navButton a,
+.navButton a:visited{
+	text-decoration: none;
+	color: var(--text-color-1);
+}
+
+.promise{
+	position: fixed;
+	margin-top: 1vh;
+	color: var(--text-color-2);
+	left: 3vw;
+}
+
+.promiseClause{
+	position: fixed;
+	z-index: 2;
+	margin-top: 4.5vh;
+	color: var(--text-color-2);
+	left: 3vw;
+	font-size: var(--font-xxs);
+	visibility: hidden;
+}
+
+.slogan{
+	position: absolute;
+	top: 6vh;
+	right: 1.5vw;
+	color: var(--text-color-2);
+	text-decoration: var(--text-color-4) wavy underline;
+}
+
+.title{
+	position: absolute;
+	top: 1vh;
+	right: 1.5vw;
+	color: var(--text-color-4);
+}
+
+#bottomNav{
+	position: fixed;
+	bottom: 6vh;
+	width: 100%;
+	height: 6vh;
+	color:var(--text-color-4);
+}
+
+#bottomNav li{
+	float: right;
+	padding-right: 1vw;
+	margin-top: 2vh;
+}
+
+#bottomNav a{
+	color:var(--text-color-4);
+}
+
+#mechanics{
+	margin-top: 22vh;
+	text-align: center;
+}
+
+#mechanics img{
+	width: 25vw;
+	float: right;
+}
+
+#topNav button{
+	margin-top: 2vh;
+}
