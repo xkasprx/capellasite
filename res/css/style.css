@@ -206,8 +206,9 @@
 	padding: 1vw;
 }
 
-.galleryImage figcaption{
-	margin-left: 0 auto;
+.gallery figure{
+	text-align: center;
+	padding: 0;
 }
 
 .gridpics{
