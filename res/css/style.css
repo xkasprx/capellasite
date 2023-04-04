@@ -1,462 +1,414 @@
 /* Default colors, fonts, and sizes */
-:root {
-	--body-font: 'Poppins', sans-serif;
-	--header-font: 'Roboto', sans-serif;
-
-	--link-color: #FF6600;
-
-	--text-color-1: #000000;
-	--text-color-2: #FFFFFF;
-	--text-color-3: #00FF00;
-	--text-color-4: #f53f3f;
-
-	--background-color-1: #000000;
-	--background-color-2: #0051ff;
-	--background-color-3: #00FF00;
-
-	--contrast-color-1: #D6CACA;
-	--contrast-color-2: rgba(0, 0, 0, 0.65);
-	--contrast-color-3: #000FFF;
-	--contrast-color-4: rgba(0, 0, 0, 0.555);
-
-	--font-xxs: .75vh;
-	--font-xs: 1.25vh;
-	--font-s: 1.5vh;
-	--font-r: 1.75vh;
-	--font-l: 2vh;
-	--font-xl: 3vh;
-	--font-xxl: 4vh;
+:root{
+    --body-font: "Poppins", sans-serif;
+    --header-font: "Roboto", sans-serif;
+    --link-color: #ff6600;
+    --text-color-1: #000000;
+    --text-color-2: #ffffff;
+    --text-color-3: #00ff00;
+    --text-color-4: #f53f3f;
+    --background-color-1: #000000;
+    --background-color-2: #0051ff;
+    --background-color-3: #00ff00;
+    --contrast-color-1: #d6caca;
+    --contrast-color-2: rgba(0, 0, 0, 0.65);
+    --contrast-color-3: #000fff;
+    --contrast-color-4: rgba(0, 0, 0, 0.555);
+    --font-xxs: 0.75vh;
+    --font-xs: 1.25vh;
+    --font-s: 1.5vh;
+    --font-r: 1.75vh;
+    --font-l: 2vh;
+    --font-xl: 3vh;
+    --font-xxl: 4vh;
 }
-
 ::-webkit-scrollbar{
-	display: none;
+    display: none;
 }
-
 /* Default page settings */
-* {
-	box-sizing: border-box;
-	cursor: default;
-	margin: 0;
-	padding: 0;
+*{
+    box-sizing: border-box;
+    cursor: default;
+    margin: 0;
+    padding: 0;
 }
-
 /* Backgroudn image */
-.background img {
-	position: fixed;
-	width: 100%;
-	z-index: -1;
-	opacity: 50%;
+.background img{
+    position: fixed;
+    width: 100%;
+    z-index: -1;
+    opacity: 50%;
 }
-
 /* shading to content section */
-.blur {
-	background-color: var(--contrast-color-4);
-	height: 100%;
-	z-index: -1;
+.blur{
+    background-color: var(--contrast-color-4);
+    height: 100%;
+    z-index: -1;
 }
-
 /* Body background color */
-.body {
-	background-color: var(--background-color-1);
+.body{
+    background-color: var(--background-color-1);
 }
-
 /* Main topic header */
-.bulletin {
-	margin-top: 15vh;
-	text-align: center;
+.bulletin{
+    margin-top: 15vh;
+    text-align: center;
 }
-
 .contactInfo{
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
 }
-
 /* Content area */
-.content .blur {
-	display: flex;
-	font-family: var(--body-font);
-	font-size: var(--font-l);
-	position: fixed;
+.content .blur{
+    display: flex;
+    font-family: var(--body-font);
+    font-size: var(--font-l);
+    position: fixed;
 }
-
 /* Important words in content area */
-.content span {
-	color: var(--text-color-4);
-	font-size: var(--font-l);
-	font-weight: 900;
+.content span{
+    color: var(--text-color-4);
+    font-size: var(--font-l);
+    font-weight: 900;
 }
-
 /* Copyright section */
-.copyright {
-	background-color: var(--background-color-1);
-	bottom: 0vh;
-	color: var(--text-color-3);
-	font-size: var(--font-xs);
-	height: 6vh;
-	padding-top: 1vh;
-	position: fixed;
-	text-align: center;
-	width: 100%;
+.copyright{
+    background-color: var(--background-color-1);
+    bottom: 0vh;
+    color: var(--text-color-3);
+    font-size: var(--font-xs);
+    height: 6vh;
+    padding-top: 1vh;
+    position: fixed;
+    text-align: center;
+    width: 100%;
 }
-
 /* Copyright links */
-.copyright a {
-	color: var(--link-color);
-	font-size: var(--font-xs);
+.copyright a{
+    color: var(--link-color);
+    font-size: var(--font-xs);
 }
-
 /* Bottom navigation */
-.dropdown {
-	float: right;
-	overflow: hidden;
+.dropdown{
+    float: right;
+    overflow: hidden;
 }
-
 /* Dropdown button */
-.dropdown .dropbtn {
-	background-color: inherit;
-	border: none;
-	color: var(--text-color-2);
-	font-size: var(--font-s);
-	font-weight: 700;
-	margin: 0 1vw 0 0;
-	outline: none;
-	padding: 2vh 1.75vh 2vh 1.75vh;
+.dropdown .dropbtn{
+    background-color: inherit;
+    border: none;
+    color: var(--text-color-2);
+    font-size: var(--font-s);
+    font-weight: 700;
+    margin: 0 1vw 0 0;
+    outline: none;
+    padding: 2vh 1.75vh 2vh 1.75vh;
 }
-
 /* Dropdown hover */
-.dropdown button:hover {
-	background-color: var(--background-color-1);
+.dropdown button:hover{
+    background-color: var(--background-color-1);
 }
-
 /* Dropdown content (hidden by default) */
-.dropdown-content {
-	background-color: var(--background-color-1);
-	bottom: 6vh;
-	box-shadow: 1vw 1vw 1.5vw 0vw var(--contrast-color-4);
-	display: none;
-	min-width: min-content;
-	position: absolute;
-	right: 1vw;
-	z-index: 1;
+.dropdown-content{
+    background-color: var(--background-color-1);
+    bottom: 6vh;
+    box-shadow: 1vw 1vw 1.5vw 0vw var(--contrast-color-4);
+    display: none;
+    min-width: min-content;
+    position: absolute;
+    right: 1vw;
+    z-index: 1;
 }
-
 /* Links inside the dropdown */
-.dropdown-content a {
-	color: var(--text-color-4);
-	font-weight: 700;
-	display: block;
-	float: none;
-	padding: 1vh 1vw;
-	text-align: center;
-	text-decoration: none;
+.dropdown-content a{
+    color: var(--text-color-4);
+    font-weight: 700;
+    display: block;
+    float: none;
+    padding: 1vh 1vw;
+    text-align: center;
+    text-decoration: none;
 }
-
 /* Add a blue background color to dropdown links on hover */
-.dropdown-content a:hover {
-	background-color: var(--background-color-2);
+.dropdown-content a:hover{
+    background-color: var(--background-color-2);
 }
-
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-	display: block;
+.dropdown:hover .dropdown-content{
+    display: block;
 }
-
 /* Full width footer */
-.footer {
-	position: fixed;
-	width: 100%;
+.footer{
+    position: fixed;
+    width: 100%;
 }
-
 /* Link in middle section */
-.footer .navButton {
-	background-color: var(--contrast-color-3);
-	border-radius: 1.5vw;
-	color: var(--text-color-2);
-	font-family: var(--header-font);
-	font-weight: 900;
-	justify-content: center;
-	position: fixed;
-	left: 35%;
-	width: 25%;
+.footer .navButton{
+    background-color: var(--contrast-color-3);
+    border-radius: 1.5vw;
+    color: var(--text-color-2);
+    font-family: var(--header-font);
+    font-weight: 900;
+    justify-content: center;
+    position: fixed;
+    left: 35%;
+    width: 25%;
 }
-
-.form {
-	text-align: center;
+/* Form layout */
+.form{
+    text-align: center;
 }
-
-.form input {
-	background-color: var(--contrast-color-2);
-	border: 1px solid var(--contrast-color-1);
-	color: var(--text-color-2);
-	font-size: var(--font-l);
-	margin: 0 0 2vh 0;
-	padding: 1vw;
+/* Set up contact form inputs */
+.form input{
+    background-color: var(--contrast-color-2);
+    border: 1px solid var(--contrast-color-1);
+    color: var(--text-color-2);
+    font-size: var(--font-l);
+    margin: 0 0 2vh 0;
+    padding: 1vw;
 }
-
-.form textarea {
-	background-color: var(--contrast-color-2);
-	border: 1px solid var(--contrast-color-1);
-	color: var(--text-color-2);
-	font-size: var(--font-l);
+/* Set up contact form message box */
+.form textarea{
+    background-color: var(--contrast-color-2);
+    border: 1px solid var(--contrast-color-1);
+    color: var(--text-color-2);
+    font-size: var(--font-l);
 }
-
-.gallery {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-	grid-template-rows: 1fr 1fr;
-	margin-left: 5vw;
-	margin-right: 5vw;
-	margin-top: 15vh;
-	position: absolute;
+/* Set up photo gallery */
+.gallery{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 15vh;
+    position: absolute;
 }
-
-.gallery img {
-	height: 25vh;
-	margin: 0 auto;
-	padding: 1vw;
+/* Specify gallery image settings */
+.gallery img{
+    height: 25vh;
+    margin: 0 auto;
+    padding: 1vw;
 }
-
-.gallery figure {
-	color: var(--text-color-2);
-	padding: 0;
-	text-align: center;
+/* Set up photo galley image and text */
+.gallery figure{
+    color: var(--text-color-2);
+    padding: 0;
+    text-align: center;
 }
-
-.gridpics {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 1fr;
-	margin: 13vh;
+/* Align pics to grid layout */
+.gridpics{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    margin: 13vh;
 }
-
 /* Full width header */
-.header {
-	position: fixed;
-	width: 100%;
+.header{
+    position: fixed;
+    width: 100%;
 }
-
-.headline {
-	color: var(--text-color-2);
-	display: flex;
-	margin: 11vh auto;
+/* Secondary header class */
+.headline{
+    color: var(--text-color-2);
+    display: flex;
+    margin: 11vh auto;
 }
-
+/* Hide elements */
 .hidden{
-	display: none;
+    display: none;
 }
-
-.hours {
-	text-align: center;
+/* Set up hour layout */
+.hours{
+    text-align: center;
 }
-
-.lists li {
-	list-style-position: inside;
-	text-align: left;
+/* Price list layout */
+.lists li{
+    list-style-position: inside;
+    text-align: left;
 }
-
 /* Split content area into 2 even sections */
 .left,
-.right {
-	color: var(--text-color-2);
-	flex: 50%;
-	height: 75vh;
-	margin-top: 1vh;
-	padding: 1vw;
-	overflow: scroll;
+.right{
+    color: var(--text-color-2);
+    flex: 50%;
+    height: 75vh;
+    margin-top: 1vh;
+    padding: 1vw;
+    overflow: scroll;
 }
-
 /* Logo size adjustments */
-.logo {
-	display: block;
-	margin: -9vh auto;
-	max-width: 15%;
-	opacity: .85;
-	top: .1vh;
-	z-index: 2;
+.logo{
+    display: block;
+    margin: -9vh auto;
+    max-width: 15%;
+    opacity: 0.85;
+    top: 0.1vh;
+    z-index: 2;
 }
-
 /* Main section that contains content */
-.main {
-	margin-bottom: 26vh;
-	padding-top: 10.5vh;
+.main{
+    margin-bottom: 26vh;
+    padding-top: 10.5vh;
 }
-
-/* Set background color of nav bar */
-.navigation {
-	background-color: var(--background-color-2);
-	height: 10vh;
-}
-
-/* Show funny caveat to promise in small letters when promise is hovered on */
-.navigation h2:hover+.promiseClause {
-	visibility: visible;
-}
-
-/* Top navigation buttons */
-.navButton {
-	background-color: var(--contrast-color-1);
-	border-radius: 1.5vw;
-	color: var(--text-color-1);
-	display: inline-flex;
-	font-family: var(--header-font);
-	font-weight: 900;
-	margin-left: .5vw;
-	margin-top: 2.75vh;
-	padding: .5vw;
-	text-align: center;
-	text-decoration: none;
-}
-
-/* Align navigation buttons */
-.navButtons {
-	max-width: 40%;
-	text-align: center;
-}
-
-/* Change background on hover */
-.navButton:hover {
-	background-color: var(--contrast-color-4);
-	color: var(--text-color-2);
-}
-
-/* Promise text settings */
-.promise {
-	color: var(--text-color-2);
-	left: 3vw;
-	margin-top: .5vh;
-	position: fixed;
-}
-
-/* Funny caveat settings */
-.promiseClause {
-	color: var(--text-color-2);
-	font-size: var(--font-xxs);
-	left: 3vw;
-	margin-top: 3vh;
-	position: fixed;
-	visibility: hidden;
-	width: 33%;
-	z-index: 2;
-}
-
-.price {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-
-.prices {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-	margin-left: 3vw;
-}
-
-/* Slogan design */
-.slogan {
-	color: var(--text-color-2);
-	position: absolute;
-	right: 1.5vw;
-	text-decoration: var(--text-color-4) wavy underline;
-	top: 6vh;
-}
-
-/* Title design */
-.title {
-	color: var(--text-color-4);
-	font-size: var(--font-xxl);
-	position: absolute;
-	right: 1.5vw;
-	top: 1vh;
-}
-
-/* Bottom navigation bar settings */
-#bottomNav {
-	bottom: 6vh;
-	height: 6vh;
-	position: fixed;
-	width: 100%;
-}
-
 /* Home page picture settings */
-.mechanics {
-	margin-top: 22vh;
-	text-align: center;
-	float: right;
+.mechanics{
+    margin-top: 22vh;
+    text-align: center;
+    float: right;
 }
-
 /* Set image width */
-.mechanics img {
-	margin-right: 5vw;
-	margin-top: -14vh;
-	width: 75%;
+.mechanics img{
+    margin-right: 5vw;
+    margin-top: -14vh;
+    width: 75%;
 }
-
+/* Hide mobile only elements */
 .mobileOnly{
-	display: none;
+    display: none;
 }
-
-@media screen and (max-width: 1080px) {	
-	.hidden{
-		display: flex;
-		margin: 1vh;
-	}
-
-	.hidden figure{
-		margin: 15vh auto;
-	}
-
-	#mobileOnly{
-		display: block;
-	}
-
-	#mobileSubmit{
-		font-size: var(--font-xl);
-	}
-
-	.contactInfo{
-		justify-content: center;
-	}
-
-	.contactInfo div{
-		margin: 1vh auto;
-	}
-
-	.headline{
-		margin-top: 0;
-	}
-
-	.hours{
-		display: grid;
-		grid-template-columns: repeat(5, 1fr);
-	}
-	.gallery {
-		display: inline-block;
-		height: 100vh;
-		left: 50%;
-		margin-top: 5vh;
-		overflow: scroll;
-		padding-bottom: 30vh;
-	}
-
-	.price {
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-	}
-	
-	.prices {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		left: 0;
-	}
-
-	.right {
-		display: none;
-	}
-
-	.left{
-		display: inline-block;
-		width: 100vw;
-	}
+/* Set background color of nav bar */
+.navigation{
+    background-color: var(--background-color-2);
+    height: 10vh;
+}
+/* Show funny caveat to promise in small letters when promise is hovered on */
+.navigation h2:hover + .promiseClause{
+    visibility: visible;
+}
+/* Top navigation buttons */
+.navButton{
+    background-color: var(--contrast-color-1);
+    border-radius: 1.5vw;
+    color: var(--text-color-1);
+    display: inline-flex;
+    font-family: var(--header-font);
+    font-weight: 900;
+    margin-left: 0.5vw;
+    margin-top: 2.75vh;
+    padding: 0.5vw;
+    text-align: center;
+    text-decoration: none;
+}
+/* Align navigation buttons */
+.navButtons{
+    max-width: 40%;
+    text-align: center;
+}
+/* Change background on hover */
+.navButton:hover{
+    background-color: var(--contrast-color-4);
+    color: var(--text-color-2);
+}
+/* Promise text settings */
+.promise{
+    color: var(--text-color-2);
+    left: 3vw;
+    margin-top: 0.5vh;
+    position: fixed;
+}
+/* Funny caveat settings */
+.promiseClause{
+    color: var(--text-color-2);
+    font-size: var(--font-xxs);
+    left: 3vw;
+    margin-top: 3vh;
+    position: fixed;
+    visibility: hidden;
+    width: 33%;
+    z-index: 2;
+}
+/* Remove bullet from price side */
+.price{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+/* Set up pricing layout */
+.prices{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-left: 3vw;
+}
+/* Slogan design */
+.slogan{
+    color: var(--text-color-2);
+    position: absolute;
+    right: 1.5vw;
+    text-decoration: var(--text-color-4) wavy underline;
+    top: 6vh;
+}
+/* Title design */
+.title{
+    color: var(--text-color-4);
+    font-size: var(--font-xxl);
+    position: absolute;
+    right: 1.5vw;
+    top: 1vh;
+}
+/* Bottom navigation bar settings */
+#bottomNav{
+    bottom: 6vh;
+    height: 6vh;
+    position: fixed;
+    width: 100%;
+}
+/* Mobile specific settings */
+@media screen and (max-width: 1080px){
+    .bulletin{
+        margin-top: 0vh;
+        text-align: center;
+    }
+    .contactInfo{
+        justify-content: center;
+    }
+    .contactInfo div{
+        margin: 1vh auto;
+    }
+    .gallery{
+        display: inline-block;
+        height: 100vh;
+        left: 50%;
+        margin-top: 5vh;
+        overflow: scroll;
+        padding-bottom: 30vh;
+    }
+    .hidden{
+        display: flex;
+        margin: 1vh;
+    }
+    .hidden figure{
+        margin: 15vh auto;
+    }
+    .left{
+        display: inline-block;
+        width: 100vw;
+    }
+    .mobileOnly{
+        display: block;
+    }
+    .mobileSubmit{
+        font-size: var(--font-xl);
+    }
+    .headline{
+        margin-top: 0;
+    }
+    .hours{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+    }
+    .price{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    .prices{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        left: 0;
+    }
+    .right{
+        display: none;
+    }
 }
