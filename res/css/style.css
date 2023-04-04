@@ -1,5 +1,5 @@
 /* Default colors, fonts, and sizes */
-:root{
+:root {
 	--body-font: 'Poppins', sans-serif;
 	--header-font: 'Roboto', sans-serif;
 
@@ -28,8 +28,12 @@
 	--font-xxl: 4vh;
 }
 
+::-webkit-scrollbar{
+	display: none;
+}
+
 /* Default page settings */
-*{
+* {
 	box-sizing: border-box;
 	cursor: default;
 	margin: 0;
@@ -37,7 +41,7 @@
 }
 
 /* Backgroudn image */
-.background img{
+.background img {
 	position: fixed;
 	width: 100%;
 	z-index: -1;
@@ -45,25 +49,31 @@
 }
 
 /* shading to content section */
-.blur{
+.blur {
 	background-color: var(--contrast-color-4);
 	height: 100%;
 	z-index: -1;
 }
 
 /* Body background color */
-.body{
+.body {
 	background-color: var(--background-color-1);
 }
 
 /* Main topic header */
-.bulletin{
+.bulletin {
 	margin-top: 15vh;
 	text-align: center;
 }
 
+.contactInfo{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	text-align: center;
+}
+
 /* Content area */
-.content .blur{
+.content .blur {
 	display: flex;
 	font-family: var(--body-font);
 	font-size: var(--font-l);
@@ -71,14 +81,14 @@
 }
 
 /* Important words in content area */
-.content span{
+.content span {
 	color: var(--text-color-4);
 	font-size: var(--font-l);
 	font-weight: 900;
 }
 
 /* Copyright section */
-.copyright{
+.copyright {
 	background-color: var(--background-color-1);
 	bottom: 0vh;
 	color: var(--text-color-3);
@@ -91,19 +101,19 @@
 }
 
 /* Copyright links */
-.copyright a{
+.copyright a {
 	color: var(--link-color);
 	font-size: var(--font-xs);
 }
 
 /* Bottom navigation */
-.dropdown{
+.dropdown {
 	float: right;
 	overflow: hidden;
 }
 
 /* Dropdown button */
-.dropdown .dropbtn{
+.dropdown .dropbtn {
 	background-color: inherit;
 	border: none;
 	color: var(--text-color-2);
@@ -115,12 +125,12 @@
 }
 
 /* Dropdown hover */
-.dropdown button:hover{
+.dropdown button:hover {
 	background-color: var(--background-color-1);
 }
 
 /* Dropdown content (hidden by default) */
-.dropdown-content{
+.dropdown-content {
 	background-color: var(--background-color-1);
 	bottom: 6vh;
 	box-shadow: 1vw 1vw 1.5vw 0vw var(--contrast-color-4);
@@ -132,7 +142,7 @@
 }
 
 /* Links inside the dropdown */
-.dropdown-content a{
+.dropdown-content a {
 	color: var(--text-color-4);
 	font-weight: 700;
 	display: block;
@@ -143,23 +153,23 @@
 }
 
 /* Add a blue background color to dropdown links on hover */
-.dropdown-content a:hover{
+.dropdown-content a:hover {
 	background-color: var(--background-color-2);
 }
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content{
+.dropdown:hover .dropdown-content {
 	display: block;
 }
 
 /* Full width footer */
-.footer{
+.footer {
 	position: fixed;
 	width: 100%;
 }
 
 /* Link in middle section */
-.footer .navButton{
+.footer .navButton {
 	background-color: var(--contrast-color-3);
 	border-radius: 1.5vw;
 	color: var(--text-color-2);
@@ -171,10 +181,11 @@
 	width: 25%;
 }
 
-.form{
+.form {
 	text-align: center;
 }
-.form input{
+
+.form input {
 	background-color: var(--contrast-color-2);
 	border: 1px solid var(--contrast-color-1);
 	color: var(--text-color-2);
@@ -183,14 +194,14 @@
 	padding: 1vw;
 }
 
-.form textarea{
+.form textarea {
 	background-color: var(--contrast-color-2);
 	border: 1px solid var(--contrast-color-1);
 	color: var(--text-color-2);
 	font-size: var(--font-l);
 }
 
-.gallery{
+.gallery {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr;
@@ -200,57 +211,63 @@
 	position: absolute;
 }
 
-.gallery img{
+.gallery img {
 	height: 25vh;
 	margin: 0 auto;
 	padding: 1vw;
 }
 
-.gallery figure{
+.gallery figure {
 	color: var(--text-color-2);
 	padding: 0;
 	text-align: center;
 }
 
-.gridpics{
+.gridpics {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	margin: 13vh;
 }
 
 /* Full width header */
-.header{
+.header {
 	position: fixed;
 	width: 100%;
 }
 
-.headline{
+.headline {
 	color: var(--text-color-2);
-	margin-top: 13vh;
-	margin-bottom: -15vh;
+	display: flex;
+	margin: 11vh auto;
+}
+
+#hidden{
+	display: none;
+}
+
+.hours {
 	text-align: center;
 }
 
-.hours{
-	text-align: center;
-}
-
-.lists li{
+.lists li {
 	list-style-position: inside;
 	text-align: left;
 }
 
 /* Split content area into 2 even sections */
 .left,
-.right{
+.right {
 	color: var(--text-color-2);
 	flex: 50%;
 	height: 75vh;
 	margin-top: 1vh;
 	padding: 1vw;
+	overflow: scroll;
 }
 
 /* Logo size adjustments */
-.logo{
+.logo {
 	display: block;
 	margin: -9vh auto;
 	max-width: 15%;
@@ -260,30 +277,24 @@
 }
 
 /* Main section that contains content */
-.main{
+.main {
 	margin-bottom: 26vh;
 	padding-top: 10.5vh;
 }
 
-/* Change the background of button on hover */
-.right a:hover{
-	background-color: var(--contrast-color-1);
-	color: var(--text-color-1);
-}
-
 /* Set background color of nav bar */
-.navigation{
+.navigation {
 	background-color: var(--background-color-2);
 	height: 10vh;
 }
 
 /* Show funny caveat to promise in small letters when promise is hovered on */
-.navigation h2:hover+.promiseClause{
+.navigation h2:hover+.promiseClause {
 	visibility: visible;
 }
 
 /* Top navigation buttons */
-.navButton{
+.navButton {
 	background-color: var(--contrast-color-1);
 	border-radius: 1.5vw;
 	color: var(--text-color-1);
@@ -298,19 +309,19 @@
 }
 
 /* Align navigation buttons */
-.navButtons{
-	max-width: 33.33%;
+.navButtons {
+	max-width: 40%;
 	text-align: center;
 }
 
 /* Change background on hover */
-.navButton:hover{
+.navButton:hover {
 	background-color: var(--contrast-color-4);
 	color: var(--text-color-2);
 }
 
 /* Promise text settings */
-.promise{
+.promise {
 	color: var(--text-color-2);
 	left: 3vw;
 	margin-top: .5vh;
@@ -318,7 +329,7 @@
 }
 
 /* Funny caveat settings */
-.promiseClause{
+.promiseClause {
 	color: var(--text-color-2);
 	font-size: var(--font-xxs);
 	left: 3vw;
@@ -329,20 +340,20 @@
 	z-index: 2;
 }
 
-.price{
+.price {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
 
-.prices{
+.prices {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	margin-left: 3vw;
 }
 
 /* Slogan design */
-.slogan{
+.slogan {
 	color: var(--text-color-2);
 	position: absolute;
 	right: 1.5vw;
@@ -351,7 +362,7 @@
 }
 
 /* Title design */
-.title{
+.title {
 	color: var(--text-color-4);
 	font-size: var(--font-xxl);
 	position: absolute;
@@ -360,7 +371,7 @@
 }
 
 /* Bottom navigation bar settings */
-#bottomNav{
+#bottomNav {
 	bottom: 6vh;
 	height: 6vh;
 	position: fixed;
@@ -368,15 +379,84 @@
 }
 
 /* Home page picture settings */
-#mechanics{
+#mechanics {
 	margin-top: 22vh;
 	text-align: center;
 	float: right;
 }
 
 /* Set image width */
-#mechanics img{
+#mechanics img {
 	margin-right: 5vw;
 	margin-top: -14vh;
 	width: 75%;
+}
+
+#mobileOnly{
+	display: none;
+}
+
+@media screen and (max-width: 1080px) {	
+	#hidden{
+		display: flex;
+		margin: 1vh;
+	}
+
+	#hidden figure{
+		margin: 15vh auto;
+	}
+
+	#mobileOnly{
+		display: block;
+	}
+
+	#mobileSubmit{
+		font-size: var(--font-xl);
+	}
+
+	.contactInfo{
+		justify-content: center;
+	}
+	.contactInfo div{
+		margin: 1vh auto;
+	}
+
+	.headline{
+		margin-top: 0;
+	}
+
+	.hours{
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+
+	}
+	.gallery {
+		display: inline-block;
+		height: 100vh;
+		left: 50%;
+		margin-top: 5vh;
+		overflow: scroll;
+		padding-bottom: 30vh;
+	}
+
+	.price {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+	
+	.prices {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		left: 0;
+	}
+
+	.right {
+		display: none;
+	}
+
+	.left{
+		display: inline-block;
+		width: 100vw;
+	}
 }
