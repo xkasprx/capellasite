@@ -179,11 +179,13 @@
 	padding: 1vw;
 	margin: 0 0 2vh 0;
 	border: 1px solid var(--contrast-color-2);
+	background-color: var(--contrast-color-2);
 }
 
 .form textarea{
 	font-size: var(--font-l);
 	border: 1px solid var(--contrast-color-2);
+	background-color: var(--contrast-color-2);
 }
 
 .gallery{
