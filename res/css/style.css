@@ -379,14 +379,14 @@
 }
 
 /* Home page picture settings */
-#mechanics {
+.mechanics {
 	margin-top: 22vh;
 	text-align: center;
 	float: right;
 }
 
 /* Set image width */
-#mechanics img {
+.mechanics img {
 	margin-right: 5vw;
 	margin-top: -14vh;
 	width: 75%;
