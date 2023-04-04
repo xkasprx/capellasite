@@ -223,8 +223,9 @@
 }
 
 .headline{
-	margin: 13vh 45% 0 45%;
-	position: fixed;
+	text-align: center;
+	margin-top: 13vh;
+	margin-bottom: -15vh;
 }
 
 .hours{
