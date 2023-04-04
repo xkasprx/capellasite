@@ -2,23 +2,23 @@
 :root{
 	--body-font: 'Poppins', sans-serif;
 	--header-font: 'Roboto', sans-serif;
-	
+
 	--link-color: #FF6600;
-	
+
 	--text-color-1: #000000;
 	--text-color-2: #FFFFFF;
 	--text-color-3: #00FF00;
 	--text-color-4: #f53f3f;
-	
+
 	--background-color-1: #000000;
 	--background-color-2: #0051ff;
 	--background-color-3: #00FF00;
-	
+
 	--contrast-color-1: #D6CACA;
 	--contrast-color-2: rgba(0, 0, 0, 0.65);
 	--contrast-color-3: #000FFF;
 	--contrast-color-4: rgba(0, 0, 0, 0.555);
-	
+
 	--font-xxs: .75vh;
 	--font-xs: 1.25vh;
 	--font-s: 1.5vh;
@@ -41,6 +41,7 @@
 	position: fixed;
 	width: 100%;
 	z-index: -1;
+	opacity: 50%;
 }
 
 /* shading to content section */
@@ -57,7 +58,7 @@
 
 /* Main topic header */
 .bulletin{
-	margin-top: 20vh;
+	margin-top: 15vh;
 	text-align: center;
 }
 
@@ -157,10 +158,77 @@
 	width: 100%;
 }
 
+/* Link in middle section */
+.footer .navButton{
+	background-color: var(--contrast-color-3);
+	border-radius: 1.5vw;
+	color: var(--text-color-2);
+	font-family: var(--header-font);
+	font-weight: 900;
+	justify-content: center;
+	position: fixed;
+	left: 35%;
+	width: 25%;
+}
+
+.form{
+	text-align: center;
+}
+.form input{
+	font-size: var(--font-l);
+	padding: 1vw;
+	margin: 0 0 2vh 0;
+	border: 1px solid var(--contrast-color-2);
+}
+
+.form textarea{
+	font-size: var(--font-l);
+	border: 1px solid var(--contrast-color-2);
+}
+
+.gallery{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	position: absolute;
+	margin-top: 15vh;
+	margin-left: 5vw;
+	margin-right: 5vw;
+}
+
+.gallery img{
+	height: 25vh;
+	margin: 0 auto;
+	padding: 1vw;
+}
+
+.galleryImage figcaption{
+	margin-left: 0 auto;
+}
+
+.gridpics{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
 /* Full width header */
 .header{
 	position: fixed;
 	width: 100%;
+}
+
+.headline{
+	margin: 13vh 45% 0 45%;
+	position: fixed;
+}
+
+.hours{
+	text-align: center;
+}
+
+.lists li{
+	list-style-position: inside;
+	text-align: left;
 }
 
 /* Split content area into 2 even sections */
@@ -187,19 +255,6 @@
 .main{
 	margin-bottom: 26vh;
 	padding-top: 10.5vh;
-}
-
-/* Link in middle section */
-.footer .navButton{
-	background-color: var(--contrast-color-3);
-	border-radius: 1.5vw;
-	color: var(--text-color-2);
-	font-family: var(--header-font);
-	font-weight: 900;
-	justify-content: center;
-	position: fixed;
-	left: 35%;
-	width: 25%;
 }
 
 /* Change the background of button on hover */
@@ -266,6 +321,18 @@
 	z-index: 2;
 }
 
+.price{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.prices{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	margin-left: 3vw;
+}
+
 /* Slogan design */
 .slogan{
 	color: var(--text-color-2);
@@ -301,5 +368,7 @@
 
 /* Set image width */
 #mechanics img{
+	margin-right: 5vw;
+	margin-top: -14vh;
 	width: 75%;
 }
