@@ -14,6 +14,7 @@
     --contrast-color-2: rgba(0, 0, 0, 0.65);
     --contrast-color-3: #000fff;
     --contrast-color-4: rgba(0, 0, 0, 0.555);
+    --contrast-color-5: rgba(53, 49, 49, 0.555);
     --font-xxs: 0.75vh;
     --font-xs: 1.25vh;
     --font-s: 1.5vh;
@@ -177,7 +178,7 @@ a:visited{
 }
 /* Set up contact form inputs */
 .form input{
-    background-color: var(--contrast-color-2);
+    background-color: var(--contrast-color-5);
     border: 1px solid var(--contrast-color-1);
     color: var(--text-color-2);
     font-size: var(--font-r);
@@ -186,8 +187,9 @@ a:visited{
 }
 /* Set up contact form message box */
 .form textarea{
-    background-color: var(--contrast-color-2);
+    background-color: var(--contrast-color-5);
     border: 1px solid var(--contrast-color-1);
+    width: 82%;
     color: var(--text-color-2);
     font-size: var(--font-r);
 }
