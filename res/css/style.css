@@ -179,18 +179,6 @@ a:visited{
     position: fixed;
     width: 100%;
 }
-/* Link in middle div */
-.footer .navButton{
-    background-color: var(--contrast-color-3);
-    border-radius: 1.5vw;
-    color: var(--text-color-2);
-    font-family: var(--header-font);
-    font-weight: 900;
-    justify-content: center;
-    position: fixed;
-    left: 35%;
-    width: 25%;
-}
 /* Show funny caveat to promise in small letters when promise is hovered on */
 .footer h2:hover+.promiseClause{
     visibility: visible;
@@ -364,6 +352,12 @@ a:visited{
     text-decoration: var(--text-color-5) wavy underline;
     top: 5vh;
 }
+/* Space out text in services table */
+.snippet{
+    margin: 0 1vw;
+    text-align: center;
+    height: 10vh;
+}
 /* Title design */
 .title{
     color: var(--text-color-5);
@@ -378,10 +372,20 @@ a:visited{
     table{
         width: 100%;
     }
-    /* Service table styling */
-    .servicesTable{
-        margin: 6vw;
+    /* logo styling */
+    .logo{
+        width: 6vw;
     }
+    .lists ul{
+        display: table; 
+        margin: 0 auto;
+        text-align: left;
+    }
+    /* Navigation button styling */
+    .navButtons{
+        top: -1vh;
+    }
+    /* Service table styling */
     .servicesTable th{
         display: block;
         writing-mode: horizontal-tb;
@@ -389,6 +393,9 @@ a:visited{
     }
     .servicesTable td{
         display: block;
+    }
+    .slogan{
+        font-size: var(--font-l);
     }
     /* Price list formatting */
     .prices{
