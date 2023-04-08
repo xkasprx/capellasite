@@ -6,10 +6,12 @@
     --text-color-1: #000000;
     --text-color-2: #ffffff;
     --text-color-3: #00ff00;
-    --text-color-4: #f53f3f;
+    --text-color-4: #0051ff;
+    --text-color-5: #ff0000;
     --background-color-1: #000000;
     --background-color-2: #0051ff;
     --background-color-3: #00ff00;
+    --background-color-4: #808080;
     --contrast-color-1: #d6caca;
     --contrast-color-2: rgba(0, 0, 0, 0.65);
     --contrast-color-3: #000fff;
@@ -33,12 +35,36 @@
     margin: 0;
     padding: 0;
 }
-
 a:hover{
     background-color: var(--contrast-color-3);
 }
 a:visited{
     color: var(--text-color-1)
+}
+/* About page table configuration */
+.aboutTable{
+    border-collapse: collapse;
+    color: var(--text-color-1);
+    margin: 0vh auto;
+    width: 90vw;
+}
+.aboutTable figure img{
+    margin-left: 35%;
+    width: 15vw;
+}
+.aboutTable td,
+.aboutTable th{
+    padding: 1vh;
+}
+.aboutTable td{
+    background-color: var(--background-color-4);
+    font-size: var(--font-l);
+    max-width: 5vw;
+}
+.aboutTable th{
+    border: .25vw solid var(--background-color-2);
+    background-color: var(--background-color-2);
+    font-size: var(--font-xxl);
 }
 /* Backgroudn image */
 .background img{
@@ -53,6 +79,7 @@ a:visited{
     background-color: var(--contrast-color-4);
     height: 100%;
     z-index: -1;
+    overflow-y: scroll;
 }
 /* Body background color */
 .body{
@@ -139,7 +166,6 @@ a:visited{
     text-align: center;
     text-decoration: none;
 }
-
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content{
     display: block;
@@ -166,7 +192,7 @@ a:visited{
     width: 25%;
 }
 /* Show funny caveat to promise in small letters when promise is hovered on */
-.footer h2:hover + .promiseClause{
+.footer h2:hover+.promiseClause{
     visibility: visible;
 }
 /* Form layout */
@@ -211,6 +237,17 @@ a:visited{
     padding: 1vw;
     overflow: scroll;
 }
+/* Price list formatting */
+.lists li{
+    list-style-type: none;
+    text-align: left;
+    width: max-content;
+}
+.lists{
+    display: grid !important;
+    grid-template-columns: 1fr .2fr 1fr !important;
+    padding: 0 1vw;
+}
 /* Logo size adjustments */
 .logo{
     display: block;
@@ -235,26 +272,6 @@ a:visited{
     margin-right: 5vw;
     margin-top: -14vh;
     width: 75%;
-}
-/* Owners pictures on about */
-.owners{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-/* price list formatting */
-.price{
-    list-style-type: none;
-
-}
-/* price list formatting */
-.lists{
-    margin-left: 12%;
-}
-/* price list formatting */
-.prices{
-    display: grid;
-    grid-template-columns: 2fr .5fr .5fr;
-    list-style-position: inside;
 }
 /* Set background color of nav bar */
 .navigation{
@@ -289,6 +306,20 @@ a:visited{
 .navButton:hover{
     color: var(--text-color-2);
 }
+/* Price table formatting */
+.prices{
+    margin: 10vh auto;
+    width: max-content;
+}
+.prices td{
+    background-color: var(--background-color-4);
+    font-size: var(--font-l);
+}
+.prices th{
+    border: .25vw solid var(--background-color-3);
+    background-color: var(--background-color-3);
+    font-size: var(--font-xl);
+}
 /* Promise text settings */
 .promise{
     color: var(--text-color-2);
@@ -306,19 +337,63 @@ a:visited{
     visibility: hidden;
     width: 25%;
 }
+/* Service table styling */
+.servicesDescription{
+    background-color: var(--background-color-4);
+    font-size: var(--font-l);
+    padding: 0 auto;
+}
+.servicesTable{
+    color: var(--text-color-1);
+    margin: 0 5vw;
+    width: 90vw;
+    padding-bottom: 15vh;
+}
+.servicesTable th{
+    border: .25vw solid var(--background-color-2);
+    background-color: var(--background-color-2);
+    font-size: var(--font-xxl);
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+}
 /* Slogan design */
 .slogan{
     color: var(--text-color-2);
     position: absolute;
     right: 1.5vw;
-    text-decoration: var(--text-color-4) wavy underline;
+    text-decoration: var(--text-color-5) wavy underline;
     top: 5vh;
 }
 /* Title design */
 .title{
-    color: var(--text-color-4);
+    color: var(--text-color-5);
     font-size: var(--font-xxl);
     position: absolute;
     right: 1.5vw;
     top: .5vh;
+}
+/* Mobile Formatting */
+@media screen and (max-width: 1080px){
+    /* Set table widths to full screen */
+    table{
+        width: 100%;
+    }
+    /* Service table styling */
+    .servicesTable{
+        margin: 6vw;
+    }
+    .servicesTable th{
+        display: block;
+        writing-mode: horizontal-tb;
+        transform: rotate(360deg);
+    }
+    .servicesTable td{
+        display: block;
+    }
+    /* Price list formatting */
+    .prices{
+        margin: 0vh auto;
+        height: 25vh;
+        width: 100%;
+    }
 }
