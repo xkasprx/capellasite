@@ -25,6 +25,7 @@
     --font-xl: 3vh;
     --font-xxl: 4vh;
 }
+
 ::-webkit-scrollbar{
     display: none;
 }
@@ -35,64 +36,68 @@
     margin: 0;
     padding: 0;
 }
+
 a:hover{
     background-color: var(--contrast-color-3);
 }
+
 a:visited{
     color: var(--text-color-1)
 }
-/* About page table configuration */
-.aboutTable{
-    border-collapse: collapse;
+/* Pages table configuration */
+.aboutTable,
+.contactTable,
+.homeTable,
+.servicesTable{
     color: var(--text-color-1);
-    margin: 0vh auto;
-    width: 90vw;
+    margin: 0 auto;
+    padding-bottom: 25vh;
+    width: 95vw;
 }
-.aboutTable figure img{
-    margin-left: 35%;
-    width: 15vw;
+.aboutTable th,
+.contactTable th,
+.homeTable th,
+.servicesTable th{
+    background-color: var(--background-color-2);
+    border: .25vw solid var(--background-color-2);
+    border-collapse: collapse;
+    font-size: var(--font-xxl);
+    padding: 5vh auto;
+    transform: rotate(180deg);
+    writing-mode: vertical-lr;
 }
 .aboutTable td,
-.aboutTable th{
-    padding: 1vh;
-}
-.aboutTable td{
+.contactTable td,
+.homeTable td,
+.servicesTable td{
     background-color: var(--background-color-4);
     font-size: var(--font-l);
-    max-width: 5vw;
+    text-align: center;
 }
-.aboutTable th{
-    border: .25vw solid var(--background-color-2);
-    background-color: var(--background-color-2);
-    font-size: var(--font-xxl);
-}
-/* Backgroudn image */
+/* Background image */
 .background img{
+    opacity: 50%;
     position: fixed;
     width: 100%;
     z-index: -1;
-    opacity: 50%;
 }
-/* shading to content div */
+/* Main content box settings */
 .blur{
-    color: var(--text-color-2);
     background-color: var(--contrast-color-4);
+    color: var(--text-color-2);
     height: 100%;
-    z-index: -1;
     overflow-y: scroll;
+    width: 100%;
+    opacity: 95%;
+    z-index: -1;
 }
 /* Body background color */
 .body{
     background-color: var(--background-color-1);
 }
-.contactInfo{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    text-align: center;
-}
 .currentLink{
-    color: var(--text-color-3) !important;
     background-color: var(--background-color-1) !important;
+    color: var(--text-color-3) !important;
 }
 /* Content area */
 .content .blur{
@@ -113,7 +118,6 @@ a:visited{
     font-size: var(--font-xs);
     height: 6vh;
     padding-top: 1vh;
-    /* position: fixed; */
     text-align: center;
     width: 100%;
 }
@@ -159,9 +163,9 @@ a:visited{
 /* Links inside the dropdown */
 .dropdown-content a{
     color: var(--text-color-4);
-    font-weight: 700;
     display: block;
     float: none;
+    font-weight: 700;
     padding: 1vh 1vw;
     text-align: center;
     text-decoration: none;
@@ -187,43 +191,62 @@ a:visited{
 .form{
     text-align: center;
 }
-.form button:hover{
-    background-color: var(--contrast-color-3);
+.formButton{
+    background-color: var(--contrast-color-1);
+    border-radius: 1.5vw;
+    color: var(--text-color-1);
+    display: inline-flex;
+    font-family: var(--header-font);
+    font-weight: 900;
+    font-size: var(--font-l);
+    margin: 2.75vh auto;
+    padding: .75vw;
+}
+.formButton:hover{
+    background-color: var(--contrast-color-2);
+    color: var(--text-color-2);
 }
 /* Set up contact form inputs */
 .form input{
     background-color: var(--contrast-color-5);
-    border: 1px solid var(--contrast-color-1);
+    border: 1px solid var(--contrast-color-2);
     color: var(--text-color-2);
     font-size: var(--font-r);
     margin: 0 0 2vh 0;
     padding: 1vw;
 }
+.form label{
+    font-size: var(--font-l);
+    font-weight: 900;
+    padding: .5vh auto;
+}
 /* Set up contact form message box */
 .form textarea{
     background-color: var(--contrast-color-5);
-    border: 1px solid var(--contrast-color-1);
-    width: 82%;
+    border: 1px solid var(--contrast-color-2);
     color: var(--text-color-2);
     font-size: var(--font-r);
+    width: 82%;
+}
+/* Grid for main page table data */
+.frontPage{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 1vh 5vw;
+}
+.frontPage figure,
+.frontPage blockquote{
+    margin: 0 2vw;
 }
 /* Full width header */
 .header{
     position: fixed;
     width: 100%;
 }
-/* Main topic header */
-.headline{
-    text-align: center;
-}
-/* Split content area into 2 even divs */
-.left,
-.right{
-    flex: 50%;
-    height: 75vh;
-    /* margin-top: 7vh; */
-    padding: 1vw;
-    overflow: scroll;
+/* Main page image */
+.homeTable img{
+    float: left;
+    width: 25%;
 }
 /* Price list formatting */
 .lists li{
@@ -249,17 +272,10 @@ a:visited{
     margin-bottom: 26vh;
     padding-top: 10.5vh;
 }
-/* Home page picture settings */
-.mechanics{
-    margin-top: 22vh;
-    text-align: center;
-    float: right;
-}
-/* Set image width */
-.mechanics img{
-    margin-right: 5vw;
-    margin-top: -14vh;
-    width: 75%;
+/* Main page paragraph */
+.message{
+    margin: 5vh 5vw;
+    padding-left: 20vw;
 }
 /* Set background color of nav bar */
 .navigation{
@@ -278,9 +294,9 @@ a:visited{
     font-weight: 900;
     margin-left: 0.5vw;
     margin-top: 2.75vh;
-    max-width: 8vw;
+    max-width: max-content;
     max-height: 6vh;
-    padding: 0.5vw;
+    padding: 0.75vw;
     text-align: center;
     text-decoration: none;
 }
@@ -288,11 +304,17 @@ a:visited{
 .navButtons{
     max-width: 40%;
     text-align: center;
+    margin: 0 auto;
     position: fixed;
 }
 /* Change background on hover */
 .navButton:hover{
     color: var(--text-color-2);
+}
+/* About page image sizing and placement */
+.owner{
+    margin: 0 30%;
+    max-height: 100%;
 }
 /* Price table formatting */
 .prices{
@@ -329,20 +351,7 @@ a:visited{
 .servicesDescription{
     background-color: var(--background-color-4);
     font-size: var(--font-l);
-    padding: 0 auto;
-}
-.servicesTable{
-    color: var(--text-color-1);
-    margin: 0 5vw;
-    width: 90vw;
-    padding-bottom: 15vh;
-}
-.servicesTable th{
-    border: .25vw solid var(--background-color-2);
-    background-color: var(--background-color-2);
-    font-size: var(--font-xxl);
-    writing-mode: vertical-lr;
-    transform: rotate(180deg);
+    padding: .5vw;
 }
 /* Slogan design */
 .slogan{
@@ -358,6 +367,59 @@ a:visited{
     text-align: center;
     height: 10vh;
 }
+/* Testimonial design */
+.testimonial{
+    background-color: var(--background-color-1);
+    border-radius: 5px;
+    border-top: 5px solid var(--contrast-color-3);
+    box-shadow: 0 0 5px var(--contrast-color-5);
+    color: var(--text-color-2);
+    display: inline-block;
+    font-family: var(--header-font);
+    font-size: var(--font-r);
+    margin: 1vh .5vw;
+    max-width: 310px;
+    min-width: 250px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+.testimonial *,
+.testimonial *:before{
+    box-sizing: border-box;
+    transition: all 0.1s ease-out;
+    -webkit-box-sizing: border-box;
+    -webkit-transition: all 0.1s ease-out;
+}
+.testimonial figcaption{
+    padding: 13% 10% 12%;
+}
+.testimonial figcaption:before{
+    background-color: var(--background-color-3);
+    border-radius: 50%;
+    color: var(--contrast-color-2);
+    content: "\f10e";
+    font-family: 'FontAwesome';
+    font-size: 32px;
+    font-style: normal;
+    left: 50%;
+    line-height: 60px;
+    position: absolute;
+    top: -30px;
+    width: 60px;
+}
+.testimonial h3{
+    color: var(--text-color-2);
+    font-size: var(--font-r);
+    font-weight: 300;
+    line-height: 24px;
+    margin: .5vh 0 1.5vh;
+}
+.testimonial blockquote{
+    font-style: italic;
+    font-weight: 300;
+    margin: 0 0 20px;
+}
 /* Title design */
 .title{
     color: var(--text-color-5);
@@ -372,28 +434,59 @@ a:visited{
     table{
         width: 100%;
     }
-    /* logo styling */
-    .logo{
-        width: 6vw;
+    /* Format tables on mobile devices */
+    .aboutTable td,
+    .contactTable td,
+    .homeTable td,
+    .servicesTable td{
+        display: block;
+        min-width: 100%;
+        padding: .75vh;
     }
+    .aboutTable th,
+    .contactTable th,
+    .homeTable th,
+    .servicesTable th{
+        display: block;
+        transform: rotate(360deg);
+        width: 100%;
+        writing-mode: horizontal-tb;
+    }
+    /* Remove grid for main page table data */
+    .frontPage{
+        display: block;
+        padding: 1vh 0;
+    }
+    .frontPage p{
+        padding: 1vh 0;
+    }
+    /* Image format for mobile */
+    .homeTable img{
+        margin: 10vh auto;
+    }
+    /* Logo styling */
+    .logo{
+        width: 8vw;
+    }
+    /* Services page pricing lists */
     .lists ul{
-        display: table; 
+        display: table;
         margin: 0 auto;
         text-align: left;
+    }
+    /* Main page paragraph spacing */
+    .message{
+        margin: 0 5vw;
     }
     /* Navigation button styling */
     .navButtons{
         top: -1vh;
     }
-    /* Service table styling */
-    .servicesTable th{
-        display: block;
-        writing-mode: horizontal-tb;
-        transform: rotate(360deg);
+    /* About page image spacing */
+    .owner{
+        margin: 0 10%;
     }
-    .servicesTable td{
-        display: block;
-    }
+    /* Lower font size on mobile */
     .slogan{
         font-size: var(--font-l);
     }

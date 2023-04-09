@@ -58,67 +58,79 @@
 		<!-- Main content area -->
 		<div class="content">
 			<div class="blur">
-				<div class="left">
-					<h3 class="headline">Contact Form</h3>
-					<form method="post" class="form">
-						<div>
-							<label for="Name">Name</label>
-							<div>
-								<input type="text" id="Name" name="Name" required>
+				<table class="contactTable">
+					<tr>
+						<th>Hours</th>
+						<td>
+							<br>
+							<p>The below hours are the general times we are open, but it's always best to call ahead.
+								Plus with how busy we get, we wanna make sure that we have time to get to you and not
+								make you be waitin around all day. You can also just fill out the form and we will call
+								you back. Just be patient as we are still learnin this whole contact form stuff.</p>
+							<br>
+							<div class="hours">
+								<p>
+									<span>Mon:</span> 11 AM - 3 PM & 5 PM - 9 PM
+								</p>
+								<p>
+									<span>Tue:</span> 11 AM - 3 PM & 5 PM - 9 PM
+								</p>
+								<p>
+									<span>Wed:</span> 11 AM - 3 PM & 5 PM - 9 PM
+								</p>
+								<p>
+									<span>Thur:</span> 11 AM - 3 PM & 5 PM - 9 PM
+								</p>
+								<p>
+									<span>Fri:</span> 11 AM - 3 PM & 5 PM - 9 PM
+								</p>
 							</div>
-						</div>
-						<div>
-							<label for="Phone">Phone Number</label>
+						</td>
+					</tr>
+					<tr>
+						<th>Location</th>
+						<td>
 							<div>
-								<input type="tel" id="Phone" name="Phone" required>
+								<p><span>Address:</span></p>
+								<p>25503 County Rd 956</p>
+								<p>Hickville, PN 20552</p>
 							</div>
-						</div>
-						<div>
-							<label for="Message">Message</label>
 							<div>
-								<textarea id="Message" name="Message" rows="10" maxlength="3000" required></textarea>
+								<p><span>Telephone:</span></p>
+								<p>800-733-6325</p>
 							</div>
-						</div>
-						<div>
-							<button type="submit" class="navButton">Send Message</button>
-						</div>
-					</form>
-				</div>
-				<div class="right">
-					<h3 class="headline">Hours of Operation</h3>
-					<br>
-					<p>The below hours are the general times we are open, but it's always best to call ahead. Plus with how busy we get, we wanna make sure that we have time to get to you and not make you be waitin around all day. You can also just fill out the form and we will call you back. Just be patient as we are still learnin this whole contact form stuff.</p>
-					<br>
-					<div class="hours">
-						<p>
-							<span>Mon:</span> 11 AM - 3 PM & 5 PM - 9 PM
-						</p>
-						<p>
-							<span>Tue:</span> 11 AM - 3 PM & 5 PM - 9 PM
-						</p>
-						<p>
-							<span>Wed:</span> 11 AM - 3 PM & 5 PM - 9 PM
-						</p>
-						<p>
-							<span>Thur:</span> 11 AM - 3 PM & 5 PM - 9 PM
-						</p>
-						<p>
-							<span>Fri:</span> 11 AM - 3 PM & 5 PM - 9 PM
-						</p>
-					</div>
-					<br>
-					<div class="contactInfo">
-						<div>
-							<p><span>Address:</span></p>
-							<p>25503 County Rd 956</p>
-							<p>Hickville, PN 20552</p>
-						</div>
-						<div>
-							<p><span>Telephone:</span></p>
-							<p>800-733-6325</p>
-						</div>
-					</div>
-				</div>
+						</td>
+					</tr>
+					<tr>
+						<th>Contact Form</th>
+						<td>
+						<form method="post" class="form">
+							<div>
+								<label for="Name">Name</label>
+								<div>
+									<input type="text" id="Name" name="Name" required>
+								</div>
+							</div>
+							<div>
+								<label for="Phone">Phone Number</label>
+								<div>
+									<input type="tel" id="Phone" name="Phone" required>
+								</div>
+							</div>
+							<div>
+								<label for="Message">Message</label>
+								<div>
+									<textarea id="Message" name="Message" rows="10" maxlength="3000" 
+										required></textarea>
+								</div>
+							</div>
+							<div>
+								<button type="submit" class="formButton">Send Message</button>
+							</div>
+						</form>
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</article>
@@ -133,7 +145,7 @@
 			<p>2023 DMS Services ~ All Rights Reserved<br><a href="https://dmskaspr.com/#privacy">Privacy Policy</a> |
 				<a href="https://dmskaspr.com/#agreement">Terms & Conditions</a></p>
 		</div>
-</footer>
+	</footer>
 </body>
 
 </html>
