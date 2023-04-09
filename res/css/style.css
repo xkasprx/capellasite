@@ -62,7 +62,7 @@ a:visited{
     border: .25vw solid var(--background-color-2);
     border-collapse: collapse;
     font-size: var(--font-xxl);
-    padding: 5vh auto;
+    padding: 5vh 0;
     transform: rotate(180deg);
     writing-mode: vertical-lr;
 }
@@ -218,7 +218,7 @@ a:visited{
 .form label{
     font-size: var(--font-l);
     font-weight: 900;
-    padding: .5vh auto;
+    padding: .5vh 0;
 }
 /* Set up contact form message box */
 .form textarea{
