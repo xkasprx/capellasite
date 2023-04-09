@@ -61,7 +61,7 @@ a:visited{
     background-color: var(--background-color-2);
     border: .25vw solid var(--background-color-2);
     border-collapse: collapse;
-    font-size: var(--font-xxl);
+    font-size: var(--font-xl);
     padding: 5vh 0;
     transform: rotate(180deg);
     writing-mode: vertical-lr;
