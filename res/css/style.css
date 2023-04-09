@@ -394,20 +394,6 @@ a:visited{
 .testimonial figcaption{
     padding: 13% 10% 12%;
 }
-.testimonial figcaption:before{
-    background-color: var(--background-color-3);
-    border-radius: 50%;
-    color: var(--contrast-color-2);
-    content: "\f10e";
-    font-family: 'FontAwesome';
-    font-size: 32px;
-    font-style: normal;
-    left: 50%;
-    line-height: 60px;
-    position: absolute;
-    top: -30px;
-    width: 60px;
-}
 .testimonial h3{
     color: var(--text-color-2);
     font-size: var(--font-r);
