@@ -92,14 +92,14 @@
 					<tr>
 						<!-- Address and telephone number -->
 						<th>Location</th>
-						<td>
+						<td class="locationInfo">
 							<div>
-								<p><span>Address:</span></p>
+								<span>Address:</span>
 								<p>25503 County Rd 956</p>
 								<p>Hickville, PN 20552</p>
 							</div>
 							<div>
-								<p><span>Telephone:</span></p>
+								<span>Telephone:</span>
 								<p>800-733-6325</p>
 							</div>
 						</td>
@@ -108,30 +108,74 @@
 						<!-- Contact form for online inquiries -->
 						<th>Contact Form</th>
 						<td>
-						<form method="post" class="form">
-							<div>
-								<label for="Name">Name</label>
-								<div>
-									<input type="text" id="Name" name="Name" required>
-								</div>
-							</div>
-							<div>
-								<label for="Phone">Phone Number</label>
-								<div>
-									<input type="tel" id="Phone" name="Phone" required>
-								</div>
-							</div>
-							<div>
-								<label for="Message">Message</label>
-								<div>
-									<textarea id="Message" name="Message" rows="10" maxlength="3000" 
-										required></textarea>
-								</div>
-							</div>
-							<div>
-								<button type="submit" class="formButton">Send Message</button>
-							</div>
-						</form>
+							<form method="post" action="response_page.php" class="form">
+								<fieldset class="formFields">
+									<div>
+										<div>
+											<label for="Name">Name</label>
+											<div>
+												<input type="text" id="Name" name="Name" required>
+											</div>
+										</div>
+										<div>
+											<label for="Phone">Phone Number</label>
+											<div>
+												<input type="tel" id="Phone" name="Phone" required>
+											</div>
+										</div>
+										<div>
+											<label for="Date">Date:</label>
+										</div>
+										<div>
+											<input type="Date" id="Date" name="Date">
+										</div>
+										<div>
+											<label for="Hour">Time</label>
+										</div>
+										<div>
+											<select id="Hour" name="Hour">
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+												<option value="6">6</option>
+												<option value="7">7</option>
+												<option value="8">8</option>
+												<option value="9">9</option>
+												<option value="10">10</option>
+												<option value="11">11</option>
+												<option value="12">12</option>
+											</select>
+
+											<label for="Minute">:</label>
+											<select id="Minute" name="Minute">
+												<option value="00">00</option>
+												<option value="15">15</option>
+												<option value="30">30</option>
+												<option value="45">45</option>
+											</select>
+
+											<label for="AMPM"></label>
+											<select id="AMPM" name="AMPM">
+												<option value="AM">AM</option>
+												<option value="PM">PM</option>
+											</select>
+										</div>
+									</div>
+									<div>
+										<label for="Message">Message</label>
+										<div class="messageBox">
+											<textarea id="Message" name="Message" rows="10" maxlength="3000" required></textarea>
+											<br>
+											<legend>We will try to contact you within 24 hours of the time you specify</legend>
+										</div>
+										<div>
+											<button type="submit" class="formButton">Send Message</button>
+										</div>
+									</div>
+								</fieldset>
+							</form>
 						</td>
 					</tr>
 				</table>
