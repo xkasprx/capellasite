@@ -110,6 +110,7 @@
 						<td>
 							<form method="post" action="response_page.php" class="form">
 								<fieldset class="formFields">
+									<legend>Contact Us Form</legend>
 									<div>
 										<div>
 											<label for="Name">Name</label>
@@ -167,11 +168,9 @@
 										<label for="Message">Message</label>
 										<div class="messageBox">
 											<textarea id="Message" name="Message" rows="10" maxlength="3000" required></textarea>
-											<legend class="consentCheck">
-												<input type="checkbox" id="Consent" name="Consent" required>
-												<p for="Consent">You agree that we may contact you by telephone (including cell phones via SMS) with respect to our services.</p>
-											</legend>
 											<br>
+											<input type="checkbox" id="Consent" name="Consent" required>
+											<label for="Consent">You agree that we may contact you by telephone (including cell phones via SMS) with respect to our services.</p>
 											<button type="submit" class="formButton">Send Message</button>
 										</div>
 									</div>
