@@ -63,13 +63,13 @@
 					<tr>
 						<!-- Hours the business is open -->
 						<th>Hours</th>
-						<td>
-							<br>
-							<p>The below hours are the general times we are open, but it's always best to call ahead.
-								Plus with how busy we get, we wanna make sure that we have time to get to you and not
-								make you be waitin around all day. You can also just fill out the form and we will call
-								you back. Just be patient as we are still learnin this whole contact form stuff.</p>
-							<br>
+						<td class="contactInfo">
+							<div>
+								<p>The below hours are the general times we are open, but it's always best to call ahead.
+									Plus with how busy we get, we wanna make sure that we have time to get to you and not
+									make you be waitin around all day. You can also just fill out the form and we will call
+									you back. Just be patient as we are still learnin this whole contact form stuff.</p>
+							</div>
 							<div class="hours">
 								<p>
 									<span>Mon:</span> 11 AM - 3 PM & 5 PM - 9 PM
@@ -92,7 +92,7 @@
 					<tr>
 						<!-- Address and telephone number -->
 						<th>Location</th>
-						<td class="locationInfo">
+						<td class="contactInfo">
 							<div>
 								<span>Address:</span>
 								<p>25503 County Rd 956</p>
@@ -114,7 +114,7 @@
 										<div>
 											<label for="Name">Name</label>
 											<div>
-												<input type="text" id="Name" name="Name" required>
+												<input type="text" id="Name" name="Name" required autocomplete="false">
 											</div>
 										</div>
 										<div>
@@ -169,6 +169,10 @@
 											<textarea id="Message" name="Message" rows="10" maxlength="3000" required></textarea>
 											<br>
 											<legend>We will try to contact you within 24 hours of the time you specify</legend>
+										</div>
+										<div class="consent">
+											<input type="checkbox" id="Consent" name="Consent" required>
+											<label for="Consent">You agree that we may contact you by telephone (including cell phones) with respect to our services.</label>
 										</div>
 										<div>
 											<button type="submit" class="formButton">Send Message</button>

@@ -113,6 +113,24 @@ a:visited{
     text-decoration: none;
     top: 18vh;
 }
+
+.consent label{
+    font-size: var(--font-xs) !important;
+    font-weight: 400 !important;
+}
+/* Style location field of contact form */
+.contactInfo{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.contactInfo div{
+    margin: 8vh auto;
+    width: 90%;
+}
+.contactInfo p{
+    margin: 0 auto;
+    width: 90%;
+}
 /* Content area */
 .content .blur{
     display: flex;
@@ -263,7 +281,7 @@ a:visited{
     margin: 0 2vw;
 }
 /* Smaller gallery table */
-.galleryTable {
+.galleryTable{
     padding-top: 10vh;
     width: 65vw;
 }
@@ -276,6 +294,10 @@ a:visited{
 .homeTable img{
     float: left;
     width: 25%;
+}
+/* Hour position format */
+.hours{
+    width: 90%;
 }
 /* Large image dimensions */
 .large{
@@ -317,14 +339,6 @@ a:visited{
     display: grid !important;
     grid-template-columns: 1fr .2fr 1fr !important;
     padding: 0 1vw;
-}
-/* Style location field of contact form */
-.locationInfo{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-.locationInfo div{
-    margin: 8vh auto;
 }
 /* Logo size adjustments */
 .logo{
@@ -548,7 +562,7 @@ a:visited{
         padding: 1vh 0;
     }
     /* Rest the table spacing on mobile */
-    .galleryTable {
+    .galleryTable{
         padding-top: 1vh !important;
         width: 95vw !important;
     }
