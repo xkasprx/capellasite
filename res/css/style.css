@@ -113,7 +113,7 @@ a:visited{
     text-decoration: none;
     top: 18vh;
 }
-
+/* Form consent */
 .consent label{
     font-size: var(--font-xs) !important;
     font-weight: 400 !important;
