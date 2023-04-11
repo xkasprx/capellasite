@@ -113,6 +113,11 @@ a:visited{
     text-decoration: none;
     top: 18vh;
 }
+/* consent checkmark and statment layout */
+.consentCheck{
+    display: inline-flex;
+    gap: 1vw;
+}
 /* Form consent */
 .consent label{
     font-size: var(--font-xs) !important;
