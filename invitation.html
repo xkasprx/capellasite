@@ -28,25 +28,25 @@
     <section id="pageForm">
         <form action="#">
             <label for="recipientName">Recipient name:</label>
-            <input type="text" name="recipientName" placeholder="Enter your Recipient Name" />
+            <input type="text" name="recipientName" placeholder="Enter your Recipient Name" id="submittedName">
 
             <label for="organizationName">Organization name:
             </label>
-            <input type="text" name="organizationName" placeholder="Enter your Organization Name" />
+            <input type="text" name="organizationName" placeholder="Enter your Organization Name" id="submittedOrganization">
 
             <label for="eventDate">Event Date:
             </label>
-            <input type="text" name="eventDate" placeholder="Enter your Event Date" />
+            <input type="text" name="eventDate" placeholder="Enter your Event Date" id="submittedDate">
 
             <label for="websiteURL">URL:
             </label>
-            <input type="text" name="websiteURL" placeholder="Enter your Website URL" />
+            <input type="text" name="websiteURL" placeholder="Enter your Website URL" id="submittedURL">
 
             <label for="hostName">Host name:
             </label>
-            <input type="text" name="hostName" placeholder="Host Name" />
+            <input type="text" name="hostName" placeholder="Host Name" id="submittedHost">
 
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" onclick="updateInvite()">
         </form>
     </section>
 
@@ -63,6 +63,7 @@
     </article>
     <footer>This events site is for IT-FP3215 tasks.
     </footer>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>
