@@ -12,7 +12,7 @@ select ,input[type=password],radio{
     border-radius: 4px;
     box-sizing: border-box;
 }
-input[type=submit] {
+input[type=button] {
     width: 100%;
     background-color: #800D1E;
     color: white;
@@ -22,7 +22,7 @@ input[type=submit] {
     border-radius: 4px;
     cursor: pointer;
 }
-input[type=submit]:hover {
+input[type=button]:hover {
     background-color: #802F1E;
 }
 section {
@@ -112,7 +112,7 @@ ul.topnav li.right {
     margin: auto
 }
 footer {
-    position: absolute;
+    position: fixed;
     right: 0;
     bottom: 0;
     left: 0;
@@ -139,4 +139,37 @@ div.gallery img {
 div.desc {
     padding: 15px;
     text-align: center;
+}
+
+#invites{
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.inviteRecipient:nth-child(5n + 1){
+    grid-column:1
+}
+
+.inviteRecipient:nth-child(5n + 2){
+    grid-column:2
+}
+
+.inviteRecipient:nth-child(5n + 3){
+    grid-column:3
+}
+
+.inviteRecipient:nth-child(5n + 4){
+    grid-column:4
+}
+
+.inviteRecipient:nth-child(5n + 5){
+    grid-column:5
+}
+
+.inviteRecipient:nth-child(n+1){
+    padding-right: 5px;
+}
+
+.inviteRecipient:nth-child(5n){
+    padding-right: 0;
 }
