@@ -111,6 +111,9 @@ ul.topnav li.right {
     text-align: left;
     margin: auto
 }
+article{
+    margin-bottom: 4rem;
+}
 footer {
     position: fixed;
     right: 0;
