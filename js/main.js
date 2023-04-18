@@ -1,4 +1,5 @@
 let eventDate = document.getElementsByClassName(`eventDate`);
+let gallery = document.getElementsByClassName(`gallery`);
 let hostName = document.getElementsByClassName(`hostName`);
 let inviteContent = document.getElementsByClassName(`inviteContent`);
 let invites = document.getElementById(`invites`);
@@ -13,9 +14,14 @@ let submittedNames = document.getElementsByClassName(`submittedName`);
 let submittedOrganization = document.getElementById(`submittedOrganization`);
 let submittedURL = document.getElementById(`submittedURL`);
 let websiteURL = document.getElementsByClassName(`websiteURL`);
+let banner = document.getElementById(`banner`);
+let banners = {};
+let galleryImgs = [];
 
+let loopedImages;
 let childrenCount;
 let needed;
+let imgNum = 2;
 
 // Add recipients to form
 async function addRecipients(){
@@ -59,6 +65,45 @@ async function clearFields(){
 	submittedHost.value = ``;
 
 	return;
+}
+
+async function getRandNum(x, y){
+	x = Math.ceil(x);
+	y = Math.floor(y);
+
+	return Math.floor(Math.random() * (y - x)) + x;
+}
+
+// Loop banners on index.html
+async function loopBanners(time = 3000){
+	loopedImages = setInterval(() => {
+		banner && banner.setAttribute(`src`, banners[imgNum - 1].src);
+		imgNum === 3 ? imgNum = 1 : imgNum++;
+	}, time);
+}
+
+// Preload all images
+async function preloadImages(){
+	for(let i = 0; i < 3; i++){
+		banners[i] = {
+			src: `./images/banner${i + 1}.jpg`,
+		}
+	}
+	
+	for(let i = 0; i < gallery.length; i++){
+		galleryImgs.push(gallery[i].getElementsByTagName(`img`)[0].src);
+	}
+}
+
+async function rollover(image){
+	let num = await getRandNum(0, 4);
+	let replacement = galleryImgs[num];
+
+	if(image.src === replacement){
+		rollover(image);
+	}else{
+		image.src = replacement;
+	}
 }
 
 // Print input variables in form
@@ -109,3 +154,18 @@ async function updateIndividualInvites(information){
 		host[0].innerText = information.hostName;
 	}
 }
+
+window.onload = async function(){
+	await preloadImages();
+	await loopBanners();
+}
+
+// Independent functions
+banner && banner.addEventListener(`mouseover`, async function(e){
+	window.clearInterval(loopedImages);
+})
+
+banner && banner.addEventListener(`mouseleave`, async function(e){
+	await loopBanners();
+})
+
