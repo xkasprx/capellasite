@@ -240,7 +240,7 @@ async function validateForm(e){
 	}
 
 	if(!/^\(\d{3}\)\ \d{3}\-\d{4}/g.test(phoneNumber.value)){
-		alert(`Error: Phone number must be in (xxx) xxx-xxxx format!`);
+		alert(`Error: Phone number must be numbers in (xxx) xxx-xxxx format!`);
 		phoneNumber.focus();
 		return false;
 	}
