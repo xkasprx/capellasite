@@ -5,6 +5,7 @@ let inviteContent = document.getElementsByClassName(`inviteContent`);
 let invites = document.getElementById(`invites`);
 let inviteRecipient = document.getElementsByClassName(`inviteRecipient`);
 let inviteText = document.getElementById(`placeholderContent`);
+let labels = document.getElementsByTagName(`label`);
 let orgName = document.getElementsByClassName(`organizationName`);
 let recipientNames = document.getElementsByClassName(`recipientName`);
 let submittedCount = document.getElementById(`submittedCount`);
@@ -169,3 +170,86 @@ banner && banner.addEventListener(`mouseleave`, async function(e){
 	await loopBanners();
 })
 
+
+async function validateForm(e){
+	let form = e.parentNode;
+	let formInputs = form.getElementsByTagName(`input`);
+	let username = formInputs[0];
+	let password = formInputs[1];
+	let passwordVerify = formInputs[2];
+	let firstName = formInputs[3];
+	let lastName = formInputs[4];
+	let email = formInputs[5];
+	let phoneNumber = formInputs[6];
+	let newsletter = formInputs[7];
+	
+	for(let i = 0; i < 5; i++){
+		let input = formInputs[i];
+		if(input.value === ``){
+			let label = ((s = ``) => {
+				for(let k of labels){
+					let labelName = k.innerText.trim().slice(0, -1);
+
+					if(k.htmlFor === input.name){
+						s = labelName;
+					}
+				}
+				return s;
+			})();
+
+			alert(`Error: ${label} is empty!`);
+			input.focus();
+			return false;
+		}
+	}
+
+	if(/[^A-Z0-9]+/gi.test(username.value)){
+		alert(`Error: Username may only contain letters and/or numbers!`);
+		username.focus();
+		return false;
+	}
+
+	if(password.value !== passwordVerify.value){
+		alert(`Error: Passwords do not match!`);
+		passwordVerify.focus();
+		return false;
+	}
+
+	if(password.value.length <= 7 || passwordVerify.value.length <= 7){
+		alert(`Error: Passwords must be at least 8 characters in length!`);
+		password.focus();
+		return false;
+	}
+
+	if(/[^A-Z]+/gi.test(firstName.value)){
+		alert(`Error: First Name may only contain letters!`);
+		firstName.focus();
+		return false;
+	}
+
+	if(/[^A-Z]+/gi.test(lastName.value)){
+		alert(`Error: First Name may only contain letters!`);
+		lastName.focus();
+		return false;
+	}
+	
+	if(!/^[A-Z0-9]+@[A-Z0-9.]+\.[A-Z]{3}/gi.test(email.value)){
+		alert(`Error: Email must be in xxx@xxx.xx or xxx@xxx.xxx format!`);
+		email.focus();
+		return false;
+	}
+
+	if(!/^\(\d{3}\)\ \d{3}\-\d{4}/g.test(phoneNumber.value)){
+		alert(`Error: Phone number must be in (xxx) xxx-xxxx format!`);
+		phoneNumber.focus();
+		return false;
+	}
+
+	if(!newsletter.value){
+		alert(`Error: Sign up for newsletter must be Yes/No!`);
+		newsletter.focus();
+		return false;
+	}
+
+	form.submit();
+}

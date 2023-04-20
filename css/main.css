@@ -3,7 +3,9 @@ body {
     color: #808080;
 }
 input[type=text],
-select ,input[type=password],radio{
+select,
+input[type=password],
+radio{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -12,7 +14,8 @@ select ,input[type=password],radio{
     border-radius: 4px;
     box-sizing: border-box;
 }
-input[type=button] {
+input[type=button],
+input[type=submit] {
     width: 100%;
     background-color: #800D1E;
     color: white;
@@ -22,7 +25,8 @@ input[type=button] {
     border-radius: 4px;
     cursor: pointer;
 }
-input[type=button]:hover {
+input[type=button]:hover,
+input[type=submit]:hover {
     background-color: #802F1E;
 }
 section {
