@@ -5,7 +5,8 @@ body {
 input[type=text],
 select,
 input[type=password],
-radio{
+radio,
+textarea{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -179,4 +180,23 @@ div.desc {
 
 .inviteRecipient:nth-child(5n){
     padding-right: 0;
+}
+
+#interestList input{
+    margin: 5px;
+    display: inline-flex;
+}
+
+#interestList{
+    margin: 10px 0;
+}
+
+#dataTable{
+    justify-content: center;
+    display: flex;
+    width: 100%;
+}
+
+#registrationInformation{
+    padding-top: 20px;
 }

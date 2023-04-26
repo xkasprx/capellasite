@@ -27,21 +27,31 @@
     </header>
     <section id="pageForm">
         <form action="#">
-			
-            <!--
-			Include other form fields here
-			
-			-->
-            <input type="hidden" name="userName"/>
-            <input type="hidden" name="password"/>
+            <label for="interests">Interests</label>
+            <div id="interestList">
+                <input type="checkbox" name="gaming">Gaming
+                <input type="checkbox" name="reading">Reading
+                <input type="checkbox" name="music">Music
+                <input type="checkbox" name="cooking">Cooking
+                <input type="checkbox" name="gardening">Gardening
+                <input type="checkbox" name="outdoors">Outdoors
+                <input type="checkbox" name="arcade">Arcade
+                <input type="checkbox" name="hunting">Hunting
+            </div>
+			<label for="comments">Comments:</label>
+            <textarea rows="6" name="comments"></textarea>
+            <label for="referredBy">Referred By:</label>
+            <input type="text" name="referredBy">
+            <input type="hidden" name="username">
+            <input type="hidden" name="password">
             <input type="hidden" name="passwordVerify">
             <input type="hidden" name="firstName">
             <input type="hidden" name="lastName">
-            <input type="hidden" name="email"/>
-            <input type="hidden" name="lastName">
-			<input type="hidden" name="signUpNewsletter"/ >
-			
-            <input type="submit" value="Register">
+            <input type="hidden" name="email">
+            <label for="signUpNewsletter">Sign up for newsletter:</label>
+            <input type="radio" name="signUpNewsletter" value="Yes"> Yes 
+              <input type="radio" name="signUpNewsletter" value="No"> No
+          <input type="button" value="Register" onclick="return validateForm2(this)">
         </form>
     </section>
 
