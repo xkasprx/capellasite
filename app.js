@@ -12,7 +12,7 @@ const express = require(`express`);
 const fs = require(`fs`);
 const https = require(`https`);
 const jso = require(`javascript-obfuscator`);
-const mysql = require(`mysql`);
+const mysql = require(`mysql2`);
 const path = require(`path`);
 const sass = require(`sass`);
 
@@ -130,7 +130,7 @@ let processes = {
 	util.log(`Node version                         `, scripts.versionInfo.node, `magenta2`, `yellow2`);
 
 	// Run Processes
-	// await processes.connectDatabase();
+	await processes.connectDatabase();
 	await processes.obfuscateMinify();
 	await processes.startServer();
 })();
