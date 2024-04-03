@@ -1,0 +1,26 @@
+{
+  "name": "fpx4792",
+  "version": "1.0.0",
+  "description": "Project for Capella course IT-FPX4792 ~ social media site",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xkasprx/capellasite.git"
+  },
+  "author": "Kaspr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xkasprx/capellasite/issues"
+  },
+  "homepage": "https://github.com/xkasprx/capellasite#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.19.2",
+    "javascript-obfuscator": "^4.1.0",
+    "mysql": "^2.18.1",
+    "sass": "^1.72.0"
+  }
+}

@@ -1,0 +1,83 @@
+$winter_white: #E9E9E9;
+$winter_blue: #37A0DC;
+$font-family_1: 'oblique', sans-serif;
+
+@font-face {
+	font-family: 'oblique';
+	src: url('../fonts/oblique.ttf') format('truetype');
+}
+browsers {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 15% 25% auto 25%;
+	position: absolute;
+	text-align: center;
+	width: 50%;
+	* {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		a {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			color: $winter_white;
+			font-family: $font-family_1;
+			font-size: 2.5em;
+			text-indent: 10px;
+			text-decoration: none;
+			&:hover {
+				text-decoration: underline;
+				text-decoration-color: #37A0DC;
+			}
+		}
+		img {
+			width: 45px;
+			height: 45px;
+		}
+	}
+}
+error {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	width: 100vw;
+	img {
+		height: 100vh;
+	}
+}
+instructions {
+	display: flex;
+	font-family: $font-family_1;
+	font-size: 2.5em;
+	flex-direction: column;
+	margin: 10% 25% auto 25%;
+	position: absolute;
+	text-align: center;
+	width: 50%;
+}
+mainContent {
+	display: none;
+}
+message {
+	display: flex;
+	font-family: $font-family_1;
+	font-size: 2.5em;
+	flex-direction: column;
+	margin: 5% 25% auto 25%;
+	position: absolute;
+	text-align: center;
+	width: 50%;
+}
+moreInfoModal {
+	display: none;
+}
+noScriptContainer {
+	color: $winter_blue;
+	display: flex;
+	flex-direction: column;
+}
+sidebar {
+	display: none;
+}
