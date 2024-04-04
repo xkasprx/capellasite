@@ -21,6 +21,40 @@
 	src: url('../fonts/regular.ttf') format('truetype');
 }
 
+::-webkit-scrollbar:vertical {
+	background-color: var(--winter_light_gray);
+	overflow-y: scroll;
+	width: 7px;
+}
+::-webkit-scrollbar {
+	background-color: var(--no_background);
+	overflow-y: scroll;
+	width: 7px;
+}
+::-webkit-scrollbar-corner {
+	background-color: var(--winter_light_gray);
+}
+::-webkit-scrollbar-thumb:vertical {
+	background-color: var(--winter_blue);
+	border: 0;
+	min-height: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color: var(--winter_blue);
+}
+::-webkit-scrollbar-thumb:horizontal {
+		background-color: var(--no_background);
+		border: 0;
+		min-height: 50px;
+}
+::-webkit-scrollbar-track:horizontal {
+	background-color: var(--no_background);
+}
+::-webkit-scrollbar-track-piece {
+	background-color: var(--no_background);
+	border: 0;
+}
+
 * {
 	/* border: solid 1px white; */
 	pointer-events: none;
@@ -58,7 +92,12 @@ section {
 	min-height: 20vh;
 	justify-content: space-evenly;
 	z-index: -1;
+	margin-left: 10px;
 	color: var(--winter_white);
+}
+
+nomobile {
+	display: none;
 }
 
 #header {
@@ -80,6 +119,7 @@ section {
 
 #title img {
 	pointer-events: all;
+	width: auto;
 }
 
 #menu {
@@ -122,4 +162,65 @@ section {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
+}
+
+.regloginform {
+	border: solid 2px var(--electric-indigo);
+	display: flex;
+	flex-direction: column;
+	border-radius: 10px;
+	width: 50vw;
+	padding-top: 0;
+    padding-right: 15px;
+    padding-bottom: 15px;
+	padding-left: 15px;
+}
+
+.regloginform h1 {
+	text-align: center;
+}
+
+#registerForm,
+#loginForm {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.emailInput,
+.passInput {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.emailInput input,
+.passInput input {
+	border-radius: 10px;
+    background-color: var(--winter_light_gray);
+    color: var(--winter_blue);
+    pointer-events: all;
+}
+
+.emailInput input:focus,
+.passInput input:focus {
+	outline: none !important;
+    border:1px solid var(--electric-indigo);
+}
+
+@media (any-pointer: coarse) {
+	root {
+		display: none;
+	}
+
+	nomobile {
+		display: flex;
+		flex-direction: column;
+		color: var(--winter_white);
+		text-align: center;
+		height: 100vh;
+		justify-content: center;
+	}
 }
