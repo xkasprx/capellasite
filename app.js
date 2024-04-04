@@ -17,10 +17,10 @@ const path = require(`path`);
 const sass = require(`sass`);
 
 // Server
-const server = require(`./server`).server;
+const server = require(`./modules/server`).server;
 
 // Utilities
-const util = require(`./util`).util;
+const util = require(`./modules/util`).util;
 
 const scripts = {
 	config,
@@ -104,7 +104,7 @@ let processes = {
 			fs.writeFileSync(`${newPath.replace(`.scss`, `.min.css`)}`, content.css);
 		};
 
-		readDirectory(srcJSfiles, true);
+		// readDirectory(srcJSfiles, true);
 		// readDirectory(srcSCSSfiles, false);
 		util.log(`Obfuscated & Minified JS             `, util.prettyDate(), `green`, `blue`);
 		util.log(`Compiled & Minified SCSS             `, util.prettyDate(), `green`, `blue`);
