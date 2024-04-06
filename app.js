@@ -8,6 +8,8 @@ const query = require(`./database/query`).query;
 
 // Packages
 const bcryptjs = require(`bcryptjs`);
+const bodyParser = require(`body-parser`);
+const cookieParser = require(`cookie-parser`);
 const express = require(`express`);
 const fs = require(`fs`);
 const https = require(`https`);
@@ -30,6 +32,8 @@ const scripts = {
 	},
 	packages: {
 		bcryptjs,
+		bodyParser,
+		cookieParser,
 		express,
 		fs,
 		https,

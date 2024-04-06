@@ -10,6 +10,7 @@
 	--font-family_1: 'regular', sans-serif;
 	--font-family_2: 'oblique', sans-serif;
 	--no_background: transparent;
+	--invalid: #FF0000;
 }
 
 @font-face {
@@ -43,9 +44,9 @@
 	background-color: var(--winter_blue);
 }
 ::-webkit-scrollbar-thumb:horizontal {
-		background-color: var(--no_background);
-		border: 0;
-		min-height: 50px;
+	background-color: var(--no_background);
+	border: 0;
+	min-height: 50px;
 }
 ::-webkit-scrollbar-track:horizontal {
 	background-color: var(--no_background);
@@ -57,7 +58,6 @@
 
 * {
 	/* border: solid 1px white; */
-	pointer-events: none;
 }
 
 body {
@@ -68,6 +68,10 @@ body {
 h1{
 	font-size: xx-large;
 	font-family: var(--font-family_1);
+}
+
+root {
+	pointer-events: none;
 }
 
 button {
@@ -145,7 +149,7 @@ nomobile {
 	text-decoration: underline;
 }
 
-#menu a i {
+#menu i {
 	font-size: small;
 	color: var(--electric-indigo);
 	vertical-align: middle;
@@ -168,8 +172,8 @@ nomobile {
 	border: solid 2px var(--electric-indigo);
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	border-radius: 10px;
-	width: 50vw;
 	padding-top: 0;
     padding-right: 15px;
     padding-bottom: 15px;
@@ -194,6 +198,7 @@ nomobile {
 	justify-content: space-between;
 	margin-left: 5px;
 	margin-right: 5px;
+	gap: 35px;
 }
 
 .emailInput input,
@@ -208,6 +213,33 @@ nomobile {
 .passInput input:focus {
 	outline: none !important;
     border:1px solid var(--electric-indigo);
+}
+
+.regloginReminder {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.regloginReminder a {
+    pointer-events: all;
+	color: var(--winter_blue);
+	text-decoration: none;
+}
+
+.regloginReminder a:hover {
+	text-decoration: underline;
+	color: var(--winter_white);
+}
+
+.regloginReminder h4 {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.invalid {
+	border-color: var(--invalid);
+	color: var(--invalid);
 }
 
 @media (any-pointer: coarse) {
