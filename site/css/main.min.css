@@ -149,6 +149,17 @@ nomobile {
 	text-decoration: underline;
 }
 
+#dashButtons button {
+	background-color: var(--pale-purple);
+	color: var(--winter_blue);
+}
+
+#dashButtons button:hover {
+	background-color: var(--winter_blue);
+	color: var(--electric-indigo);
+}
+
+#dashButtons i,
 #menu i {
 	font-size: small;
 	color: var(--electric-indigo);
@@ -240,6 +251,21 @@ nomobile {
 .invalid {
 	border-color: var(--invalid);
 	color: var(--invalid);
+}
+
+#dashboard {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	justify-content: left;
+	border: solid 1px white;
+}
+
+#dashboard h1 {
+	font-size: 4em;
+	margin: 0;
 }
 
 @media (any-pointer: coarse) {

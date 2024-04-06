@@ -12,6 +12,7 @@ const bodyParser = require(`body-parser`);
 const cookieParser = require(`cookie-parser`);
 const express = require(`express`);
 const fs = require(`fs`);
+const grid = require(`gridjs`);
 const https = require(`https`);
 const jso = require(`javascript-obfuscator`);
 const mysql = require(`mysql2`);
@@ -36,6 +37,7 @@ const scripts = {
 		cookieParser,
 		express,
 		fs,
+		grid,
 		https,
 		mysql,
 		path,
