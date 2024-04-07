@@ -254,6 +254,8 @@ nomobile {
 	color: var(--invalid);
 }
 
+#directory,
+#posts,
 #dashboard {
 	display: flex;
 	flex-direction: column;
@@ -263,17 +265,32 @@ nomobile {
 	justify-content: left;
 }
 
+#directory h1,
+#posts h1,
 #dashboard h1 {
 	font-size: 3em;
 	margin: 0;
 }
 
+#posts button a,
 #dashboard button a {
 	text-decoration: none;
 	color: var(--winter_blue);
 }
 
+#posts button:hover a,
 #dashboard button:hover a {
+	color: var(--electric-indigo);
+}
+
+#directory button a {
+	text-decoration: none;
+	background-color: var(--pale-purple);
+	color: var(--winter_blue);
+}
+
+#directory button:hover a {
+	background-color: var(--winter_blue);
 	color: var(--electric-indigo);
 }
 
@@ -286,6 +303,13 @@ nomobile {
 .deleteButton:hover {
 	background-color: var(--winter_light_gray);
 	color: var(--invalid);
+}
+
+#postInputSection {
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 1;
+	
 }
 
 @media (any-pointer: coarse) {
