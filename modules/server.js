@@ -62,9 +62,22 @@ exports.server = {
 			res.status(200).send();
 		});
 
-		app.post(`/login`, async (req, res) => {
-			let cookies = req.headers.authorization;
+		app.post(`/getEdu`, async (req, res) => {
 
+			res.status(200).send([{school: `Capella University`, degree: `Bachelors of Science`, from: 2023, to: 2024, current: 1}]);
+		});
+
+		app.post(`/getExp`, async (req, res) => {
+
+			res.status(200).send([{company: `Winter Clan LLC`, title: `JavaScript Developer`, from: 2022, to: null, current: 1}]);
+		});
+
+		app.post(`/login`, async (req, res) => {
+
+
+			await self.f.createCookie(res, `auth`, `test123`, self.v.exp);
+			await self.f.createCookie(res, `id`, 1, self.v.exp);
+			await self.f.createCookie(res, `firstName`, `Daniel`, self.v.exp);
 			res.statusMessage = `Login:Alert:Logged In Successfully`;
 			res.status(200).send();
 		});
@@ -77,14 +90,31 @@ exports.server = {
 		app.post(`/logout`, async (req, res) => {
 			let cookies = req.headers.authorization;
 
+			await self.f.clearCookie(res, `auth`);
+			await self.f.clearCookie(res, `id`);
+			await self.f.clearCookie(res, `firstName`, `Daniel`, self.v.exp);
 			res.statusMessage = `Logout:Alert:Logged Out Successfully`;
 			res.status(200).send();
 		});
 	},
 	f: {
-
+		clearCookie: async (res, title) => {
+			res.clearCookie(title, {
+				path: `/`,
+				domain: domain,
+			});
+		},
+		createCookie: async (res, title, string, exp) => {
+			res.cookie(title, string, {
+				path: `/`,
+				domain,
+				secure: true,
+				expires: exp,
+			});
+		},
 	},
 	v: {
+		exp: new Date(new Date().setDate(new Date().getDate() + 30)),
 		testing: true,
 	}
 }

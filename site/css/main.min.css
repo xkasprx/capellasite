@@ -280,6 +280,7 @@ nomobile {
 .deleteButton {
 	background-color: var(--invalid);
 	color: var(--winter_dark_gray);
+	font-size: medium;
 }
 
 .deleteButton:hover {
