@@ -139,7 +139,7 @@ nomobile {
 #menu a {
 	font-family: var(--font-family_2);
 	color: var(--winter_blue);
-	font-size: xx-large;
+	font-size: x-large;
 	pointer-events: all;
 	text-decoration: none;
 }
@@ -152,6 +152,7 @@ nomobile {
 #dashButtons button {
 	background-color: var(--pale-purple);
 	color: var(--winter_blue);
+	font-size: x-large;
 }
 
 #dashButtons button:hover {
@@ -260,12 +261,30 @@ nomobile {
 	margin-left: auto;
 	margin-right: auto;
 	justify-content: left;
-	border: solid 1px white;
 }
 
 #dashboard h1 {
-	font-size: 4em;
+	font-size: 3em;
 	margin: 0;
+}
+
+#dashboard button a {
+	text-decoration: none;
+	color: var(--winter_blue);
+}
+
+#dashboard button:hover a {
+	color: var(--electric-indigo);
+}
+
+.deleteButton {
+	background-color: var(--invalid);
+	color: var(--winter_dark_gray);
+}
+
+.deleteButton:hover {
+	background-color: var(--winter_light_gray);
+	color: var(--invalid);
 }
 
 @media (any-pointer: coarse) {
