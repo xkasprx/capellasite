@@ -31,7 +31,7 @@ exports.server = {
 		let jsonParser = bodyParser.json();
 		let scheme, options, server;
 
-		if(self.v.testing){
+		if(config.testing){
 			domain = `localhost`;
 			scheme = `http`;
 			app.listen(port);
@@ -306,6 +306,5 @@ exports.server = {
 	},
 	v: {
 		exp: new Date(new Date().setDate(new Date().getDate() + 30)),
-		testing: true,
 	}
 }
