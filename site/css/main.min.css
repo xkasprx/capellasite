@@ -203,6 +203,8 @@ nomobile {
 	gap: 15px;
 }
 
+.firstNameInput,
+.lastNameInput,
 .emailInput,
 .passInput {
 	display: flex;
@@ -213,6 +215,8 @@ nomobile {
 	gap: 35px;
 }
 
+.firstNameInput input,
+.lastNameInput input,
 .emailInput input,
 .passInput input {
 	border-radius: 10px;
@@ -221,6 +225,15 @@ nomobile {
     pointer-events: all;
 }
 
+select {
+	border-radius: 1px;
+    background-color: var(--winter_light_gray);
+    color: var(--winter_blue);
+    pointer-events: all;
+}
+
+.firstNameInput input:focus,
+.lastNameInput input:focus,
 .emailInput input:focus,
 .passInput input:focus {
 	outline: none !important;
@@ -254,6 +267,7 @@ nomobile {
 	color: var(--invalid);
 }
 
+#editProfile,
 #directory,
 #posts,
 #dashboard {
@@ -265,6 +279,7 @@ nomobile {
 	justify-content: left;
 }
 
+#editProfile h1,
 #directory h1,
 #posts h1,
 #dashboard h1 {
@@ -272,12 +287,14 @@ nomobile {
 	margin: 0;
 }
 
+#editProfile button a,
 #posts button a,
 #dashboard button a {
 	text-decoration: none;
 	color: var(--winter_blue);
 }
 
+#editProfile button:hover a,
 #posts button:hover a,
 #dashboard button:hover a {
 	color: var(--electric-indigo);
@@ -308,8 +325,42 @@ nomobile {
 #postInputSection {
 	display: flex;
 	flex-direction: column;
-	flex-shrink: 1;
-	
+}
+
+#socialLinks div,
+#editProfileInput div {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-top: 20px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+#socialLinks label,
+#editProfileInput label {
+	color: var(--winter_blue);
+	font-size: large;
+}
+
+#socialLinks div input,
+#editProfileInput div input,
+#editProfileInput div select,
+#editProfileInput div textarea {
+	margin-top: auto;
+	margin-bottom: auto;
+	border-radius: 5px;
+    background-color: var(--winter_light_gray);
+    color: var(--winter_blue);
+    pointer-events: all;
+	width: 50%;
+	box-sizing: border-box;
+}
+
+#postInputSection > button,
+#editProfile button{
+	margin-top: 10px;
+	width: 200px;
 }
 
 @media (any-pointer: coarse) {
