@@ -76,7 +76,7 @@ root {
 
 button {
 	border-radius: 25px;
-	font-size: xx-large;
+	font-size: medium;
 	padding-left: 25px;
 	padding-right: 25px;
 	background-color: var(--electric-indigo);
@@ -267,6 +267,8 @@ select {
 	color: var(--invalid);
 }
 
+#addEdu,
+#addExp,
 #editProfile,
 #directory,
 #posts,
@@ -279,6 +281,8 @@ select {
 	justify-content: left;
 }
 
+#addEdu h1,
+#addExp h1,
 #editProfile h1,
 #directory h1,
 #posts h1,
@@ -287,6 +291,8 @@ select {
 	margin: 0;
 }
 
+#addEdu button a,
+#addExp button a,
 #editProfile button a,
 #posts button a,
 #dashboard button a {
@@ -294,6 +300,8 @@ select {
 	color: var(--winter_blue);
 }
 
+#addEdu button:hover a,
+#addExp button:hover a,
 #editProfile button:hover a,
 #posts button:hover a,
 #dashboard button:hover a {
@@ -311,22 +319,29 @@ select {
 	color: var(--electric-indigo);
 }
 
+.cancelButton,
 .deleteButton {
 	background-color: var(--invalid);
 	color: var(--winter_dark_gray);
 	font-size: medium;
 }
 
+.cancelButton:hover,
 .deleteButton:hover {
 	background-color: var(--winter_light_gray);
 	color: var(--invalid);
 }
 
+#addEdu,
+#addExp,
 #postInputSection {
 	display: flex;
 	flex-direction: column;
 }
 
+#addEduInput div,
+#addExpInput div,
+#dateSectionInput div,
 #socialLinks div,
 #editProfileInput div {
 	display: flex;
@@ -337,16 +352,28 @@ select {
 	margin-bottom: 10px;
 }
 
+#addEduInput label,
+#addExpInput label,
+#dateSectionInput label,
 #socialLinks label,
 #editProfileInput label {
 	color: var(--winter_blue);
 	font-size: large;
 }
 
+#addEduInput div input,
+#addEduInput div textarea,
+#addEduInput div select,
+#addExpInput div input,
+#addExpInput div select,
+#addExpInput div textarea,
+#dateSectionInput div input,
+#dateSectionInput div textarea,
+#dateSectionInput div select,
 #socialLinks div input,
 #editProfileInput div input,
-#editProfileInput div select,
-#editProfileInput div textarea {
+#editProfileInput div textarea,
+#editProfileInput div select {
 	margin-top: auto;
 	margin-bottom: auto;
 	border-radius: 5px;
@@ -361,6 +388,10 @@ select {
 #editProfile button{
 	margin-top: 10px;
 	width: 200px;
+}
+
+.current {
+	width: 10%;
 }
 
 @media (any-pointer: coarse) {
