@@ -71,7 +71,7 @@ h1{
 }
 
 root {
-	/* pointer-events: none; */
+	pointer-events: none;
 }
 
 button {
