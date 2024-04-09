@@ -111,7 +111,7 @@ let processes = {
 		};
 
 		readDirectory(srcJSfiles, true);
-		readDirectory(srcSCSSfiles, false);
+		// readDirectory(srcSCSSfiles, false);
 		util.log(`Obfuscated & Minified JS             `, util.prettyDate(), `green`, `blue`);
 		util.log(`Compiled & Minified SCSS             `, util.prettyDate(), `green`, `blue`);
 	},
