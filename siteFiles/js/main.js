@@ -3,7 +3,7 @@ let html = document.getElementsByTagName(`html`)[0];
 let body = document.getElementsByTagName(`body`)[0];
 let root = document.getElementsByTagName(`root`)[0];
 let greetings = [`Hi`, `Greetings`, `Hello there`, `Nice to see you`];
-let cookies, hash, loggedIn;
+let c, h, l;
 
 //Functions
 async function createTopBar(){
@@ -22,7 +22,7 @@ async function createTopBar(){
 	titleLink.appendChild(titleImg);
 	title.appendChild(titleLink);
 	
-	if(loggedIn){
+	if(l){
 		let directoryLink = document.createElement(`div`);
 		let postsLink = document.createElement(`div`);
 		let dashboardLink = document.createElement(`div`);
@@ -212,8 +212,8 @@ async function loadDashboard(){
 	let addEduButton = document.createElement(`button`);
 
 	let userInfo = await fetchData({
-		id: cookies.id,
-		token: cookies.token,
+		id: c.id,
+		token: c.token,
 		target: `/getUser`,
 	});
 
@@ -226,7 +226,7 @@ async function loadDashboard(){
 	educationSection.innerHTML = `<h2>Education Credentials</h2>`;
 	accountManagement.innerHTML = `<h2>Account Management</h2>`;
 	topButtons.id = `dashButtons`;
-	viewProfileButton.innerHTML = `<a href="#profile?id=${cookies.id}"><i class="fa-solid fa-user"></i>  View Profile</a>`;
+	viewProfileButton.innerHTML = `<a href="#profile?id=${c.id}"><i class="fa-solid fa-user"></i>  View Profile</a>`;
 	editProfileButton.innerHTML = `<a href="#editProfile"><i class="fa-solid fa-user-pen"></i>  Edit Profile</a>`;
 	addExpButton.innerHTML = `<a href="#addExperience"><i class="fa-solid fa-briefcase"></i>  Add Experience</a>`;
 	addEduButton.innerHTML = `<a href="#addEducation"><i class="fa-solid fa-graduation-cap"></i>  Add Education</a>`;
@@ -250,9 +250,9 @@ async function loadDashboard(){
 			width: `25%`,
 		}],
 		data: await(async(a = []) => {
-			let info = cookies && await fetchData({
-				id: cookies.id,
-				token: cookies.token,
+			let info = c && await fetchData({
+				id: c.id,
+				token: c.token,
 				target: `/getExp`,
 			});
 
@@ -288,9 +288,9 @@ async function loadDashboard(){
 			width: `25%`,
 		}],
 		data: await(async(a = []) => {
-			let info = cookies && await fetchData({
-				id: cookies.id,
-				token: cookies.token,
+			let info = c && await fetchData({
+				id: c.id,
+				token: c.token,
 				target: `/getEdu`,
 			});
 
@@ -375,8 +375,8 @@ async function loadEditProfile(){
 	let cancelButton = document.createElement(`button`);
 
 	let userInfo = await fetchData({
-		id: cookies.id,
-		token: cookies.token,
+		id: c.id,
+		token: c.token,
 		target: `/getInfo`,
 	});
 
@@ -584,8 +584,8 @@ async function loadPosts(){
 	let submitButton = document.createElement(`button`);
 
 	let userInfo = await fetchData({
-		id: cookies.id,
-		token: cookies.token,
+		id: c.id,
+		token: c.token,
 		target: `/getUser`,
 	});
 
@@ -676,15 +676,15 @@ async function loadProfile(){
 
 // Events
 window.onhashchange = async function(){
-	hash = location.hash && location.hash.slice(1);
-	cookies = await str2arr(document.cookie, `; `);
-	loggedIn = cookies.token && await verifyLogin();
-	hash = hash.includes(`?`) ? hash.split(`?`)[0] : hash;
+	h = location.hash && location.hash.slice(1);
+	c = await str2arr(document.cookie, `; `);
+	l = c.token && await verifyLogin();
+	h = h.includes(`?`) ? h.split(`?`)[0] : h;
 
 	await removeElements();
 
-	if(loggedIn){
-		switch (hash) {
+	if(l){
+		switch (h) {
 			case `profile`:
 				await loadProfile();
 				break;
@@ -715,7 +715,7 @@ window.onhashchange = async function(){
 				break;
 		}
 	}else{
-		switch (hash) {
+		switch (h) {
 			case `home`:
 				await loadHome();
 				break;
@@ -737,15 +737,15 @@ window.onhashchange = async function(){
 };
 
 window.onload = async function(){
-	hash = location.hash && location.hash.slice(1);
-	cookies = await str2arr(document.cookie, `; `);
-	loggedIn = cookies.token && await verifyLogin();
-	hash = hash.includes(`?`) ? hash.split(`?`)[0] : hash;
+	h = location.hash && location.hash.slice(1);
+	c = await str2arr(document.cookie, `; `);
+	l = c.token && await verifyLogin();
+	h = h.includes(`?`) ? h.split(`?`)[0] : h;
 
 	await removeElements();
 
-	if(loggedIn){
-		switch (hash) {
+	if(l){
+		switch (h) {
 			case `profile`:
 				await loadProfile();
 				break;
@@ -773,7 +773,7 @@ window.onload = async function(){
 				break;
 		}
 	}else{
-		switch (hash) {
+		switch (h) {
 			case `home`:
 				await loadHome();
 				break;
@@ -799,7 +799,7 @@ async function deleteInfo(data){
 	return await fetch(`/deleteInfo`, {
 		headers: {
 			'Content-Type': `application/json`,
-			'Authorization': `${cookies.id}:${cookies.token}`,
+			'Authorization': `${c.id}:${c.token}`,
 		},
 		method: `POST`,
 		mode: `cors`,
@@ -885,7 +885,7 @@ async function processButton(el){
 	await fetch(target, {
 		headers: {
 			'Content-Type': `application/json`,
-			'Authorization': loggedIn ? `${cookies.id}:${cookies.token}` : ``,
+			'Authorization': l ? `${c.id}:${c.token}` : ``,
 		},
 		method: `POST`,
 		mode: `cors`,
@@ -902,12 +902,12 @@ async function processButton(el){
 		if(message.startsWith(`Register`)){
 			window.location.href = `${url}/#login`;
 		}else if(message.startsWith(`Login`)){
-			loggedIn = true;
+			l = true;
 			window.location.href = `${url}/#dashboard`;
 		}else if(message.startsWith(`Forgot`)){
 			window.location.href = `${url}/#login`;
 		}else if(message.startsWith(`Logout`)){
-			loggedIn = false;
+			l = false;
 			window.location.href = `${url}/#home`;
 		}else if(message.startsWith(`Profile`)){
 			window.location.href = `${url}/#profile`;
@@ -1001,8 +1001,8 @@ async function validateInput(el, type){
 	}
 };
 async function verifyLogin(){
-	let id = cookies.id;
-	let token = cookies.token;
+	let id = c.id;
+	let token = c.token;
 	
 	return await fetch(`/verifyLogin`, {
 		headers: {
