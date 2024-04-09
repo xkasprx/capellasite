@@ -57,6 +57,68 @@ exports.server = {
 			next();
 		});
 
+		app.post(`/addEdu`, async (req, res) => {
+			let info = req.headers.authorization.split(`:`);
+			let data = req.body;
+			let id = info[0];
+			let msg = ``;
+
+			data.current === true ? data.to = null : data.current = false;
+			data.user = id;
+
+			let updated = await self.f.addInfo(`education`, data)
+
+			if(updated){
+				msg = `Dashboard:Alert:Education added to profile`;
+			}else{
+				msg = `Failed:Alert:An error occured adding this education to your profile. Please try again. If the issue persists, please try again later.`;
+			}
+
+			res.statusMessage = msg;
+			res.status(200).send();
+		});
+
+		app.post(`/addExp`, async (req, res) => {
+			let info = req.headers.authorization.split(`:`);
+			let data = req.body;
+			let id = info[0];
+			let msg = ``;
+
+			data.current === true ? data.to = null : data.current = false;
+			data.user = id;
+
+			let updated = await self.f.addInfo(`experience`, data)
+
+			if(updated){
+				msg = `Dashboard:Alert:Experience added to profile`;
+			}else{
+				msg = `Failed:Alert:An error occured adding this experience to your profile. Please try again. If the issue persists, please try again later.`;
+			}
+
+			res.statusMessage = msg;
+			res.status(200).send();
+		});
+
+		app.post(`/deleteInfo`, async (req, res) => {
+			let info = req.headers.authorization.split(`:`);
+			let data = req.body.data.split(`:`);
+			let user = info[0];
+			let table = data[0];
+			let id = data[1];
+			let msg = ``;
+
+			let updated = await self.f.deleteInfo(user, table.toLowerCase(), id);
+
+			if(updated){
+				msg = `Dashboard:Alert:${table} removed to profile`;
+			}else{
+				msg = `Failed:Alert:An error occured removing this ${table} info from your profile. Please try again. If the issue persists, please try again later.`;
+			}
+
+			res.statusMessage = msg;
+			res.status(200).send(updated);
+		});
+
 		app.post(`/forgot`, async (req, res) => {
 			res.statusMessage = `Forgot:Alert:FORGOT PASSWORD DISABLED AS MAILER IS NOT SET UP. THIS PAGE IS FOR DEMONSTRATION PURPOSES ONLY, IF MAILER WAS ENABLED, AN EMAIL WOULD BE SENT TO RESET THE PASSWORD.`;
 			res.status(200).send();
@@ -238,6 +300,7 @@ exports.server = {
 			let data = req.body;
 			let id = info[0];
 			let token = info[1];
+			let msg;
 
 			let userData = {
 				firstName: data.firstName,
@@ -300,6 +363,17 @@ exports.server = {
 		});
 	},
 	f: {
+		addInfo: async (table, data) => {
+			return await new Promise((resolve) => {
+				query(`INSERT INTO \`${table}\` SET ?`, data, (e, r, f) => {
+					if(e){
+						resolve(false);
+					}else{
+						resolve(true);
+					}
+				})
+			});
+		},
 		clearCookie: async (res, title) => {
 			res.clearCookie(title, {
 				path: `/`,
@@ -320,7 +394,14 @@ exports.server = {
 			});
 		},
 		deleteAccount: async (id, table, column) => {
-			query(`DELETE FROM \`${table}\` WHERE \`${column}\` = ${id}`);
+			return await new Promise((resolve) => {
+				query(`DELETE FROM \`${table}\` WHERE \`${column}\` = ${id}`, (e, r, f) => resolve(!e ? true : false));
+			});
+		},
+		deleteInfo: async (user, table, id) => {
+			return await new Promise((resolve) => {
+				query(`DELETE FROM \`${table}\` WHERE \`user\` = ${user} AND \`id\` = ${id}`, (e, r, f) => resolve(!e ? true : false));
+			});
 		},
 		fetchEdu: async (id) => {
 			return await new Promise((resolve) => {
@@ -449,7 +530,7 @@ exports.server = {
 		},
 		updateInfo: async (column, id, token, table, data) => {
 			return await new Promise((resolve) => {
-				let sql1 = `UPDATE \`${table}\` SET ? WHERE \`id\` = ${id}`;
+				let sql1 = `UPDATE \`${table}\` SET ? WHERE \`${column}\` = ${id}`;
 				let sql2 = `AND \`token\` = "${token}"`;
 				query(`${sql1}${token ? ` ${sql2}` : ``}`, data, (e, r, f) => {
 					if(e){

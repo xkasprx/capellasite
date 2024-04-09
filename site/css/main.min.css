@@ -71,7 +71,7 @@ h1{
 }
 
 root {
-	pointer-events: none;
+	/* pointer-events: none; */
 }
 
 button {
@@ -392,6 +392,10 @@ select {
 
 .current {
 	width: 10%;
+}
+
+#dateSectionInput:has(> div > input:checked) > .toDate {
+	display: none;
 }
 
 @media (any-pointer: coarse) {
