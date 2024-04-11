@@ -864,7 +864,7 @@ async function loadProfile(id){
 
 			if(repos.length){
 				for(let i = 0; i < repos.length; i++){
-					let {name, description, stargazers_count, watchers_count, forks} = repos[i];
+					let {name, description, stargazers_count, watchers_count, html_url, forks} = repos[i];
 
 					i > 0 ? profileRepos.appendChild(document.createElement(`hr`)) : 0;
 					
@@ -881,8 +881,9 @@ async function loadProfile(id){
 					repoDiv.className = `githubRepo`;
 					descriptionDiv.className = `repoDescription`;
 					sideButtons.className = `repoSideButtons`;
+					repoTitle.className = `repoTitle`;
 
-					repoTitle.innerHTML = `<h2>${name}</h2>`;
+					repoTitle.innerHTML = `<a href="${html_url}" target="_blank"><h2>${name}</h2></a>`;
 					repoDesc.innerHTML = `<p>${description || `No Description`}</p>`;
 
 					descriptionDiv.appendChild(repoTitle);
