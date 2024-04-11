@@ -1,0 +1,4 @@
+node_modules
+config/config.json
+site/css/*.min.css
+site/js/*.min.js

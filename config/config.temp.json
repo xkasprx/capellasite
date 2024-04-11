@@ -1,0 +1,13 @@
+{
+	"database": {
+		"host": "",
+		"user": "",
+		"pass": "",
+		"database": ""
+	},
+	"server": {
+		"port": 5000,
+		"certificate": "path/to/ssl/certificate"
+	},
+	"testing": true
+}

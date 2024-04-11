@@ -1,0 +1,857 @@
+$blood-red: #FF0000;
+$blue-whale: #1B2747;
+$electric-indigo: #6d00fd;
+$glow: #03D4DB;
+$pale-purple: #E7D7FB;
+$winter-blue: #37A0DC;
+$winter-dark-gray: #1A1E23;
+$winter-light-gray: #272A30;
+$winter-white: #E9E9E9;
+$regular: 'regular', sans-serif;
+$oblique: 'oblique', sans-serif;
+$no-background: transparent;
+
+// Fonts
+@font-face {
+	font-family: 'regular';
+	src: url('../fonts/regular.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'oblique';
+	src: url('../fonts/oblique.ttf') format('truetype');
+}
+
+// HTML Tag
+body {
+	background-color: $blue-whale;
+	margin: 0;
+}
+button {
+	background-color: $electric-indigo;
+	border-radius: 25px;
+	color: $winter-white;
+	font-family: $oblique;
+	font-size: x-large;
+	padding-left: 25px;
+	padding-right: 25px;
+	pointer-events: all;
+	&:hover {
+		background-color: $winter-white;
+		color: $electric-indigo;
+	}
+}
+h1 {
+	font-family: $regular;
+	font-size: xx-large;
+}
+hr {
+	border-color: $electric-indigo;
+	width: 90%;
+}
+nomobile {
+	display: none;
+}
+root {
+	pointer-events: none;
+}
+section {
+	color: $winter-white;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	margin-left: 10px;
+	min-height: 20vh;
+	z-index: -1;
+}
+select {
+	background-color: $winter-light-gray;
+	border-radius: 1px;
+	color: $winter-blue;
+	pointer-events: all;
+}
+
+// Element ID
+#addEdu {
+	display: flex;
+	flex-direction: column;
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	button {
+		a {
+			color: $winter-blue;
+			text-decoration: none;
+		}
+		&:hover {
+			a {
+				color: $electric-indigo;
+			}
+		}
+	}
+	h1 {
+		font-size: 3em;
+		margin: 0;
+	}
+}
+#addEduInput {
+	div {
+		input {
+			background-color: $winter-light-gray;
+			border-radius: 5px;
+			box-sizing: border-box;
+			color: $winter-blue;
+			margin-bottom: auto;
+			margin-top: auto;
+			pointer-events: all;
+			width: 50%;
+		}
+		textarea {
+			background-color: $winter-light-gray;
+			border-radius: 5px;
+			box-sizing: border-box;
+			color: $winter-blue;
+			margin-bottom: auto;
+			margin-top: auto;
+			pointer-events: all;
+			width: 50%;
+		}
+		select {
+			background-color: $winter-light-gray;
+			border-radius: 5px;
+			box-sizing: border-box;
+			color: $winter-blue;
+			margin-bottom: auto;
+			margin-top: auto;
+			pointer-events: all;
+			width: 50%;
+		}
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin-bottom: 10px;
+		margin-left: 10px;
+		margin-top: 20px;
+	}
+	label {
+		color: $winter-blue;
+		font-size: large;
+	}
+}
+#addExp {
+	display: flex;
+	flex-direction: column;
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	button {
+		a {
+			color: $winter-blue;
+			text-decoration: none;
+		}
+		&:hover {
+			a {
+				color: $electric-indigo;
+			}
+		}
+	}
+	h1 {
+		font-size: 3em;
+		margin: 0;
+	}
+}
+#addExpInput {
+	div {
+		input {
+			background-color: $winter-light-gray;
+			border-radius: 5px;
+			box-sizing: border-box;
+			color: $winter-blue;
+			margin-bottom: auto;
+			margin-top: auto;
+			pointer-events: all;
+			width: 50%;
+		}
+		select {
+			background-color: $winter-light-gray;
+			border-radius: 5px;
+			box-sizing: border-box;
+			color: $winter-blue;
+			margin-bottom: auto;
+			margin-top: auto;
+			pointer-events: all;
+			width: 50%;
+		}
+		textarea {
+			background-color: $winter-light-gray;
+			border-radius: 5px;
+			box-sizing: border-box;
+			color: $winter-blue;
+			margin-bottom: auto;
+			margin-top: auto;
+			pointer-events: all;
+			width: 50%;
+		}
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin-bottom: 10px;
+		margin-left: 10px;
+		margin-top: 20px;
+	}
+	label {
+		color: $winter-blue;
+		font-size: large;
+	}
+}
+#dashboard {
+	button {
+		a {
+			color: $winter-blue;
+			text-decoration: none;
+		}
+		&:hover {
+			a {
+				color: $electric-indigo;
+			}
+		}
+	}
+	h1 {
+		font-size: 3em;
+		margin: 0;
+	}
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+}
+#dashButtons {
+	button {
+		background-color: $pale-purple;
+		color: $winter-blue;
+		font-size: x-large;
+		&:hover {
+			background-color: $winter-blue;
+			color: $electric-indigo;
+		}
+	}
+	i {
+		color: $electric-indigo;
+		font-size: small;
+		vertical-align: middle;
+	}
+}
+#dateSectionInput {
+	div {
+		input {
+			background-color: $winter-light-gray;
+			border-radius: 5px;
+			box-sizing: border-box;
+			color: $winter-blue;
+			margin-bottom: auto;
+			margin-top: auto;
+			pointer-events: all;
+			width: 50%;
+		}
+		textarea {
+			background-color: $winter-light-gray;
+			border-radius: 5px;
+			box-sizing: border-box;
+			color: $winter-blue;
+			margin-bottom: auto;
+			margin-top: auto;
+			pointer-events: all;
+			width: 50%;
+		}
+		select {
+			background-color: $winter-light-gray;
+			border-radius: 5px;
+			box-sizing: border-box;
+			color: $winter-blue;
+			margin-bottom: auto;
+			margin-top: auto;
+			pointer-events: all;
+			width: 50%;
+		}
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin-bottom: 10px;
+		margin-left: 10px;
+		margin-top: 20px;
+	}
+	label {
+		color: $winter-blue;
+		font-size: large;
+	}
+}
+#dateSectionInput:has(> div > input:checked) > .toDate {
+	display: none;
+}
+#directory {
+	button {
+		a {
+			background-color: $pale-purple;
+			color: $winter-blue;
+			text-decoration: none;
+		}
+		&:hover {
+			a {
+				background-color: $winter-blue;
+				color: $electric-indigo;
+			}
+		}
+	}
+	h1 {
+		font-size: 3em;
+		margin: 0;
+	}
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+}
+#editProfile {
+	button {
+		margin-top: 10px;
+		width: 200px;
+		a {
+			color: $winter-blue;
+			text-decoration: none;
+		}
+		&:hover {
+			a {
+				color: $electric-indigo;
+			}
+		}
+	}
+	h1 {
+		font-size: 3em;
+		margin: 0;
+	}
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+}
+#editProfileInput {
+	div {
+		input {
+			background-color: $winter-light-gray;
+			border-radius: 5px;
+			box-sizing: border-box;
+			color: $winter-blue;
+			margin-bottom: auto;
+			margin-top: auto;
+			pointer-events: all;
+			width: 50%;
+		}
+		textarea {
+			background-color: $winter-light-gray;
+			border-radius: 5px;
+			box-sizing: border-box;
+			color: $winter-blue;
+			margin-bottom: auto;
+			margin-top: auto;
+			pointer-events: all;
+			width: 50%;
+		}
+		select {
+			background-color: $winter-light-gray;
+			border-radius: 5px;
+			box-sizing: border-box;
+			color: $winter-blue;
+			margin-bottom: auto;
+			margin-top: auto;
+			pointer-events: all;
+			width: 50%;
+		}
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin-bottom: 10px;
+		margin-left: 10px;
+		margin-top: 20px;
+	}
+	label {
+		color: $winter-blue;
+		font-size: large;
+	}
+}
+#header {
+	background-color: $blue-whale;
+	border-bottom: solid 3px $glow;
+	display: flex;
+	justify-content: space-between;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+}
+#landingImage {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+#loginForm {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+#menu {
+	i {
+		color: $electric-indigo;
+		font-size: small;
+		vertical-align: middle;
+	}
+	display: flex;
+	gap: 40px;
+	margin-right: 15px;
+	* {
+		margin: auto 0;
+	}
+	a {
+		color: $winter-blue;
+		font-family: $oblique;
+		font-size: x-large;
+		pointer-events: all;
+		text-decoration: none;
+		&:hover {
+			color: $winter-white;
+			text-decoration: underline;
+		}
+	}
+}
+#postInputSection {
+	display: flex;
+	flex-direction: column;
+	>button {
+		margin-top: 10px;
+		width: 200px;
+	}
+}
+#posts {
+	button {
+		a {
+			color: $winter-blue;
+			text-decoration: none;
+		}
+		&:hover {
+			a {
+				color: $electric-indigo;
+			}
+		}
+	}
+	h1 {
+		font-size: 3em;
+		margin: 0;
+	}
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+}
+#profile {
+	button {
+		a {
+			color: $winter-blue;
+			text-decoration: none;
+		}
+		&:hover {
+			a {
+				color: $electric-indigo;
+			}
+		}
+	}
+	h1 {
+		font-size: 3em;
+		margin: 0;
+	}
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+}
+#registerForm {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+#socialLinks {
+	div {
+		input {
+			background-color: $winter-light-gray;
+			border-radius: 5px;
+			box-sizing: border-box;
+			color: $winter-blue;
+			margin-bottom: auto;
+			margin-top: auto;
+			pointer-events: all;
+			width: 50%;
+		}
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin-bottom: 10px;
+		margin-left: 10px;
+		margin-top: 20px;
+	}
+	label {
+		color: $winter-blue;
+		font-size: large;
+	}
+}
+#title {
+	height: 75px;
+	margin-left: 3px;
+	width: auto;
+	img {
+		pointer-events: all;
+		width: auto;
+	}
+}
+
+// Element Class
+.avatarDiv {
+	display: flex;
+	justify-content: space-around;
+	transform: translateY(-50%);
+	img {
+		border: solid 3px $winter-dark-gray;
+		border-radius: 50%;
+		width: 200px;
+	}
+}
+.cancelButton {
+	background-color: $blood-red;
+	color: $winter-dark-gray;
+	font-size: x-large;
+	&:hover {
+		background-color: $winter-light-gray;
+		color: $blood-red;
+	}
+}
+.current {
+	width: 10%;
+}
+.deleteButton {
+	background-color: $blood-red;
+	color: $winter-dark-gray;
+	font-size: x-large;
+	&:hover {
+		background-color: $winter-light-gray;
+		color: $blood-red;
+	}
+}
+.emailInput {
+	input {
+		background-color: $winter-light-gray;
+		border-radius: 10px;
+		color: $winter-blue;
+		pointer-events: all;
+		&:focus {
+			border: 1px solid $electric-indigo;
+			outline: none !important;
+		}
+	}
+	display: flex;
+	flex-direction: row;
+	gap: 35px;
+	justify-content: space-between;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.firstNameInput {
+	input {
+		background-color: $winter-light-gray;
+		border-radius: 10px;
+		color: $winter-blue;
+		pointer-events: all;
+		&:focus {
+			border: 1px solid $electric-indigo;
+			outline: none !important;
+		}
+	}
+	display: flex;
+	flex-direction: row;
+	gap: 35px;
+	justify-content: space-between;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.forksButton {
+	background-color: $winter-white;
+	color: $winter-dark-gray;
+	&:hover {
+		background-color: $winter-white;
+		color: $winter-dark-gray;
+	}
+}
+.githubRepo {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-left: 50px;
+	margin-right: 50px;
+}
+.invalid {
+	border-color: $blood-red;
+	color: $blood-red;
+}
+.largeSocial {
+	color: $winter-blue;
+	font-size: 2.5em;
+	padding: 5px;
+	pointer-events: all;
+	&:hover {
+		color: $electric-indigo;
+	}
+}
+.lastNameInput {
+	input {
+		background-color: $winter-light-gray;
+		border-radius: 10px;
+		color: $winter-blue;
+		pointer-events: all;
+		&:focus {
+			border: 1px solid $electric-indigo;
+			outline: none !important;
+		}
+	}
+	display: flex;
+	flex-direction: row;
+	gap: 35px;
+	justify-content: space-between;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.links {
+	color: $glow;
+	pointer-events: all;
+	text-decoration: none;
+	&:visited {
+		color: $glow;
+		pointer-events: all;
+		text-decoration: none;
+	}
+	&:hover {
+		color: $winter-blue;
+		text-decoration: underline;
+	}
+}
+.locations {
+	i {
+		color: $electric-indigo;
+	}
+}
+.passInput {
+	input {
+		background-color: $winter-light-gray;
+		border-radius: 10px;
+		color: $winter-blue;
+		pointer-events: all;
+		&:focus {
+			border: 1px solid $electric-indigo;
+			outline: none !important;
+		}
+	}
+	display: flex;
+	flex-direction: row;
+	gap: 35px;
+	justify-content: space-between;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.profileBio {
+	align-self: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 80%;
+}
+.profileHead {
+	background-image: linear-gradient(to right, $electric-indigo, 60%, $winter-blue);
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	height: 200px;
+	margin-bottom: 0;
+	margin-top: 25px;
+	padding-bottom: 0;
+	width: 100%;
+}
+.profileHistory {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	div {
+		p {
+			margin-left: 50px;
+			text-align: left;
+		}
+	}
+}
+.profileInfo {
+	background-color: $winter-dark-gray;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	margin-top: -210px;
+	padding-top: 0;
+	text-align: center;
+}
+.profileName {
+	margin-top: 150px;
+}
+.profileRepos {
+	margin-bottom: 25px;
+}
+.profileSkills {
+	align-self: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 80%;
+}
+.regloginform {
+	border: solid 2px $electric-indigo;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding-bottom: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 0;
+	h1 {
+		text-align: center;
+	}
+}
+.regloginReminder {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	a {
+		color: $winter-blue;
+		pointer-events: all;
+		text-decoration: none;
+		&:hover {
+			color: $winter-white;
+			text-decoration: underline;
+		}
+	}
+	h4 {
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+}
+.repoDescription {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	max-width: calc(100% - 225px);
+	text-align: left;
+}
+.repoSideButtons {
+	align-items: self-end;
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	width: 225px;
+	button {
+		border-radius: 3px;
+		text-align: left;
+		width: 180px;
+	}
+}
+.starsButton {
+	&:hover {
+		background-color: $electric-indigo;
+		color: $winter-white;
+	}
+}
+.topSection {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin-bottom: 100px;
+	margin-top: 160px;
+}
+.watchersButton {
+	background-color: $winter-dark-gray;
+	&:hover {
+		background-color: $winter-dark-gray;
+		color: $winter-white;
+	}
+}
+
+// Psuedo Elements
+::-webkit-scrollbar {
+	background-color: $no-background;
+	overflow-y: scroll;
+	width: 7px;
+	&:vertical {
+		background-color: $winter-light-gray;
+		overflow-y: scroll;
+		width: 7px;
+	}
+}
+::-webkit-scrollbar-corner {
+	background-color: $winter-light-gray;
+}
+::-webkit-scrollbar-thumb {
+	&:horizontal {
+		background-color: $no-background;
+		border: 0;
+		min-height: 50px;
+	}
+	&:hover {
+		background-color: $winter-blue;
+	}
+	&:vertical {
+		background-color: $winter-blue;
+		border: 0;
+		min-height: 50px;
+	}
+}
+::-webkit-scrollbar-track {
+	&:horizontal {
+		background-color: $no-background;
+	}
+}
+::-webkit-scrollbar-track-piece {
+	background-color: $no-background;
+	border: 0;
+}
+
+// Mobile
+@media (any-pointer: coarse) {
+	nomobile {
+		color: $winter-white;
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+		justify-content: center;
+		text-align: center;
+	}
+	root {
+		display: none;
+	}
+}
