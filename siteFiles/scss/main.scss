@@ -69,6 +69,10 @@ select {
 	color: $winter-blue;
 	pointer-events: all;
 }
+strong {
+	font-size: larger;
+	text-decoration: underline;
+}
 
 // Element ID
 #addEdu {

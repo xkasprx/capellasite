@@ -790,9 +790,9 @@ async function loadProfile(id){
 	
 				companyName.innerHTML = `<h2>${company}</h2>`;
 				dates.innerHTML = `<h4>${prettyFrom} - ${current ? `Present` : prettyTo}</h4>`;
-				position.innerHTML = `<p><strong>Position:</strong> ${jobtitle}</p>`;
-				locationInfo.innerHTML = `<p><strong>Location:</strong> ${location}</p>`;
-				descriptionInfo.innerHTML = `<p><strong>Description:</strong> ${description}</p>`;
+				position.innerHTML = `<p><strong>Position</strong>: ${jobtitle}</p>`;
+				locationInfo.innerHTML = `<p><strong>Location</strong>: ${location}</p>`;
+				descriptionInfo.innerHTML = `<p><strong>Description</strong>: ${description}</p>`;
 	
 				i > 0 ? historyExp.appendChild(document.createElement(`hr`)) : 0;
 
@@ -830,9 +830,9 @@ async function loadProfile(id){
 	
 				schoolName.innerHTML = `<h2>${school}</h2>`;
 				dates.innerHTML = `<h4>${prettyFrom} - ${current ? `Present` : prettyTo}</h4>`;
-				degreeInfo.innerHTML = `<p><strong>Degree:</strong> ${degree}</p>`;
-				fieldInfo.innerHTML = `<p><strong>Field of Study</strong> ${fieldofstudy}</p>`;
-				descriptionInfo.innerHTML = `<p><strong>Description:</strong> ${description}</p>`;
+				degreeInfo.innerHTML = `<p><strong>Degree</strong>: ${degree}</p>`;
+				fieldInfo.innerHTML = `<p><strong>Field of Study</strong>: ${fieldofstudy}</p>`;
+				descriptionInfo.innerHTML = `<p><strong>Description</strong>: ${description}</p>`;
 	
 				i > 0 ? historyEdu.appendChild(document.createElement(`hr`)) : 0;
 
