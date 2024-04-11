@@ -1,6 +1,6 @@
-$winter_white: #E9E9E9;
-$winter_blue: #37A0DC;
-$font-family_1: 'oblique', sans-serif;
+$winter-white: #E9E9E9;
+$winter-blue: #37A0DC;
+$oblique: 'oblique', sans-serif;
 
 @font-face {
 	font-family: 'oblique';
@@ -22,14 +22,14 @@ browsers {
 			display: flex;
 			flex-direction: row;
 			justify-content: center;
-			color: $winter_white;
-			font-family: $font-family_1;
+			color: $winter-white;
+			font-family: $oblique;
 			font-size: 2.5em;
 			text-indent: 10px;
 			text-decoration: none;
 			&:hover {
 				text-decoration: underline;
-				text-decoration-color: #37A0DC;
+				text-decoration-color: $winter-blue;
 			}
 		}
 		img {
@@ -49,7 +49,7 @@ error {
 }
 instructions {
 	display: flex;
-	font-family: $font-family_1;
+	font-family: $oblique;
 	font-size: 2.5em;
 	flex-direction: column;
 	margin: 10% 25% auto 25%;
@@ -62,7 +62,7 @@ mainContent {
 }
 message {
 	display: flex;
-	font-family: $font-family_1;
+	font-family: $oblique;
 	font-size: 2.5em;
 	flex-direction: column;
 	margin: 5% 25% auto 25%;
@@ -74,7 +74,7 @@ moreInfoModal {
 	display: none;
 }
 noScriptContainer {
-	color: $winter_blue;
+	color: $winter-blue;
 	display: flex;
 	flex-direction: column;
 }
