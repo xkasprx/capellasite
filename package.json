@@ -23,6 +23,6 @@
     "gridjs": "^6.2.0",
     "javascript-obfuscator": "^4.1.0",
     "mysql2": "^3.9.4",
-    "sass": "^1.72.0"
+    "sass": "^1.75.0"
   }
 }
