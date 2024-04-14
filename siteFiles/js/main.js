@@ -63,6 +63,24 @@ async function createTopBar(){
 	root.appendChild(header);
 };
 
+async function loadAddComment(id){
+	let post = await fetchData({
+		id: c.id,
+		token: c.token,
+		page: `view`,
+		target: `/getPost`,
+		postID: id,
+	});
+
+	/*
+		add Back Button
+		display Post
+		add textarea with submit button
+		add list of other comments
+		reload page after adding
+	*/
+};
+
 async function loadAddEdu(){
 	let section = document.createElement(`section`);
 	let pageTitle = document.createElement(`div`);
@@ -660,59 +678,72 @@ async function loadPosts(){
 		target: `/getPosts`,
 	});
 
-	console.log(posts)
 	if(posts.length){
 		for(let i = 0; i < posts.length; i++){
 			let post = posts[i];
 			let postDiv = document.createElement(`div`);
+			let postTop = document.createElement(`div`);
 			let avatarDiv = document.createElement(`div`);
-			let avatarImg = document.createElement(`img`);
-			let postTitle = document.createElement(`div`);
+			let postHeader = document.createElement(`div`);
 			let nameDiv = document.createElement(`div`);
 			let dateTime = document.createElement(`div`);
+			let postBottom = document.createElement(`div`);
 			let message = document.createElement(`div`);
 			let reactions = document.createElement(`div`);
-			let likeReact = document.createElement(`button`);
-			let dislikeReact = document.createElement(`button`);
-			let addComment = document.createElement(`button`);
+			let likeReact = document.createElement(`div`);
+			let dislikeReact = document.createElement(`div`);
+			let addComment = document.createElement(`div`);
 			let originDate = new Date(post.date).toLocaleString();
 			let prettyDate = await prettyDate2(new Date(originDate), true);
 
 			let likes = (() => {
-				let likesArray = JSON.parse(post.likes);
-				return likesArray.length;
+				let likesArray = JSON.parse(post.reactions).likes;
+				return likesArray;
 			})();
 
 			let dislikes = (() => {
-				let dislikesArray = JSON.parse(post.dislikes);
-				return dislikesArray.length;
+				let dislikesArray = JSON.parse(post.reactions).dislikes;
+				return dislikesArray;
 			})();
 
 			let comments = (() => {
 				let commentsArray = JSON.parse(post.comments);
-				return commentsArray.length;
+				return Object.keys(commentsArray).length;
 			})();
 
+			postDiv.className = `post`;
+			postDiv.id = `${post.user}:${post.id}`;
+			postTop.className = `postTop`;
+			postBottom.className = `postBottom`;
+			postHeader.className = `postHeader`;
 			avatarDiv.className = `tinyAvatar`;
-			avatarImg.src = post.avatar || `../images/icons/icon192.png`;
-			nameDiv.innerHTML = `<h3>${post.name}</h3>`;
-			dateTime.innerHTML = `<p>${prettyDate} MST</p>`;
-			message.innerHTML = `<h5>${post.text}</h5>`;
-			likeReact.innerHTML = `<i class="fa-solid fa-heart"></i> ${likes}`;
-			dislikeReact.innerHTML = `<i class="fa-solid fa-heart-crack"></i> ${dislikes}`;
-			addComment.innerHTML = `<i class="fa-solid fa-comment"></i> ${comments}`;
+			reactions.className = `reactions`;
 
-			avatarDiv.appendChild(avatarImg);
+			avatarDiv.innerHTML = `<a href="#profile?id=${post.user}"><img src="${post.avatar || `../images/icons/icon192.png`}"></a>`;
+			nameDiv.innerHTML = `<a href="#profile?id=${post.user}"><h2>${post.name}</h2></a>`;
+			dateTime.innerHTML = `<h5>Posted ${prettyDate} MST</h5>`;
+			message.innerHTML = `<p>${post.text}</p>`;
+			likeReact.innerHTML = `<button back="/addReact" data="likes:${likes.length}" onclick="processReact(this);" class="like${likes.includes(c.id) ? ` active` : ``}"><i class="fa-solid fa-heart"></i> ${likes.length}</button>`;
+			dislikeReact.innerHTML = `<button back="/addReact" data="dislikes:${dislikes.length}" onclick="processReact(this);" class="dislike${dislikes.includes(c.id) ? ` active` : ``}"><i class="fa-solid fa-heart-crack"></i> ${dislikes.length}</button>`;
+			addComment.innerHTML = `<button><a href="#addComment?id=${post.id}"><i class="fa-solid fa-comment"></i> ${comments}</a></button>`;
+
+			postHeader.appendChild(nameDiv);
+			postHeader.appendChild(dateTime);
+
+			postTop.appendChild(avatarDiv);
+			postTop.appendChild(postHeader);
+
 			reactions.appendChild(likeReact);
 			reactions.appendChild(dislikeReact);
 			reactions.appendChild(addComment);
 
-			postTitle.appendChild(avatarDiv);
-			postTitle.appendChild(titleD)
+			postBottom.appendChild(message);
+			postBottom.appendChild(reactions);
 
-			postDiv.appendChild(postTitle);
-			postDiv.appendChild(message);
-			postDiv.appendChild(reactions);
+			postDiv.appendChild(postTop);
+			postDiv.appendChild(postBottom);
+
+			postList.appendChild(postDiv);
 		}
 	}
 
@@ -725,10 +756,6 @@ async function loadPosts(){
 	section.appendChild(postList);
 
 	root.appendChild(section);
-};
-
-async function loadPost(id){
-
 };
 
 async function loadProfile(id){
@@ -1071,6 +1098,9 @@ async function loadRegister(){
 async function loadScreen(h, l, q){
 	if(l){
 		switch (h) {
+			case `addComment`:
+				await loadAddComment(q[1]);
+				break;
 			case `addEducation`:
 				await loadAddEdu();
 				break;
@@ -1088,9 +1118,6 @@ async function loadScreen(h, l, q){
 				break;
 			case `posts`:
 				await loadPosts();
-				break;
-			case `post`:
-				await loadPost(q[1]);
 				break;
 			case `profile`:
 				await loadProfile(q[1]);
@@ -1283,6 +1310,47 @@ async function processButton(el){
 			window.location.reload();
 		}
 	});
+};
+async function processReact(el){
+	let post = el.closest(`.post`);
+	let postData = post.id.split(`:`);
+	let reactor = c.id;
+	let target = el.getAttribute(`back`);
+	let reactionData = el.getAttribute(`data`).split(`:`);
+
+	let {status, data} = await fetchData({
+		id: reactor,
+		token: c.token,
+		page: `edit`,
+		target,
+		reactionData,
+		postData,
+	});
+
+	if(status){
+		let newLikes = data.likes;
+		let newDislikes = data.dislikes;
+		let dislikeButton = el.parentElement.parentElement.getElementsByClassName(`dislike`)[0];
+		let likeButton = el.parentElement.parentElement.getElementsByClassName(`like`)[0];
+		let currentLikes = likeButton.getAttribute(`data`).split(`:`)[1]
+		let currentDislikes = dislikeButton.getAttribute(`data`).split(`:`)[1];
+
+		likeButton.setAttribute(`data`, likeButton.getAttribute(`data`).replace(currentLikes, newLikes.length));
+		dislikeButton.setAttribute(`data`, dislikeButton.getAttribute(`data`).replace(currentDislikes, newDislikes.length));
+		likeButton.innerHTML = likeButton.innerHTML.replace(currentLikes, newLikes.length);
+		dislikeButton.innerHTML = dislikeButton.innerHTML.replace(currentDislikes, newDislikes.length);
+
+		if(newLikes.includes(reactor)){
+			likeButton.classList.add(`active`);
+			dislikeButton.classList.remove(`active`);
+		}else if(newDislikes.includes(reactor)){
+			dislikeButton.classList.add(`active`);
+			likeButton.classList.remove(`active`);
+		}else{
+			likeButton.classList.remove(`active`);
+			dislikeButton.classList.remove(`active`);
+		}
+	}
 };
 async function removeElements(){
 	let elements = root.children;

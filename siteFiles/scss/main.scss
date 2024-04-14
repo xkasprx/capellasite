@@ -575,6 +575,9 @@ strong {
 }
 
 // Element Class
+.active {
+	color: $winter-blue;
+}
 .avatarDiv {
 	display: flex;
 	justify-content: space-around;
@@ -725,6 +728,47 @@ strong {
 	margin-left: 5px;
 	margin-right: 5px;
 }
+.post {
+	border: solid 3px $winter-blue;
+	border-radius: 15px;
+	display: flex;
+	flex-direction: column;
+	margin-top: 15px;
+	padding: 0 10px 5px 10px;
+}
+.postBottom {
+	display: flex;
+	flex-direction: column;
+}
+.postHeader {
+	display: flex;
+	flex-direction: column;
+}
+.postTop {
+	display: flex;
+	flex-direction: row;
+	a {
+		text-decoration: none;
+		pointer-events: all;
+		h2 {
+			font-size: 2em;
+			font-family: $oblique;
+			color: $winter-blue;
+		}
+		&:hover {
+			h2 {
+				color: $electric-indigo;
+			}
+		}
+	}
+	h5 {
+		color: $pale-purple;
+	}
+	* {
+		margin: 0;
+	}
+}
+
 .profileBio {
 	align-self: center;
 	display: flex;
@@ -776,6 +820,26 @@ strong {
 	flex-direction: column;
 	justify-content: space-around;
 	width: 80%;
+}
+.reactions {
+	display: flex;
+	flex-direction: row;
+	button {
+		a {
+			color: $winter-white !important;
+			i {
+				color: $winter-white;
+			}
+		}
+		&:hover {
+			a {
+				color: $electric-indigo !important;
+				i {
+					color: $electric-indigo;
+				}
+			}
+		}
+	}
 }
 .regloginform {
 	border: solid 2px $electric-indigo;
@@ -852,6 +916,17 @@ strong {
 	&:hover {
 		background-color: $electric-indigo;
 		color: $winter-white;
+	}
+}
+.tinyAvatar {
+	display: flex;
+	justify-content: space-around;
+	width: 85px;
+	margin: 3px 5px 3px 0;
+	img {
+		border: solid 3px $winter-dark-gray;
+		border-radius: 50%;
+		height: 75px;
 	}
 }
 .topSection {

@@ -144,6 +144,64 @@ exports.server = {
 			res.status(200).send();
 		});
 
+		app.post(`/addReact`, async (req, res) => {
+			let data = req.headers.authorization.split(`:`);
+			let info = req.body;
+			let id = data[0];
+			let token = data[1];
+			let success = {status: false, data: null};
+			let msg = ``;
+
+			let {status, user} = await self.f.fetchUser(`id`, id);
+
+			if(status && user.token === token){
+				let {status, post} = await self.f.fetchPost(info.postData[1]);
+
+				if(status){
+					let column = info.reactionData[0];
+					let reactions = JSON.parse(post.reactions);
+					let hasCurrentLike = reactions.likes.includes(id);
+					let hasCurrentDislike = reactions.dislikes.includes(id);
+					
+					if(hasCurrentLike && !hasCurrentDislike){
+						if(column === `likes`){
+							reactions.likes.splice(reactions.likes.indexOf(id), 1);
+						}else{
+							reactions.likes.splice(reactions.likes.indexOf(id), 1);
+							reactions.dislikes.push(id);
+						}
+					}else if(!hasCurrentLike && hasCurrentDislike){
+						if(column === `likes`){
+							reactions.dislikes.splice(reactions.dislikes.indexOf(id), 1);
+							reactions.likes.push(id);
+						}else{
+							reactions.dislikes.splice(reactions.dislikes.indexOf(id), 1);
+						}
+					}else{
+						if(column === `likes`){
+							reactions.likes.push(id);
+						}else{
+							reactions.dislikes.push(id);
+						}
+					}
+
+					let updated = await self.f.addReaction(post.id, reactions);
+
+					success.status = true;
+					success.data = reactions;
+
+					msg = `Reaction:${updated ? `Success` : `Alert:There was an error adding your reaction. If the issue continues please try again at a later time.`}`;
+				}else{
+					msg = `Failed:Alert:There was an error adding your reaction. If the issue continues please try again at a later time.`;
+				}
+			}else{
+				msg = `Failed:Alert:There was an error adding your reaction. If the issue continues please try again at a later time.`;
+			}
+
+			res.statusMessage = msg;
+			res.status(200).send(success);
+		});
+
 		app.post(`/deleteInfo`, async (req, res) => {
 			let info = req.headers.authorization.split(`:`);
 			let data = req.body.data.split(`:`);
@@ -230,6 +288,34 @@ exports.server = {
 
 			res.statusMessage = msg;
 			res.status(200).send(userInfo);
+		});
+
+		app.post(`/getPost`, async (req, res) => {
+			let data = req.headers.authorization.split(`:`);
+			let info = req.body;
+			let id = data[0];
+			let token = data[1];
+			let verify = info.page === `edit` ? true : false;
+			let postInfo = [];
+			let msg = ``;
+
+			let existingUser = await self.f.fetchUser(`id`, id);
+			let verified = verify ? existingUser.user.token === token : true;
+
+			if(existingUser.status && verified){
+				let thisPost = await self.f.fetchPost(info.postID);
+				
+				if(thisPost.status){
+					postInfo = thisPost.post;
+				}
+
+				msg = `Success:Data Retreived`;
+			}else{
+				msg = `Failed:Alert:There was an error retreiving your data, please logout and back in. If the issue continues please try again at a later time.`;
+			}
+
+			res.statusMessage = msg;
+			res.status(200).send(postInfo);
 		});
 
 		app.post(`/getPosts`, async (req, res) => {
@@ -537,6 +623,17 @@ exports.server = {
 					}
 				})
 			});
+		},
+		addReaction: async (postID, data) => {
+			return await new Promise((resolve) => {
+				query(`UPDATE \`posts\` SET \`reactions\` = '${JSON.stringify(data)}' WHERE \`id\` = ${postID}`, (e, r, f) => {
+					if(e){
+						resolve(false);
+					}else{
+						resolve(true);
+					}
+				})
+			})
 		},
 		clearCookie: async (res, title) => {
 			res.clearCookie(title, {
