@@ -212,7 +212,7 @@ async function loadDashboard(){
 	let addExpButton = document.createElement(`button`);
 	let addEduButton = document.createElement(`button`);
 
-	let userInfo = await fetchData({
+	let {user} = await fetchData({
 		id: c.id,
 		token: c.token,
 		target: `/getUser`,
@@ -222,7 +222,7 @@ async function loadDashboard(){
 	section.id = `dashboard`;
 	deleteAccountButton.className = `deleteButton`;
 	pageTitle.innerHTML = `<h1>Dashboard</h1>`;
-	greeting.innerHTML = `<h2>${greetings[Math.floor(Math.random() * greetings.length)]}, ${userInfo.user.firstName ? userInfo.user.firstName : `Member`}.</h2>`;
+	greeting.innerHTML = `<h2>${greetings[Math.floor(Math.random() * greetings.length)]}, ${user.firstName ? user.firstName : `Member`}.</h2>`;
 	experienceSection.innerHTML = `<h2>Experience Credentials</h2>`;
 	educationSection.innerHTML = `<h2>Education Credentials</h2>`;
 	accountManagement.innerHTML = `<h2>Account Management</h2>`;
@@ -252,7 +252,7 @@ async function loadDashboard(){
 		}],
 		data: await(async(a = []) => {
 			let info = c && await fetchData({
-				id: c.id,
+				id: user.id,
 				token: c.token,
 				target: `/getExp`,
 			});
@@ -290,7 +290,7 @@ async function loadDashboard(){
 		}],
 		data: await(async(a = []) => {
 			let info = c && await fetchData({
-				id: c.id,
+				id: user.id,
 				token: c.token,
 				target: `/getEdu`,
 			});
@@ -337,15 +337,60 @@ async function loadDirectory(){
 	let section = document.createElement(`section`);
 	let pageTitle = document.createElement(`div`);
 	let greeting = document.createElement(`div`);
+	let profilesList = document.createElement(`div`);
 
 	section.className = `topSection`;
 	section.id = `directory`;
+	profilesList.id = `profilesList`;
 	pageTitle.innerHTML = `<h1>Developers</h1>`;
 	greeting.innerHTML = `<h2>Browse and connect with developers</h2>`;
 
+	let profiles = await fetchData({
+		id: c.id,
+		token: c.token,
+		page: `view`,
+		target: `/getProfiles`,
+	});
 	
+	if(profiles.error){
+		let notice = document.createElement(`div`);
+
+		notice.id = `notice`;
+		notice.innerHTML = `<h2>Error retreiving profile data, please try again later.</h2>`;
+
+		greeting.appendChild(notice);
+	}else{
+		for(let id in profiles){
+			let profileInfo = profiles[id];
+			let profileDiv = document.createElement(`div`);
+			let avatarDiv = document.createElement(`div`);
+			let avatarImg = document.createElement(`img`);
+			let nameDiv = document.createElement(`div`);
+			let proStatusDiv = document.createElement(`div`);
+			let bioDiv = document.createElement(`div`);
+			let button = document.createElement(`button`);
+
+			avatarDiv.className = `smallAvatar`;
+
+			avatarImg.src = profileInfo.avatar || `../images/icons/icon192.png`;
+			nameDiv.innerHTML = `<h3>${profileInfo.name}</h3>`;
+			proStatusDiv.innerHTML = `<h4>${profileInfo.proStatus}</h4>`;
+			bioDiv.innerHTML = `<p>${profileInfo.bio.substring(0, 100)}${profileInfo.bio.length > 100 ? `...` : ``}</p>`;
+			button.innerHTML = `<a href="#profile?id=${id}"><i class="fa-solid fa-user"></i>  View Profile</a>`;
+
+			avatarDiv.appendChild(avatarImg);
+			profileDiv.appendChild(avatarDiv);
+			profileDiv.appendChild(nameDiv);
+			profileDiv.appendChild(proStatusDiv);
+			profileDiv.appendChild(bioDiv);
+			profileDiv.appendChild(button);
+			profilesList.appendChild(profileDiv);
+		}
+	}
+
 	section.appendChild(pageTitle);
 	section.appendChild(greeting);
+	section.appendChild(profilesList);
 
 	root.appendChild(section);
 };
@@ -596,7 +641,10 @@ async function loadPosts(){
 
 	section.className = `topSection`;
 	section.id = `posts`;
+	inputSection.back = `/addPost`;
 	inputBox.id = `postInput`;
+	inputBox.setAttribute(`rows`, 10);
+	inputBox.placeholder = `What is on your mind?`;
 	inputSection.id = `postInputSection`;
 	pageTitle.innerHTML = `<h1>Posts</h1>`;
 	greeting.innerHTML = `<h2>${greetings[Math.floor(Math.random() * greetings.length)]}, ${user.firstName ? user.firstName : `Member`}.</h2>`;
@@ -605,7 +653,68 @@ async function loadPosts(){
 	submitButton.setAttribute(`submitType`, `newPost`);
 	submitButton.setAttribute(`onclick`, `processButton(this.parentElement);`)
 
-	// add posts to postList
+	let posts = await fetchData({
+		id: c.id,
+		token: c.token,
+		page: `view`,
+		target: `/getPosts`,
+	});
+
+	console.log(posts)
+	if(posts.length){
+		for(let i = 0; i < posts.length; i++){
+			let post = posts[i];
+			let postDiv = document.createElement(`div`);
+			let avatarDiv = document.createElement(`div`);
+			let avatarImg = document.createElement(`img`);
+			let postTitle = document.createElement(`div`);
+			let nameDiv = document.createElement(`div`);
+			let dateTime = document.createElement(`div`);
+			let message = document.createElement(`div`);
+			let reactions = document.createElement(`div`);
+			let likeReact = document.createElement(`button`);
+			let dislikeReact = document.createElement(`button`);
+			let addComment = document.createElement(`button`);
+			let originDate = new Date(post.date).toLocaleString();
+			let prettyDate = await prettyDate2(new Date(originDate), true);
+
+			let likes = (() => {
+				let likesArray = JSON.parse(post.likes);
+				return likesArray.length;
+			})();
+
+			let dislikes = (() => {
+				let dislikesArray = JSON.parse(post.dislikes);
+				return dislikesArray.length;
+			})();
+
+			let comments = (() => {
+				let commentsArray = JSON.parse(post.comments);
+				return commentsArray.length;
+			})();
+
+			avatarDiv.className = `tinyAvatar`;
+			avatarImg.src = post.avatar || `../images/icons/icon192.png`;
+			nameDiv.innerHTML = `<h3>${post.name}</h3>`;
+			dateTime.innerHTML = `<p>${prettyDate} MST</p>`;
+			message.innerHTML = `<h5>${post.text}</h5>`;
+			likeReact.innerHTML = `<i class="fa-solid fa-heart"></i> ${likes}`;
+			dislikeReact.innerHTML = `<i class="fa-solid fa-heart-crack"></i> ${dislikes}`;
+			addComment.innerHTML = `<i class="fa-solid fa-comment"></i> ${comments}`;
+
+			avatarDiv.appendChild(avatarImg);
+			reactions.appendChild(likeReact);
+			reactions.appendChild(dislikeReact);
+			reactions.appendChild(addComment);
+
+			postTitle.appendChild(avatarDiv);
+			postTitle.appendChild(titleD)
+
+			postDiv.appendChild(postTitle);
+			postDiv.appendChild(message);
+			postDiv.appendChild(reactions);
+		}
+	}
 
 	inputSection.appendChild(inputBox);
 	inputSection.appendChild(submitButton);
@@ -618,56 +727,8 @@ async function loadPosts(){
 	root.appendChild(section);
 };
 
-async function loadRegister(){
-	let section = document.createElement(`section`);
-	let formCell = document.createElement(`div`);
-	let formTitle = document.createElement(`h1`);
-	let sectionForm = document.createElement(`form`);
-	let formFirstName = document.createElement(`div`);
-	let formLastName = document.createElement(`div`);
-	let formEmail = document.createElement(`div`);
-	let formPassword = document.createElement(`div`);
-	let formVerify = document.createElement(`div`);
-	let submitButton = document.createElement(`button`);
-	let reminder = document.createElement(`div`);
+async function loadPost(id){
 
-	section.className = `topSection`;
-	sectionForm.id = `registerForm`;
-	sectionForm.back = `/register`;
-	sectionForm.setAttribute(`onsubmit`, `return false;`);
-	formCell.className = `regloginform`;
-	formFirstName.className = `firstNameInput`;
-	formLastName.className = `lastNameInput`;
-	formEmail.className = `emailInput`;
-	formPassword.className = `passInput`;
-	formVerify.className = `passInput`;
-	submitButton.id = `submitButton`;
-	submitButton.textContent = `Submit`;
-	submitButton.setAttribute(`submitType`, `register`);
-	submitButton.setAttribute(`onclick`, `processButton(this.parentElement);`);
-	reminder.className = `regloginReminder`;
-
-	formTitle.innerText = `Register`;
-	formFirstName.innerHTML = `<label for="firstName">First Name</label><input id="firstName">`;
-	formLastName.innerHTML = `<label for="lastName">Last Name</label><input id="lastName">`;
-	formEmail.innerHTML = `<label for="email">Email</label><input id="email" autocomplete="off" type="email" onchange="validateInput(this, this.type);">`;
-	formPassword.innerHTML = `<label for="pass">Password</label><input id="pass" type="password" onchange="validateInput(this, this.type);">`;
-	formVerify.innerHTML = `<label for="passVerify">Verify</label><input id="passverify" type="password" onchange="validateInput(this, this.type);">`;
-	reminder.innerHTML = `<h4>Already have an account? <a href="#login">Login</a></h4>`;
-
-	formCell.appendChild(formTitle);
-	sectionForm.appendChild(formFirstName);
-	sectionForm.appendChild(formLastName);
-	sectionForm.appendChild(formEmail);
-	sectionForm.appendChild(formPassword);
-	sectionForm.appendChild(formVerify);
-	sectionForm.appendChild(submitButton);
-	sectionForm.appendChild(reminder);
-	formCell.appendChild(sectionForm);
-	section.appendChild(formCell);
-	root.appendChild(section);
-
-	setTimeout(() => root.querySelector(`input`).focus(), 100);
 };
 
 async function loadProfile(id){
@@ -955,6 +1016,112 @@ async function loadProfile(id){
 	root.appendChild(section);
 };
 
+async function loadRegister(){
+	let section = document.createElement(`section`);
+	let formCell = document.createElement(`div`);
+	let formTitle = document.createElement(`h1`);
+	let sectionForm = document.createElement(`form`);
+	let formFirstName = document.createElement(`div`);
+	let formLastName = document.createElement(`div`);
+	let formEmail = document.createElement(`div`);
+	let formPassword = document.createElement(`div`);
+	let formVerify = document.createElement(`div`);
+	let submitButton = document.createElement(`button`);
+	let reminder = document.createElement(`div`);
+
+	section.className = `topSection`;
+	sectionForm.id = `registerForm`;
+	sectionForm.back = `/register`;
+	sectionForm.setAttribute(`onsubmit`, `return false;`);
+	formCell.className = `regloginform`;
+	formFirstName.className = `firstNameInput`;
+	formLastName.className = `lastNameInput`;
+	formEmail.className = `emailInput`;
+	formPassword.className = `passInput`;
+	formVerify.className = `passInput`;
+	submitButton.id = `submitButton`;
+	submitButton.textContent = `Submit`;
+	submitButton.setAttribute(`submitType`, `register`);
+	submitButton.setAttribute(`onclick`, `processButton(this.parentElement);`);
+	reminder.className = `regloginReminder`;
+
+	formTitle.innerText = `Register`;
+	formFirstName.innerHTML = `<label for="firstName">First Name</label><input id="firstName">`;
+	formLastName.innerHTML = `<label for="lastName">Last Name</label><input id="lastName">`;
+	formEmail.innerHTML = `<label for="email">Email</label><input id="email" autocomplete="off" type="email" onchange="validateInput(this, this.type);">`;
+	formPassword.innerHTML = `<label for="pass">Password</label><input id="pass" type="password" onchange="validateInput(this, this.type);">`;
+	formVerify.innerHTML = `<label for="passVerify">Verify</label><input id="passverify" type="password" onchange="validateInput(this, this.type);">`;
+	reminder.innerHTML = `<h4>Already have an account? <a href="#login">Login</a></h4>`;
+
+	formCell.appendChild(formTitle);
+	sectionForm.appendChild(formFirstName);
+	sectionForm.appendChild(formLastName);
+	sectionForm.appendChild(formEmail);
+	sectionForm.appendChild(formPassword);
+	sectionForm.appendChild(formVerify);
+	sectionForm.appendChild(submitButton);
+	sectionForm.appendChild(reminder);
+	formCell.appendChild(sectionForm);
+	section.appendChild(formCell);
+	root.appendChild(section);
+
+	setTimeout(() => root.querySelector(`input`).focus(), 100);
+};
+
+async function loadScreen(h, l, q){
+	if(l){
+		switch (h) {
+			case `addEducation`:
+				await loadAddEdu();
+				break;
+			case `addExperience`:
+				await loadAddExp();
+				break;
+			case `directory`:
+				await loadDirectory();
+				break;
+			case `editProfile`:
+				await loadEditProfile();
+				break;
+			case `logout`:
+				await logout();
+				break;
+			case `posts`:
+				await loadPosts();
+				break;
+			case `post`:
+				await loadPost(q[1]);
+				break;
+			case `profile`:
+				await loadProfile(q[1]);
+				break;
+			default:
+				await loadDashboard();
+				location.hash = `#dashboard`;
+				break;
+		}
+	}else{
+		switch (h) {
+			case `forgot`:
+				await loadForgotPass();
+				break;
+			case `home`:
+				await loadHome();
+				break;
+			case `login`:
+				await loadLogin();
+				break;
+			case `register`:
+				await loadRegister();
+				break;
+			default:
+				await loadHome();
+				location.hash = `#home`;
+				break;
+		}
+	}
+};
+
 // Events
 window.onhashchange = async function(){
 	h = location.hash && location.hash.slice(1);
@@ -964,58 +1131,7 @@ window.onhashchange = async function(){
 	h = h.includes(`?`) ? h.split(`?`)[0] : h;
 
 	await removeElements();
-
-	if(l){
-		switch (h) {
-			case `profile`:
-				await loadProfile(q[1]);
-				break;
-			case `directory`:
-				await loadDirectory();
-				break;
-			case `dashboard`:
-				await loadDashboard();
-				break;
-			case `posts`:
-				await loadPosts();
-				break;
-			case `logout`:
-				await logout();
-				break;
-			case `editProfile`:
-				await loadEditProfile();
-				break;
-			case `addEducation`:
-				await loadAddEdu();
-				break;
-			case `addExperience`:
-				await loadAddExp();
-				break;
-			default:
-				await loadDashboard();
-				location.hash = `#dashboard`;
-				break;
-		}
-	}else{
-		switch (h) {
-			case `home`:
-				await loadHome();
-				break;
-			case `register`:
-				await loadRegister();
-				break;
-			case `login`:
-				await loadLogin();
-				break;
-			case `forgot`:
-				await loadForgotPass();
-				break;
-			default:
-				await loadHome();
-				location.hash = `#home`;
-				break;
-		}
-	}
+	await loadScreen(h, l, q);
 };
 
 window.onload = async function(){
@@ -1026,63 +1142,15 @@ window.onload = async function(){
 	h = h.includes(`?`) ? h.split(`?`)[0] : h;
 
 	await removeElements();
-
-	if(l){
-		switch (h) {
-			case `profile`:
-				await loadProfile(q[1]);
-				break;
-			case `directory`:
-				await loadDirectory();
-				break;
-			case `posts`:
-				await loadPosts();
-				break;
-			case `logout`:
-				await logout();
-				break;
-			case `editProfile`:
-				await loadEditProfile();
-				break;
-			case `addEducation`:
-				await loadAddEdu();
-				break;
-			case `addExperience`:
-				await loadAddExp();
-				break;
-			default:
-				await loadDashboard();
-				location.hash = `#dashboard`;
-				break;
-		}
-	}else{
-		switch (h) {
-			case `home`:
-				await loadHome();
-				break;
-			case `register`:
-				await loadRegister();
-				break;
-			case `login`:
-				await loadLogin();
-				break;
-			case `forgot`:
-				await loadForgotPass();
-				break;
-			default:
-				await loadHome();
-				location.hash = `#home`;
-				break;
-		}
-	}
+	await loadScreen(h, l, q);
 };
-
+	
 // Utilities
 async function deleteInfo(data){
 	return await fetch(`/deleteInfo`, {
 		headers: {
-			'Content-Type': `application/json`,
-			'Authorization': `${c.id}:${c.token}`,
+		'Content-Type': `application/json`,
+		'Authorization': `${c.id}:${c.token}`,
 		},
 		method: `POST`,
 		mode: `cors`,
@@ -1124,6 +1192,22 @@ async function prettyDate(e){
 	d = d < 10 ? `0${d}` : d;
 
 	return `${y}-${m}-${d}`;
+};
+async function prettyDate2(e, t){
+	e = e || new Date();
+
+	let y = e.getFullYear();
+	let m = e.getMonth();
+	m = m < 9 ? `0${m + 1}` : (m + 1);
+	let d = e.getDate();
+	d = d < 10 ? `0${d}` : d;
+	let h = e.getHours();
+	h = h > 12 ? h - 12 : h;
+	let i = e.getMinutes();
+	i = i < 10 ? '0' + i : i;
+	let a = e.getHours() >= 12 ? 'PM' : 'AM';
+
+	return `${m}-${d}-${y}${t ? ` ${h}:${i} ${a}` : ``}`;
 };
 async function processButton(el){
 	let target = el.back;
@@ -1195,6 +1279,8 @@ async function processButton(el){
 			window.location.href = `${url}/#profile?id=${c.id}`;
 		}else if(message.startsWith(`Dashboard`)){
 			window.location.href = `${url}/#dashboard`;
+		}else if(message.startsWith(`Post`)){
+			window.location.reload();
 		}
 	});
 };

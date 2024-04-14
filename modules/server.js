@@ -57,6 +57,29 @@ exports.server = {
 			next();
 		});
 
+		app.post(`/addComment`, async (req, res) => {
+			let data = req.headers.authorization.split(`:`);
+			let info = req.body;
+			let id = data[0];
+			let token = data[1];
+			let post = info.post;
+			let comment = info.commentInput;
+			let msg = ``;
+
+			let {status, user} = await self.f.fetchUser(`id`, id);
+			
+			if(status && user.token === token){
+				await self.f.addComment(post, comment, user);
+				
+				msg = `Post:Comment Saved`;
+			}else{
+				msg = `Failed:Alert:There was an error adding your post. If the issue continues please try again at a later time.`;
+			}
+
+			res.statusMessage = msg;
+			res.status(200).send();
+		});
+
 		app.post(`/addEdu`, async (req, res) => {
 			let info = req.headers.authorization.split(`:`);
 			let data = req.body;
@@ -93,6 +116,28 @@ exports.server = {
 				msg = `Dashboard:Alert:Experience added to profile`;
 			}else{
 				msg = `Failed:Alert:An error occured adding this experience to your profile. Please try again. If the issue persists, please try again later.`;
+			}
+
+			res.statusMessage = msg;
+			res.status(200).send();
+		});
+
+		app.post(`/addPost`, async (req, res) => {
+			let data = req.headers.authorization.split(`:`);
+			let info = req.body;
+			let id = data[0];
+			let token = data[1];
+			let post = info.postInput;
+			let msg = ``;
+
+			let {status, user} = await self.f.fetchUser(`id`, id);
+			
+			if(status && user.token === token){
+				await self.f.addPost(post, user);
+				
+				msg = `Post:Post Saved`;
+			}else{
+				msg = `Failed:Alert:There was an error adding your post. If the issue continues please try again at a later time.`;
 			}
 
 			res.statusMessage = msg;
@@ -149,7 +194,7 @@ exports.server = {
 			let userInfo = {};
 			let msg = ``;
 
-			let existingUser = await self.f.fetchExisting(`id`, id);
+			let existingUser = await self.f.fetchUser(`id`, id);
 			let verified = verify ? existingUser.user.token === token : true;
 
 			if(existingUser.status && verified){
@@ -187,13 +232,83 @@ exports.server = {
 			res.status(200).send(userInfo);
 		});
 
+		app.post(`/getPosts`, async (req, res) => {
+			let data = req.headers.authorization.split(`:`);
+			let info = req.body;
+			let id = data[0];
+			let token = data[1];
+			let verify = info.page === `edit` ? true : false;
+			let postsInfo = [];
+			let msg = ``;
+
+			let existingUser = await self.f.fetchUser(`id`, id);
+			let verified = verify ? existingUser.user.token === token : true;
+
+			if(existingUser.status && verified){
+				let allPosts = await self.f.fetchPosts();
+				
+				if(allPosts.status){
+					postsInfo = allPosts.posts;
+				}
+
+				msg = `Success:Data Retreived`;
+			}else{
+				msg = `Failed:Alert:There was an error retreiving your data, please logout and back in. If the issue continues please try again at a later time.`;
+			}
+
+			res.statusMessage = msg;
+			res.status(200).send(postsInfo);
+		});
+
+		app.post(`/getProfiles`, async (req, res) => {
+			let data = req.headers.authorization.split(`:`);
+			let info = req.body;
+			let id = data[0];
+			let token = data[1];
+			let verify = info.page === `edit` ? true : false;
+			let profilesInfo = {};
+			let msg = ``;
+
+			let existingUser = await self.f.fetchUser(`id`, id);
+			let verified = verify ? existingUser.user.token === token : true;
+
+			if(existingUser.status && verified){
+				let userInfo = await self.f.fetchUsers();
+
+				if(userInfo.users.length){
+					for(let i = 0; i < userInfo.users.length; i++){
+						let user = userInfo.users[i];
+						let userID = user.id;
+
+						let profileInfo = await self.f.fetchProfile(userID);
+
+						profilesInfo[userID] = {
+							name: `${user.firstName} ${user.lastName}`,
+							avatar: user.avatar,
+							proStatus: profileInfo.proStatus,
+							bio: profileInfo.bio
+						}
+					}
+				}else{
+					profilesInfo[`error`] = true;
+				}
+
+				msg = `Success:Data Retreived`;
+			}else{
+				msg = `Failed:Alert:There was an error retreiving your data. If the issue continues please try again at a later time.`;
+			}
+
+			res.statusMessage = msg;
+			res.status(200).send(profilesInfo);
+		});
+
 		app.post(`/getUser`, async (req, res) => {
 			let data = req.body;
 			let id = data.id;
 			let token = data.token;
 			let msg = ``;
 
-			let existingUser = await self.f.fetchExisting(`id`, id);
+			let existingUser = await self.f.fetchUser(`id`, id);
 
 			if(existingUser && existingUser.token === token){
 				msg = `Success:Data Retreived`;
@@ -211,7 +326,7 @@ exports.server = {
 			let password = data.pass;
 			let msg = ``;
 
-			let existing = await self.f.fetchExisting(`email`, email);
+			let existing = await self.f.fetchUser(`email`, email);
 
 			if(existing.status === `failed`){
 				msg = `Failed:Alert:An error occurred while attempting to login, please try again. If the issue persists, please try again at a later time.`;
@@ -266,7 +381,7 @@ exports.server = {
 			if(pass !== passverify){
 				msg = `Failed:Alert:Passwords do not match, please correct before continuing.`;
 			}else{
-				let existing = await self.f.fetchExisting(`email`, email);
+				let existing = await self.f.fetchUser(`email`, email);
 
 				if(existing.status === true){
 					msg = `Register:Alert:This email address is already registered. Please login to continue.`;
@@ -381,6 +496,48 @@ exports.server = {
 				})
 			});
 		},
+		addComment: async (id, comment, user) => {
+			let post = await self.f.fetchPost(id);
+			let existingComments = JSON.parse(post.comments);
+			let commentID = existingComments.length;
+
+			existingComments.push({
+				id: commentID,
+				comment,
+				user,
+				date: new Date().getTime(),
+			})
+
+			let newComments = JSON.stringify(existingComments);
+
+			return await new Promise(async (resolve) => {
+				query(`UPDATE \`posts\` SET \`comments\` = "${newComments}" WHERE \`id\` = ${id}`, postInfo, (e, r, f) => {
+					if(e){
+						resolve(false);
+					}else{
+						resolve({status:true, id:r.insertId});
+					}
+				})
+			});
+		},
+		addPost: async (post, user) => {
+			let postInfo = {
+				user: user.id,
+				text: post,
+				name: `${user.firstName} ${user.lastName}`,
+				avatar: user.avatar,
+			};
+
+			return await new Promise(async (resolve) => {
+				query(`INSERT INTO \`posts\` SET ?`, postInfo, (e, r, f) => {
+					if(e){
+						resolve(false);
+					}else{
+						resolve({status:true, id:r.insertId});
+					}
+				})
+			});
+		},
 		clearCookie: async (res, title) => {
 			res.clearCookie(title, {
 				path: `/`,
@@ -432,14 +589,29 @@ exports.server = {
 				});
 			});
 		},
-		fetchExisting: async (column, data) => {
+		fetchPost: async (id) => {
 			return await new Promise(async (resolve) => {
-				query(`SELECT * FROM \`user\` WHERE \`${column}\` = "${data}"`, (e, r, f) => {
+				query(`SELECT * FROM \`posts\` WHERE \`id\` = ${id}`, (e, r, f) => {
 					if(e){
 						resolve({status: `failed`});
 					}else{
 						if(r && r.length){
-							resolve({status: true, user: r[0]});
+							resolve({status: true, post: r[0]});
+						}else{
+							resolve({status: false});
+						}
+					}
+				});
+			});
+		},
+		fetchPosts: async () => {
+			return await new Promise(async (resolve) => {
+				query(`SELECT * FROM \`posts\``, (e, r, f) => {
+					if(e){
+						resolve({status: `failed`});
+					}else{
+						if(r && r.length){
+							resolve({status: true, posts: r});
 						}else{
 							resolve({status: false});
 						}
@@ -472,6 +644,38 @@ exports.server = {
 							resolve(r[0]);
 						}else{
 							resolve(false);
+						}
+					}
+				});
+			});
+		},
+		fetchUser: async (column, data) => {
+			let param = typeof data === `string` ? `"${data}"` : data;
+
+			return await new Promise(async (resolve) => {
+				query(`SELECT * FROM \`user\` WHERE \`${column}\` = ${param}`, (e, r, f) => {
+					if(e){
+						resolve({status: `failed`});
+					}else{
+						if(r && r.length){
+							resolve({status: true, user: r[0]});
+						}else{
+							resolve({status: false});
+						}
+					}
+				});
+			});
+		},
+		fetchUsers: async () => {
+			return await new Promise(async (resolve) => {
+				query(`SELECT * FROM \`user\``, (e, r, f) => {
+					if(e){
+						resolve({status: `failed`});
+					}else{
+						if(r && r.length){
+							resolve({status: true, users: r});
+						}else{
+							resolve({status: false});
 						}
 					}
 				});

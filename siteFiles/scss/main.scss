@@ -301,14 +301,14 @@ strong {
 }
 #directory {
 	button {
+		background-color: $electric-indigo;
 		a {
-			background-color: $pale-purple;
-			color: $winter-blue;
+			color: $winter-white;
 			text-decoration: none;
 		}
 		&:hover {
+			background-color: $winter-blue;
 			a {
-				background-color: $winter-blue;
 				color: $electric-indigo;
 			}
 		}
@@ -438,6 +438,11 @@ strong {
 		}
 	}
 }
+#notice {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
 #postInputSection {
 	display: flex;
 	flex-direction: column;
@@ -445,6 +450,15 @@ strong {
 		margin-top: 10px;
 		width: 200px;
 	}
+}
+#postInput {
+	background-color: $winter-light-gray;
+	border-radius: 5px;
+	box-sizing: border-box;
+	color: $winter-blue;
+	margin-bottom: auto;
+	margin-top: auto;
+	pointer-events: all;
 }
 #posts {
 	button {
@@ -491,6 +505,35 @@ strong {
 	margin-left: auto;
 	margin-right: auto;
 	width: 80%;
+}
+#profilesList {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-gap: 25px;	
+	grid-template-rows: auto;
+	> div {
+		border: solid 3px $winter-blue;
+		border-radius: 15px;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+	}
+	div {
+		h3 {
+			color: $electric-indigo;
+			font-family: $oblique;
+			font-size: x-large;
+		}
+		h4 {
+			color: $winter-blue;
+		}
+		p {
+			height: 75px;
+		}
+		* {
+			margin: 3px;
+		}
+	}
 }
 #registerForm {
 	display: flex;
@@ -794,6 +837,15 @@ strong {
 			color: $electric-indigo;
 			text-decoration: underline;
 		}
+	}
+}
+.smallAvatar {
+	display: flex;
+	justify-content: space-around;
+	img {
+		border: solid 3px $winter-dark-gray;
+		border-radius: 50%;
+		width: 75px;
 	}
 }
 .starsButton {
