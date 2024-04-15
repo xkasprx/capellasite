@@ -72,13 +72,122 @@ async function loadAddComment(id){
 		postID: id,
 	});
 
-	/*
-		add Back Button
-		display Post
-		add textarea with submit button
-		add list of other comments
-		reload page after adding
-	*/
+	let section = document.createElement(`section`);
+	let topButtons = document.createElement(`div`);
+	let backButton = document.createElement(`button`);
+	let postDiv = document.createElement(`div`);
+	let postTop = document.createElement(`div`);
+	let avatarDiv = document.createElement(`div`);
+	let postHeader = document.createElement(`div`);
+	let nameDiv = document.createElement(`div`);
+	let dateTime = document.createElement(`div`);
+	let postBottom = document.createElement(`div`);
+	let message = document.createElement(`div`);
+	let inputSection = document.createElement(`div`);
+	let commentList = document.createElement(`div`);
+	let inputBox = document.createElement(`textarea`);
+	let submitButton = document.createElement(`button`);
+	let originDate = new Date(post.date).toLocaleString();
+	let prettyDate = await prettyDate2(new Date(originDate), true);
+
+	section.className = `topSection`;
+	section.id = `comments`;
+	postDiv.className = `post`;
+	postDiv.id = `${post.user}:${post.id}`;
+	postTop.className = `postTop`;
+	postBottom.className = `postBottom`;
+	postHeader.className = `postHeader`;
+	avatarDiv.className = `tinyAvatar`;
+
+	avatarDiv.innerHTML = `<a href="#profile?id=${post.user}"><img src="${post.avatar || `../images/icons/icon192.png`}"></a>`;
+	nameDiv.innerHTML = `<a href="#profile?id=${post.user}"><h2>${post.name}</h2></a>`;
+	dateTime.innerHTML = `<h5>Posted ${prettyDate} MST</h5>`;
+	message.innerHTML = `<p>${post.text}</p>`;
+	backButton.innerHTML = `<a>< Back</a>`;
+	backButton.setAttribute(`onclick`, `history.back();`);
+	inputSection.back = `/addComment`;
+	inputBox.className = `commentInput`;
+	inputBox.id = `comment:${post.id}`;
+	inputBox.setAttribute(`rows`, 10);
+	inputBox.placeholder = `What is on your mind?`;
+	inputSection.id = `commentInputSection`;
+	submitButton.id = `submitButton`;
+	submitButton.textContent = `Add Comment`;
+	submitButton.setAttribute(`submitType`, `newComment`);
+	submitButton.setAttribute(`onclick`, `processButton(this.parentElement);`);
+
+	let comments = JSON.parse(post.comments);
+
+	inputSection.appendChild(inputBox);
+	inputSection.appendChild(submitButton);
+
+	topButtons.appendChild(backButton);
+
+	postHeader.appendChild(nameDiv);
+	postHeader.appendChild(dateTime);
+
+	postTop.appendChild(avatarDiv);
+	postTop.appendChild(postHeader);
+
+	postBottom.appendChild(message);
+
+	postDiv.appendChild(postTop);
+	postDiv.appendChild(postBottom);
+
+	if(Object.keys(comments).length){
+		for(let k in comments){
+			let comment = comments[k];
+			let commentDiv = document.createElement(`div`);
+			let commentTop = document.createElement(`div`);
+			let commentAvatarDiv = document.createElement(`div`);
+			let commentHeader = document.createElement(`div`);
+			let commentnameDiv = document.createElement(`div`);
+			let commentDateTime = document.createElement(`div`);
+			let commentBottom = document.createElement(`div`);
+			let commentMessage = document.createElement(`div`);
+			let commentOriginDate = new Date(Math.floor(Math.round(comment.date))).toLocaleString();
+			let commentPrettyDate = await prettyDate2(new Date(commentOriginDate), true);
+
+			let userInfo = await fetchData({
+				id: comment.authorID,
+				token: c.token,
+				page: `view`,
+				target: `/getInfo`,
+			});
+
+			commentDiv.className = `comment`;
+			commentDiv.id = `${userInfo.id}:${k}`;
+			commentTop.className = `commentTop`;
+			commentBottom.className = `commentBottom`;
+			commentHeader.className = `commentHeader`;
+			commentAvatarDiv.className = `tinyAvatar`;
+
+			commentAvatarDiv.innerHTML = `<a href="#profile?id=${userInfo.id}"><img src="${userInfo.avatar || `../images/icons/icon192.png`}"></a>`;
+			commentnameDiv.innerHTML = `<a href="#profile?id=${userInfo.id}"><h2>${comment.author}</h2></a>`;
+			commentDateTime.innerHTML = `<h5>Posted ${commentPrettyDate} MST</h5>`;
+			commentMessage.innerHTML = `<p>${comment.text}</p>`;
+
+			commentHeader.appendChild(commentnameDiv);
+			commentHeader.appendChild(commentDateTime);
+
+			commentTop.appendChild(commentAvatarDiv);
+			commentTop.appendChild(commentHeader);
+
+			commentBottom.appendChild(commentMessage);
+
+			commentDiv.appendChild(commentTop);
+			commentDiv.appendChild(commentBottom);
+
+			commentList.appendChild(commentDiv);
+		}
+	}
+
+	section.appendChild(topButtons);
+	section.appendChild(postDiv);
+	section.appendChild(inputSection);
+	section.appendChild(commentList);
+
+	root.appendChild(section);
 };
 
 async function loadAddEdu(){
@@ -725,7 +834,7 @@ async function loadPosts(){
 			message.innerHTML = `<p>${post.text}</p>`;
 			likeReact.innerHTML = `<button back="/addReact" data="likes:${likes.length}" onclick="processReact(this);" class="like${likes.includes(c.id) ? ` active` : ``}"><i class="fa-solid fa-heart"></i> ${likes.length}</button>`;
 			dislikeReact.innerHTML = `<button back="/addReact" data="dislikes:${dislikes.length}" onclick="processReact(this);" class="dislike${dislikes.includes(c.id) ? ` active` : ``}"><i class="fa-solid fa-heart-crack"></i> ${dislikes.length}</button>`;
-			addComment.innerHTML = `<button><a href="#addComment?id=${post.id}"><i class="fa-solid fa-comment"></i> ${comments}</a></button>`;
+			addComment.innerHTML = `<a href="#addComment?id=${post.id}"><button><i class="fa-solid fa-comment"></i> ${comments}</button></a>`;
 
 			postHeader.appendChild(nameDiv);
 			postHeader.appendChild(dateTime);
@@ -1307,6 +1416,8 @@ async function processButton(el){
 		}else if(message.startsWith(`Dashboard`)){
 			window.location.href = `${url}/#dashboard`;
 		}else if(message.startsWith(`Post`)){
+			window.location.reload();
+		}else if(message.startsWith(`Comment`)){
 			window.location.reload();
 		}
 	});

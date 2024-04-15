@@ -62,22 +62,24 @@ exports.server = {
 			let info = req.body;
 			let id = data[0];
 			let token = data[1];
-			let post = info.post;
-			let comment = info.commentInput;
+			let key = Object.keys(info);
+			let post = key[0].split(`:`)[1];
+			let comment = info[key];
+			let updated = false;
 			let msg = ``;
 
 			let {status, user} = await self.f.fetchUser(`id`, id);
 			
 			if(status && user.token === token){
-				await self.f.addComment(post, comment, user);
-				
-				msg = `Post:Comment Saved`;
+				updated = await self.f.addComment(post, comment, user);
+
+				msg = `Comment:${updated ? `Comment Saved` : `Alert:There was an error adding your comment. If the issue continues please try again at a later time.`}`;
 			}else{
-				msg = `Failed:Alert:There was an error adding your post. If the issue continues please try again at a later time.`;
+				msg = `Failed:Alert:There was an error adding your comment. If the issue continues please try again at a later time.`;
 			}
 
 			res.statusMessage = msg;
-			res.status(200).send();
+			res.status(200).send(updated);
 		});
 
 		app.post(`/addEdu`, async (req, res) => {
@@ -583,28 +585,31 @@ exports.server = {
 			});
 		},
 		addComment: async (id, comment, user) => {
-			let post = await self.f.fetchPost(id);
-			let existingComments = JSON.parse(post.comments);
-			let commentID = existingComments.length;
+			let {status, post} = await self.f.fetchPost(id);
 
-			existingComments.push({
-				id: commentID,
-				comment,
-				user,
-				date: new Date().getTime(),
-			})
-
-			let newComments = JSON.stringify(existingComments);
-
-			return await new Promise(async (resolve) => {
-				query(`UPDATE \`posts\` SET \`comments\` = "${newComments}" WHERE \`id\` = ${id}`, postInfo, (e, r, f) => {
-					if(e){
-						resolve(false);
-					}else{
-						resolve({status:true, id:r.insertId});
-					}
-				})
-			});
+			if(status){
+				let existingComments = JSON.parse(post.comments);
+				let commentID = Object.keys(existingComments).length + 1;
+	
+				existingComments[commentID] = {
+					author: `${user.firstName} ${user.lastName}`,
+					authorID: user.id,
+					text: comment,
+					date: `${new Date().getTime()}`,
+				};
+				
+				let newComments = JSON.stringify(existingComments);
+	
+				return await new Promise(async (resolve) => {
+					query(`UPDATE \`posts\` SET \`comments\` = '${newComments}' WHERE \`id\` = ${id}`, (e, r, f) => {
+						if(e){
+							resolve(false);
+						}else{
+							resolve(true);
+						}
+					})
+				});
+			}
 		},
 		addPost: async (post, user) => {
 			let postInfo = {
