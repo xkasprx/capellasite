@@ -89,6 +89,7 @@ async function loadAddComment(id){
 	let submitButton = document.createElement(`button`);
 	let originDate = new Date(post.date).toLocaleString();
 	let prettyDate = await prettyDate2(new Date(originDate), true);
+	let comments = JSON.parse(post.comments);
 
 	section.className = `topSection`;
 	section.id = `comments`;
@@ -99,8 +100,15 @@ async function loadAddComment(id){
 	postHeader.className = `postHeader`;
 	avatarDiv.className = `tinyAvatar`;
 
-	avatarDiv.innerHTML = `<a href="#profile?id=${post.user}"><img src="${post.avatar || `../images/icons/icon192.png`}"></a>`;
-	nameDiv.innerHTML = `<a href="#profile?id=${post.user}"><h2>${post.name}</h2></a>`;
+	let authorInfo = await fetchData({
+		id: post.user,
+		token: c.token,
+		page: `view`,
+		target: `/getInfo`,
+	});
+
+	avatarDiv.innerHTML = `<a href="#profile?id=${authorInfo.id}"><img src="${authorInfo.avatar || `../images/icons/icon192.png`}"></a>`;
+	nameDiv.innerHTML = `<a href="#profile?id=${authorInfo.id}"><h2>${post.name}</h2></a>`;
 	dateTime.innerHTML = `<h5>Posted ${prettyDate} MST</h5>`;
 	message.innerHTML = `<p>${post.text}</p>`;
 	backButton.innerHTML = `<a>< Back</a>`;
@@ -115,8 +123,6 @@ async function loadAddComment(id){
 	submitButton.textContent = `Add Comment`;
 	submitButton.setAttribute(`submitType`, `newComment`);
 	submitButton.setAttribute(`onclick`, `processButton(this.parentElement);`);
-
-	let comments = JSON.parse(post.comments);
 
 	inputSection.appendChild(inputBox);
 	inputSection.appendChild(submitButton);
@@ -820,6 +826,13 @@ async function loadPosts(){
 				return Object.keys(commentsArray).length;
 			})();
 
+			let authorInfo = await fetchData({
+				id: post.user,
+				token: c.token,
+				page: `view`,
+				target: `/getInfo`,
+			});
+
 			postDiv.className = `post`;
 			postDiv.id = `${post.user}:${post.id}`;
 			postTop.className = `postTop`;
@@ -828,8 +841,8 @@ async function loadPosts(){
 			avatarDiv.className = `tinyAvatar`;
 			reactions.className = `reactions`;
 
-			avatarDiv.innerHTML = `<a href="#profile?id=${post.user}"><img src="${post.avatar || `../images/icons/icon192.png`}"></a>`;
-			nameDiv.innerHTML = `<a href="#profile?id=${post.user}"><h2>${post.name}</h2></a>`;
+			avatarDiv.innerHTML = `<a href="#profile?id=${authorInfo.id}"><img src="${authorInfo.avatar || `../images/icons/icon192.png`}"></a>`;
+			nameDiv.innerHTML = `<a href="#profile?id=${authorInfo.id}"><h2>${post.name}</h2></a>`;
 			dateTime.innerHTML = `<h5>Posted ${prettyDate} MST</h5>`;
 			message.innerHTML = `<p>${post.text}</p>`;
 			likeReact.innerHTML = `<button back="/addReact" data="likes:${likes.length}" onclick="processReact(this);" class="like${likes.includes(c.id) ? ` active` : ``}"><i class="fa-solid fa-heart"></i> ${likes.length}</button>`;

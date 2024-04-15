@@ -616,7 +616,6 @@ exports.server = {
 				user: user.id,
 				text: post,
 				name: `${user.firstName} ${user.lastName}`,
-				avatar: user.avatar,
 			};
 
 			return await new Promise(async (resolve) => {
