@@ -22,7 +22,7 @@
     "express": "^4.19.2",
     "gridjs": "^6.2.0",
     "javascript-obfuscator": "^4.1.0",
-    "mysql2": "^3.9.4",
+    "mysql2": "^3.9.7",
     "sass": "^1.75.0"
   }
 }
