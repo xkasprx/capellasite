@@ -109,7 +109,7 @@ async function loadAddComment(id){
 
 	avatarDiv.innerHTML = `<a href="#profile?id=${authorInfo.id}"><img src="${authorInfo.avatar || `../images/icons/icon192.png`}"></a>`;
 	nameDiv.innerHTML = `<a href="#profile?id=${authorInfo.id}"><h2>${post.name}</h2></a>`;
-	dateTime.innerHTML = `<h5>Posted ${prettyDate} MST</h5>`;
+	dateTime.innerHTML = `<h5>Posted ${prettyDate} Central</h5>`;
 	message.innerHTML = `<p>${post.text}</p>`;
 	backButton.innerHTML = `<a>< Back</a>`;
 	backButton.setAttribute(`onclick`, `history.back();`);
@@ -170,7 +170,7 @@ async function loadAddComment(id){
 
 			commentAvatarDiv.innerHTML = `<a href="#profile?id=${userInfo.id}"><img src="${userInfo.avatar || `../images/icons/icon192.png`}"></a>`;
 			commentnameDiv.innerHTML = `<a href="#profile?id=${userInfo.id}"><h2>${comment.author}</h2></a>`;
-			commentDateTime.innerHTML = `<h5>Posted ${commentPrettyDate} MST</h5>`;
+			commentDateTime.innerHTML = `<h5>Posted ${commentPrettyDate} Central</h5>`;
 			commentMessage.innerHTML = `<p>${comment.text}</p>`;
 
 			commentHeader.appendChild(commentnameDiv);
@@ -843,7 +843,7 @@ async function loadPosts(){
 
 			avatarDiv.innerHTML = `<a href="#profile?id=${post.user}"><img src="${authorInfo.avatar || `../images/icons/icon192.png`}"></a>`;
 			nameDiv.innerHTML = `<a href="#profile?id=${authorInfo.id}"><h2>${post.name}</h2></a>`;
-			dateTime.innerHTML = `<h5>Posted ${prettyDate} MST</h5>`;
+			dateTime.innerHTML = `<h5>Posted ${prettyDate} Central</h5>`;
 			message.innerHTML = `<p>${post.text}</p>`;
 			likeReact.innerHTML = `<button back="/addReact" data="likes:${likes.length}" onclick="processReact(this);" class="like${likes.includes(c.id) ? ` active` : ``}"><i class="fa-solid fa-heart"></i> ${likes.length}</button>`;
 			dislikeReact.innerHTML = `<button back="/addReact" data="dislikes:${dislikes.length}" onclick="processReact(this);" class="dislike${dislikes.includes(c.id) ? ` active` : ``}"><i class="fa-solid fa-heart-crack"></i> ${dislikes.length}</button>`;
