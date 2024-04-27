@@ -1,8 +1,6 @@
--- Dumping database structure for capella
 CREATE DATABASE IF NOT EXISTS `capella` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin */;
 USE `capella`;
 
--- Dumping structure for table capella.education
 CREATE TABLE IF NOT EXISTS `education` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` int(11) DEFAULT NULL,
@@ -13,11 +11,10 @@ CREATE TABLE IF NOT EXISTS `education` (
   `current` tinyint(4) DEFAULT 0,
   `to` varchar(50) DEFAULT NULL,
   `description` text DEFAULT NULL,
-  `date` varchar(50) DEFAULT current_timestamp(),
+  `date` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Dumping structure for table capella.experience
 CREATE TABLE IF NOT EXISTS `experience` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` int(11) DEFAULT NULL,
@@ -28,13 +25,21 @@ CREATE TABLE IF NOT EXISTS `experience` (
   `current` tinyint(4) DEFAULT 0,
   `to` varchar(50) DEFAULT NULL,
   `description` text DEFAULT NULL,
-  `date` varchar(50) DEFAULT current_timestamp(),
+  `date` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Database table for posts to be created later
+CREATE TABLE IF NOT EXISTS `posts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` int(11) DEFAULT 0,
+  `text` text DEFAULT NULL,
+  `name` varchar(50) DEFAULT '',
+  `reactions` varchar(200) DEFAULT '{"likes": [],"dislikes":[]}',
+  `comments` text DEFAULT '{}',
+  `date` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Dumping structure for table capella.profiles
 CREATE TABLE IF NOT EXISTS `profiles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` int(11) DEFAULT NULL,
@@ -44,12 +49,11 @@ CREATE TABLE IF NOT EXISTS `profiles` (
   `proStatus` varchar(50) DEFAULT NULL,
   `skills` text DEFAULT NULL,
   `bio` text DEFAULT NULL,
-  `date` varchar(50) DEFAULT current_timestamp(),
+  `date` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `user` (`user`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Dumping structure for table capella.social
 CREATE TABLE IF NOT EXISTS `social` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` int(11) DEFAULT NULL,
@@ -59,12 +63,11 @@ CREATE TABLE IF NOT EXISTS `social` (
   `linkedin` varchar(200) DEFAULT NULL,
   `youtube` varchar(200) DEFAULT NULL,
   `instagram` varchar(200) DEFAULT NULL,
-  `date` varchar(50) DEFAULT current_timestamp(),
+  `date` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `user` (`user`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Dumping structure for table capella.user
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstName` varchar(50) DEFAULT NULL,
@@ -73,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(100) DEFAULT NULL,
   `token` varchar(100) DEFAULT NULL,
   `avatar` varchar(200) DEFAULT NULL,
-  `date` varchar(50) DEFAULT current_timestamp(),
+  `date` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
