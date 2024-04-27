@@ -841,7 +841,7 @@ async function loadPosts(){
 			avatarDiv.className = `tinyAvatar`;
 			reactions.className = `reactions`;
 
-			avatarDiv.innerHTML = `<a href="#profile?id=${authorInfo.id}"><img src="${authorInfo.avatar || `../images/icons/icon192.png`}"></a>`;
+			avatarDiv.innerHTML = `<a href="#profile?id=${post.user}"><img src="${authorInfo.avatar || `../images/icons/icon192.png`}"></a>`;
 			nameDiv.innerHTML = `<a href="#profile?id=${authorInfo.id}"><h2>${post.name}</h2></a>`;
 			dateTime.innerHTML = `<h5>Posted ${prettyDate} MST</h5>`;
 			message.innerHTML = `<p>${post.text}</p>`;
