@@ -21,6 +21,7 @@
     "cookie-parser": "^1.4.6",
     "express": "^4.19.2",
     "gridjs": "^6.2.0",
+    "ip": "^2.0.1",
     "javascript-obfuscator": "^4.1.0",
     "mysql2": "^3.9.7",
     "sass": "^1.75.0"

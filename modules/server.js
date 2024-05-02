@@ -574,7 +574,7 @@ exports.server = {
 		});
 
 		app.post(`/log`, async (req, res) => {
-			let ip = req.headers['x-forwarded-for']; 
+			let ip = ip.address(); 
 			let data = req.body;
 
 			let info = {
