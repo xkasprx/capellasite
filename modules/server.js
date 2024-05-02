@@ -578,7 +578,7 @@ exports.server = {
 			let data = req.body;
 
 			let info = {
-				ipAddr,
+				ip: ipAddr,
 				href: data.location.href,
 				origin: data.location.origin,
 			}
