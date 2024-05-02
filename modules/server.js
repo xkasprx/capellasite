@@ -1,4 +1,4 @@
-let scripts, query, config, bcrypt, bodyParser, cookieParser, express, fs, https, path, util, port, domain, self;
+let scripts, query, config, bcrypt, bodyParser, cookieParser, express, fs, https,ip, path, util, port, domain, self;
 
 exports.server = {
 	init: async function(s){
@@ -17,6 +17,7 @@ exports.server = {
 		express = scripts.packages.express;
 		fs = scripts.packages.fs;
 		https = scripts.packages.https;
+		ip = scripts.packages.ip;
 		path = scripts.packages.path;
 
 		// Utilities

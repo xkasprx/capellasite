@@ -14,6 +14,7 @@ const express = require(`express`);
 const fs = require(`fs`);
 const grid = require(`gridjs`);
 const https = require(`https`);
+const ip = require('ip');
 const jso = require(`javascript-obfuscator`);
 const mysql = require(`mysql2`);
 const path = require(`path`);
@@ -39,6 +40,7 @@ const scripts = {
 		fs,
 		grid,
 		https,
+		ip,
 		mysql,
 		path,
 	},
