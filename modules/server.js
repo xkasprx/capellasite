@@ -574,11 +574,11 @@ exports.server = {
 		});
 
 		app.post(`/log`, async (req, res) => {
-			let ip = ip.address(); 
+			let ipAddr = ip.address(); 
 			let data = req.body;
 
 			let info = {
-				ip,
+				ipAddr,
 				href: data.location.href,
 				origin: data.location.origin,
 			}
