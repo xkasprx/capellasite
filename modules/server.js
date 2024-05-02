@@ -571,6 +571,21 @@ exports.server = {
 			res.statusMessage = msg;
 			res.status(200).send(verified);
 		});
+
+		app.post(`/log`, async (req, res) => {
+			let ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
+			let data = req.body;
+
+			let info = {
+				ip,
+				href: data.location.href,
+				origin: data.location.origin,
+			}
+
+			await self.f.addInfo(`visitors`, info);
+			
+			res.status(200).send(true);
+		});
 	},
 	f: {
 		addInfo: async (table, data) => {

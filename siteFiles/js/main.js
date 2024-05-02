@@ -1218,6 +1218,13 @@ async function loadRegister(){
 };
 
 async function loadScreen(h, l, q){
+	await fetchData({
+		target: `/log`,
+		id: null,
+		token: null,
+		location: window.location,
+	});
+
 	if(l){
 		switch (h) {
 			case `addComment`:
